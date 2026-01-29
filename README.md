@@ -5,6 +5,6 @@
 
   # Sofie8's Website
 
-  Visit **[sofie8.github.io/VERTHY](https://sofie8.github.io/VERTHY)** 🚀
+  Visit **[sofie8.github.io/eco-genx](https://sofie8.github.io/eco-genx)** 🚀
 
   _Built with [Lab Website Template](https://greene-lab.gitbook.io/lab-website-template-docs)_
