@@ -26,3 +26,6 @@
 {% for style in styles %}
   <link href="{{ style.path | relative_url }}" rel="stylesheet" />
 {% endfor %}
+
+<!-- fallback base stylesheet (always present) -->
+<link href="{{ '/assets/css/site.css' | relative_url }}" rel="stylesheet" />
