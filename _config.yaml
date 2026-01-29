@@ -4,6 +4,8 @@ subtitle: Consultancy
 description: Engineering Nature — restoring soil & water with plants, microbes, and DNA-based proof.
 header: images/background.jpg
 footer: images/background.jpg
+url: "https://sofie8.github.io"
+baseurl: "/eco-genx"
 
 proofer: false
 
