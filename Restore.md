@@ -1,7 +1,9 @@
 ---
-layout: page
-title: Eco-GenX Restore
+title: Restore
 permalink: /restore/
+nav:
+  order: 1
+  tooltip: Restore
 ---
 
 # Eco-GenX Restore
