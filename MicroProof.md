@@ -1,7 +1,9 @@
 ---
-layout: page
-title: Eco-GenX MicroProof
-permalink: /microproof/
+title: MicroProof
+permalink: /MicroProof/
+nav:
+  order: 1
+  tooltip: MicroProof
 ---
 
 # Eco-GenX MicroProof
