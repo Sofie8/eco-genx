@@ -66,10 +66,10 @@
 
   <meta name="author" content="sarah-johnson">
   <meta property="og:type" content="article">
-  <meta property="og:updated_time" content="2026-01-29T02:47:05+00:00">
+  <meta property="og:updated_time" content="2026-01-29T02:49:42+00:00">
   <meta property="article:published_time" content="2019-01-07T00:00:00+00:00">
-  <meta property="article:modified_time" content="2026-01-29T02:47:05+00:00">
-  <meta name="revised" content="2026-01-29T02:47:05+00:00">
+  <meta property="article:modified_time" content="2026-01-29T02:49:42+00:00">
+  <meta name="revised" content="2026-01-29T02:49:42+00:00">
 
 
 <script type="application/ld+json">
@@ -79,7 +79,7 @@
       "@type": "BlogPosting",
       "author": { "@type": "Person", "name": "News item coming soon" },
       "datePublished": "2019-01-07T00:00:00+00:00",
-      "dateModified": "2026-01-29T02:47:05+00:00",
+      "dateModified": "2026-01-29T02:49:42+00:00",
     
     "name": "News item coming soon",
     "description": "Consultancy. Engineering Nature — restoring soil &amp; water with plants, microbes, and DNA-based proof.",
@@ -360,52 +360,45 @@
 
   <input class="nav-toggle" type="checkbox" aria-label="show/hide nav">
 
-  <nav>
-    
-    
-      
-        <a href="/eco-genx/MicroProof/" data-tooltip="MicroProof">
-          MicroProof
-        </a>
-      
-    
-      
-        <a href="/eco-genx/PlantIQ/" data-tooltip="PlantIQ">
-          PlantIQ
-        </a>
-      
-    
-      
-        <a href="/eco-genx/restore/" data-tooltip="Restore">
-          Restore
-        </a>
-      
-    
-      
-        <a href="/eco-genx/about/" data-tooltip="Who we are">
-          About
-        </a>
-      
-    
-      
-        <a href="/eco-genx/projects/" data-tooltip="Our environmental projects">
-          ENVIRONMENT
-        </a>
-      
-    
-      
-        <a href="/eco-genx/projects-ag/" data-tooltip="Our agricultural projects">
-          Agriculture
-        </a>
-      
-    
-      
-        <a href="/eco-genx/contact/" data-tooltip="Email, address, and location">
-          Contact
-        </a>
-      
-    
-  </nav>
+<nav class="main-nav">
+  <a href="/eco-genx/about/">About</a>
+
+  <details class="dropdown">
+    <summary>Services</summary>
+    <div class="dropdown-menu">
+      <a href="/eco-genx/restore/">Restore</a>
+      <a href="/eco-genx/microproof/">MicroProof</a>
+      <a href="/eco-genx/plantiq/">PlantIQ</a>
+    </div>
+  </details>
+
+  <a href="/eco-genx/projects/">Projects</a>
+  <a href="/eco-genx/contact/">Contact</a>
+</nav>
+
+<style>
+  /* Simple dropdown styling (works without touching SCSS) */
+  header nav.main-nav { display:flex; gap:1.4rem; align-items:center; }
+  header nav.main-nav a { text-decoration:none; }
+  header nav.main-nav details.dropdown { position:relative; }
+  header nav.main-nav details.dropdown summary {
+    cursor:pointer; list-style:none;
+  }
+  header nav.main-nav details.dropdown summary::-webkit-details-marker { display:none; }
+  header nav.main-nav .dropdown-menu {
+    display:none; position:absolute; top:120%; left:0;
+    min-width: 14rem; padding: .4rem 0;
+    background: rgba(0,0,0,.75);
+    border-radius: .6rem;
+    box-shadow: 0 12px 24px rgba(0,0,0,.25);
+    z-index: 9999;
+  }
+  header nav.main-nav details[open] .dropdown-menu { display:block; }
+  header nav.main-nav .dropdown-menu a {
+    display:block; padding: .45rem .9rem; white-space:nowrap;
+  }
+  header nav.main-nav .dropdown-menu a:hover { background: rgba(255,255,255,.08); }
+</style>
 </header>
 
     <main>
