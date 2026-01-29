@@ -1,6 +1,6 @@
 ---
 title: Restore
-permalink: /restore/
+permalink: /Restore/
 nav:
   order: 1
   tooltip: Restore
