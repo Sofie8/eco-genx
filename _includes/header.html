@@ -40,20 +40,43 @@
 
   <input class="nav-toggle" type="checkbox" aria-label="show/hide nav">
 
-  <nav>
-    {% assign pages = site.pages
-      | where_exp: "page", "page.nav"
-      | sort: "nav.order"
-    %}
-    {% for page in pages %}
-      {% if page.nav %}
-        <a
-          href="{{ page.url | relative_url | uri_escape }}"
-          data-tooltip="{{ page.nav.tooltip | xml_escape }}"
-        >
-          {{ page.title }}
-        </a>
-      {% endif %}
-    {% endfor %}
-  </nav>
+<nav class="main-nav">
+  <a href="{{ '/about/' | relative_url }}">About</a>
+
+  <details class="dropdown">
+    <summary>Services</summary>
+    <div class="dropdown-menu">
+      <a href="{{ '/restore/' | relative_url }}">Restore</a>
+      <a href="{{ '/microproof/' | relative_url }}">MicroProof</a>
+      <a href="{{ '/plantiq/' | relative_url }}">PlantIQ</a>
+    </div>
+  </details>
+
+  <a href="{{ '/projects/' | relative_url }}">Projects</a>
+  <a href="{{ '/contact/' | relative_url }}">Contact</a>
+</nav>
+
+<style>
+  /* Simple dropdown styling (works without touching SCSS) */
+  header nav.main-nav { display:flex; gap:1.4rem; align-items:center; }
+  header nav.main-nav a { text-decoration:none; }
+  header nav.main-nav details.dropdown { position:relative; }
+  header nav.main-nav details.dropdown summary {
+    cursor:pointer; list-style:none;
+  }
+  header nav.main-nav details.dropdown summary::-webkit-details-marker { display:none; }
+  header nav.main-nav .dropdown-menu {
+    display:none; position:absolute; top:120%; left:0;
+    min-width: 14rem; padding: .4rem 0;
+    background: rgba(0,0,0,.75);
+    border-radius: .6rem;
+    box-shadow: 0 12px 24px rgba(0,0,0,.25);
+    z-index: 9999;
+  }
+  header nav.main-nav details[open] .dropdown-menu { display:block; }
+  header nav.main-nav .dropdown-menu a {
+    display:block; padding: .45rem .9rem; white-space:nowrap;
+  }
+  header nav.main-nav .dropdown-menu a:hover { background: rgba(255,255,255,.08); }
+</style>
 </header>
