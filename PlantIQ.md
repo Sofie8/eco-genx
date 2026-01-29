@@ -1,9 +1,7 @@
 ---
-layout: page
-title: Eco-GenX PlantIQ
+title: PlantIQ
 permalink: /plantiq/
+nav:
+  order: 3
+  tooltip: PlantIQ
 ---
-
-# Eco-GenX PlantIQ
-Plant genetics, SSR MAS, RhampSeq, breeding advice grapevine in cold climate region.  
-(Add content, images, and links here.)
