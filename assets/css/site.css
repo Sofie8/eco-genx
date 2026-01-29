@@ -1,0 +1,18 @@
+/* Fallback styling so the site never looks unstyled */
+body {
+  font-family: system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
+  line-height: 1.6;
+  margin: 0;
+}
+
+main {
+  max-width: 980px;
+  margin: 0 auto;
+  padding: 3rem 1.25rem;
+}
+
+h1, h2, h3 { line-height: 1.2; }
+
+a { text-underline-offset: 0.2em; }
+
+header { position: relative; z-index: 50; }
