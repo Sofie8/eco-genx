@@ -1,3 +1,9 @@
+---
+title: Eco-GenX
+layout: home
+permalink: /
+---
+
 # Eco-GenX
 **Engineering Nature.** We restore soil and water using phytotechnologies — plants, microbes, targeted additives — backed by DNA-based proof.
 
@@ -7,15 +13,15 @@
 
 ### Restore
 Phyto-based remediation strategy, soil recovery, and biodiversity assessment.  
-[Explore Restore →]({{ site.baseurl }}/restore/)
+[Explore Restore →]({{ site.baseurl }}/Restore/)
 
 ### MicroProof
 DNA/PCR verification, eDNA monitoring, microbial quantification and culturing to validate what’s working in the field.  
-[Explore MicroProof →]({{ site.baseurl }}/microproof/)
+[Explore MicroProof →]({{ site.baseurl }}/MicroProof/)
 
 ### PlantIQ
 Plant genetics and marker-assisted selection to support breeding, selection, and decision-making.  
-[Explore PlantIQ →]({{ site.baseurl }}/plantiq/)
+[Explore PlantIQ →]({{ site.baseurl }}/PlantIQ/)
 
 ---
 
