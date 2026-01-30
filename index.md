@@ -1,6 +1,6 @@
 ---
 title: Eco-GenX
-layout: home
+layout: default
 permalink: /
 ---
 
@@ -13,15 +13,15 @@ permalink: /
 
 ### Restore
 Phyto-based remediation strategy, soil recovery, and biodiversity assessment.  
-[Explore Restore →]({{ site.baseurl }}/Restore/)
+[Explore Restore →]({{ '/Restore/' | relative_url }})
 
 ### MicroProof
 DNA/PCR verification, eDNA monitoring, microbial quantification and culturing to validate what’s working in the field.  
-[Explore MicroProof →]({{ site.baseurl }}/MicroProof/)
+[Explore MicroProof →]({{ '/MicroProof/' | relative_url }})
 
 ### PlantIQ
 Plant genetics and marker-assisted selection to support breeding, selection, and decision-making.  
-[Explore PlantIQ →]({{ site.baseurl }}/PlantIQ/)
+[Explore PlantIQ →]({{ '/PlantIQ/' | relative_url }})
 
 ---
 
@@ -41,4 +41,4 @@ Sampling and monitoring, interpretation and design choices, then iteration and v
 
 ## Contact
 Have a site, sample set, or question in mind?  
-[Get in touch →]({{ site.baseurl }}/contact/)
+[Get in touch →]({{ '/contact/' | relative_url }})
