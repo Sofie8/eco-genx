@@ -1,18 +1,22 @@
 /* =========================================================
    Eco-GenX — Site CSS (global)
-   Drop-in replacement for assets/css/site.css
    ========================================================= */
 
 /* ---------- base / fallback ---------- */
 :root{
   --maxw: 1200px;
   --pad: 1.25rem;
+
+  /* eco palette */
+  --eco-dark: #0b3b2f;     /* donker groen */
+  --eco-dark-2: #0a2f26;   /* nog donkerder */
+  --eco-accent: #4bbf7a;   /* fris groen accent */
+  --eco-cream: #f6f4ee;    /* warme off-white */
+
   --shadow: 0 14px 36px rgba(0,0,0,.08);
   --shadow2: 0 18px 44px rgba(0,0,0,.10);
   --border: rgba(0,0,0,.08);
   --text-muted: rgba(0,0,0,.72);
-  --dark-1: rgba(255,255,255,.86);
-  --dark-2: rgba(255,255,255,.72);
 }
 
 *{ box-sizing: border-box; }
@@ -109,7 +113,7 @@ nav.main-nav a:hover{
   background: rgba(255,255,255,.08);
 }
 
-/* dropdown using <details> */
+/* ---------- DROPDOWN (keep for Over Eco-GenX) ---------- */
 nav.main-nav details.dropdown{
   position: relative;
 }
@@ -123,7 +127,6 @@ nav.main-nav details.dropdown summary{
   background: rgba(0,0,0,.06);
   user-select: none;
 }
-
 nav.main-nav details.dropdown summary::-webkit-details-marker{ display:none; }
 
 nav.main-nav details.dropdown[open] summary{
@@ -138,7 +141,7 @@ nav.main-nav .dropdown-menu{
   left: 0;
   min-width: 14rem;
   padding: .45rem 0;
-  background: rgba(0,0,0,.80);
+  background: rgba(0,0,0,.82);
   border-radius: .75rem;
   box-shadow: 0 12px 24px rgba(0,0,0,.25);
   z-index: 9999;
@@ -152,10 +155,12 @@ nav.main-nav .dropdown-menu a{
   white-space: nowrap;
   border-radius: 0;
 }
-
 nav.main-nav .dropdown-menu a:hover{
   background: rgba(255,255,255,.10);
 }
+
+/* ---------- If you want to REMOVE "Diensten" dropdown: use a plain link in header.html
+   (No CSS needed; keeping dropdown styles doesn't hurt.) ---------- */
 
 /* responsive header */
 @media (max-width: 980px){
@@ -177,31 +182,19 @@ nav.main-nav .dropdown-menu a:hover{
   margin-right: calc(50% - 50vw);
 }
 
-/* ---------- HOME sections polish (works with your index.md styles) ---------- */
-/* Prevent ugly word spacing / justification */
+/* ---------- HOME sections polish ---------- */
 .section p,
 .card,
 .step{ text-align: left !important; }
 
-/* If your index.md defines .cards/.steps, we still gently improve them */
-.cards{
-  gap: 1.4rem !important;
-}
-.steps{
-  gap: 1.4rem !important;
-}
+.cards{ gap: 1.4rem !important; }
+.steps{ gap: 1.4rem !important; }
 
-/* Make 3 columns on desktop (your index may use auto-fit; this forces 3 if there's room) */
 @media (min-width: 980px){
-  .cards{
-    grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
-  }
-  .steps{
-    grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
-  }
+  .cards{ grid-template-columns: repeat(3, minmax(0, 1fr)) !important; }
+  .steps{ grid-template-columns: repeat(3, minmax(0, 1fr)) !important; }
 }
 
-/* Cards feel a bit more premium */
 .card{
   border-radius: 20px !important;
   padding: 1.35rem 1.35rem 1.2rem !important;
@@ -214,17 +207,66 @@ nav.main-nav .dropdown-menu a:hover{
   box-shadow: var(--shadow2);
 }
 
-/* Steps */
 .step{
   border-radius: 20px !important;
   border: 1px solid var(--border) !important;
   box-shadow: 0 14px 36px rgba(0,0,0,.06);
 }
 
-/* CTA */
-.cta{
-  border-radius: 22px !important;
+.cta{ border-radius: 22px !important; }
+
+.muted{ opacity: .86; }
+
+/* =========================================================
+   Service landing "pills" (IsoDetect vibe)
+   Put this block at the TOP RIGHT of the page content
+   ========================================================= */
+
+.service-topbar{
+  display: flex;
+  justify-content: flex-end;
+  margin: 0 0 1.15rem;
 }
 
-/* ---------- Utilities ---------- */
-.muted{ opacity: .86; }
+.service-pills{
+  display: inline-flex;
+  gap: .5rem;
+  flex-wrap: wrap;
+  padding: .55rem .6rem;
+  border-radius: 999px;
+  background: linear-gradient(180deg, var(--eco-dark), var(--eco-dark-2));
+  border: 1px solid rgba(255,255,255,.12);
+  box-shadow: 0 14px 36px rgba(0,0,0,.14);
+}
+
+.service-pills a{
+  display: inline-flex;
+  align-items: center;
+  padding: .42rem .75rem;
+  border-radius: 999px;
+  text-decoration: none;
+  color: rgba(255,255,255,.88);
+  font-size: .92rem;
+  border: 1px solid rgba(255,255,255,.14);
+  background: rgba(255,255,255,.06);
+  transition: transform .12s ease, background .12s ease, border-color .12s ease;
+}
+
+.service-pills a:hover{
+  transform: translateY(-1px);
+  background: rgba(255,255,255,.10);
+  border-color: rgba(255,255,255,.22);
+}
+
+/* active/current page */
+.service-pills a.is-active{
+  background: rgba(75,191,122,.22);
+  border-color: rgba(75,191,122,.55);
+  color: #fff;
+}
+
+/* mobile */
+@media (max-width: 980px){
+  .service-topbar{ justify-content: center; }
+  .service-pills{ border-radius: 18px; }
+}
