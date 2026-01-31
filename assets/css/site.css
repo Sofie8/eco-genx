@@ -9,10 +9,10 @@
   --pad: 1.25rem;
 
   /* eco palette */
-  --eco-dark: #0b3b2f;      /* donker groen */
-  --eco-dark-2: #082a22;    /* extra donker */
-  --eco-accent: #4bbf7a;    /* fris groen accent */
-  --eco-cream: #f6f4ee;     /* warme off-white */
+  --eco-dark: #0b3b2f;
+  --eco-dark-2: #082a22;
+  --eco-accent: #4bbf7a;
+  --eco-cream: #f6f4ee;
 
   --shadow: 0 14px 36px rgba(0,0,0,.08);
   --shadow2: 0 18px 44px rgba(0,0,0,.10);
@@ -47,7 +47,6 @@ header.background{
   padding: .65rem 0 !important;
 }
 
-/* home page header (template adds data-big) */
 header.background[data-big]{
   padding: .85rem 0 !important;
 }
@@ -116,7 +115,7 @@ nav.main-nav a:hover{
   background: rgba(255,255,255,.08);
 }
 
-/* ---------- Over Eco-GenX dropdown (robust) ---------- */
+/* ---------- Over Eco-GenX dropdown ---------- */
 .nav-dd{
   position: relative;
   display: inline-flex;
@@ -163,7 +162,6 @@ nav.main-nav a:hover{
   background: rgba(255,255,255,.10);
 }
 
-/* open on hover + keyboard focus */
 .nav-dd:hover .nav-dd__menu,
 .nav-dd:focus-within .nav-dd__menu{
   display: block;
@@ -181,7 +179,7 @@ nav.main-nav a:hover{
     justify-content: center;
   }
 
-  /* mobile dropdown becomes simple list */
+  /* mobile dropdown becomes a simple list */
   .nav-dd{ flex-direction: column; align-items: flex-start; }
   .nav-dd__menu{
     position: static;
@@ -201,11 +199,19 @@ nav.main-nav a:hover{
   }
 }
 
-/* ---------- FULL-BLEED helper ---------- */
-.hero-full{
+/* ---------- FULL-BLEED helper (for hero / wide sections) ---------- */
+.hero-full,
+.full-bleed{
   width: 100vw;
   margin-left: calc(50% - 50vw);
   margin-right: calc(50% - 50vw);
+}
+
+/* full-bleed inner container */
+.bleed-inner{
+  max-width: var(--maxw);
+  margin: 0 auto;
+  padding: 0 var(--pad);
 }
 
 /* ---------- HOME sections polish ---------- */
@@ -221,7 +227,7 @@ nav.main-nav a:hover{
   .steps{ grid-template-columns: repeat(3, minmax(0, 1fr)) !important; }
 }
 
-/* Cards feel more premium */
+/* premium cards */
 .card{
   border-radius: 20px !important;
   padding: 1.35rem 1.35rem 1.2rem !important;
@@ -234,17 +240,15 @@ nav.main-nav a:hover{
   box-shadow: var(--shadow2);
 }
 
-/* Steps */
 .step{
   border-radius: 20px !important;
   border: 1px solid var(--border) !important;
   box-shadow: 0 14px 36px rgba(0,0,0,.06);
 }
 
-/* CTA */
 .cta{ border-radius: 22px !important; }
 
-/* ---------- Service landing "pills" (IsoDetect vibe) ---------- */
+/* ---------- Service landing "pills" ---------- */
 .service-topbar{
   display: flex;
   justify-content: flex-end;
@@ -290,4 +294,52 @@ nav.main-nav a:hover{
 @media (max-width: 980px){
   .service-topbar{ justify-content: center; }
   .service-pills{ border-radius: 18px; }
+}
+
+/* ---------- Missie & Visie full-width sections (Biologic vibe) ---------- */
+.mv-split{
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  min-height: 520px;
+}
+
+.mv-img{
+  min-height: 520px;
+  background-size: cover;
+  background-position: center;
+}
+
+.mv-panel{
+  background: var(--eco-cream);
+  padding: 4rem 3.2rem;
+  display: flex;
+  align-items: center;
+}
+
+.mv-panel .kicker{
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  font-size: .85rem;
+  opacity: .7;
+  margin-bottom: .75rem;
+}
+
+.mv-panel h1, .mv-panel h2{
+  font-size: 3rem;
+  letter-spacing: .04em;
+  margin: 0 0 1.2rem;
+  line-height: 1.05;
+}
+
+.mv-panel p{
+  font-size: 1.05rem;
+  max-width: 46ch;
+  margin: 0;
+}
+
+@media (max-width: 980px){
+  .mv-split{ grid-template-columns: 1fr; }
+  .mv-img{ min-height: 320px; }
+  .mv-panel{ padding: 2.4rem 1.4rem; }
+  .mv-panel h1, .mv-panel h2{ font-size: 2.2rem; }
 }
