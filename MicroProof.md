@@ -1,10 +1,15 @@
 ---
 title: MicroProof
-permalink: /MicroProof/
+layout: default
+permalink: /microproof/
+redirect_from:
+  - /MicroProof/
+  - /Microproof/
 nav:
-  order: 1
+  order: 2
   tooltip: MicroProof
 ---
+
 
 <div class="service-topbar">
   <div class="service-pills">
