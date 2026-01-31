@@ -441,36 +441,42 @@
 
   <section class="background" data-size="page">
     <style>
-  /* page container */
+  /* =======================================================
+     Home page (final) — relies on global assets/css/site.css
+     ======================================================= */
+
+  /* Container for inner content blocks */
   .home-wrap{
     width: 100%;
-    max-width: 1120px;
+    max-width: 1200px;
     margin: 0 auto;
     padding: 0 1.25rem;
     box-sizing: border-box;
   }
 
-  /* FULL-WIDTH HERO (biologic/ossiado vibe) */
+  /* ---------- HERO (full-bleed) ---------- */
   .hero-full{
     position: relative;
-    width: 100%;
-    min-height: 520px;
+    min-height: 560px;
     background-image: url("/eco-genx/images/hero.jpg");
     background-size: cover;
     background-position: center;
-    border-bottom: 1px solid rgba(0,0,0,.08);
   }
+
+  /* overlay for readability */
   .hero-full::before{
     content:"";
     position:absolute; inset:0;
-    background: linear-gradient(90deg,
-      rgba(9,45,38,.78) 0%,
-      rgba(9,45,38,.62) 45%,
-      rgba(9,45,38,.20) 100%);
+    background:
+      linear-gradient(90deg,
+        rgba(9,45,38,.86) 0%,
+        rgba(9,45,38,.66) 45%,
+        rgba(9,45,38,.22) 100%);
   }
+
   .hero-inner{
     position: relative;
-    min-height: 520px;
+    min-height: 560px;
     display: grid;
     align-items: center;
     padding: 3.2rem 0;
@@ -480,25 +486,25 @@
     font-size: .86rem;
     letter-spacing: .08em;
     text-transform: uppercase;
-    opacity: .9;
-    margin-bottom: .6rem;
+    opacity: .92;
+    margin-bottom: .7rem;
     color: rgba(255,255,255,.86);
   }
 
   .hero-title{
     margin: 0 0 .65rem;
-    font-size: 3rem;
-    line-height: 1.05;
+    font-size: 3.15rem;
+    line-height: 1.03;
     color: #fff;
     max-width: 18ch;
   }
 
   .hero-quote{
-    margin: .6rem 0 1.1rem;
-    font-size: 1.35rem;
+    margin: .65rem 0 1.15rem;
+    font-size: 1.45rem;
     line-height: 1.35;
     color: rgba(255,255,255,.92);
-    max-width: 58ch;
+    max-width: 62ch;
   }
 
   .hero-lead{
@@ -506,20 +512,21 @@
     font-size: 1.05rem;
     line-height: 1.65;
     color: rgba(255,255,255,.84);
-    max-width: 72ch;
+    max-width: 76ch;
   }
 
   .btnrow{
     display:flex;
-    gap:.8rem;
+    gap:.85rem;
     flex-wrap:wrap;
     margin-top: 1.4rem;
   }
+
   .btn{
     display:inline-flex;
     align-items:center;
     gap:.45rem;
-    padding:.7rem 1.05rem;
+    padding:.75rem 1.1rem;
     border-radius: 12px;
     text-decoration:none;
     border: 1px solid rgba(255,255,255,.28);
@@ -527,92 +534,111 @@
     color: #fff;
     transition: transform .12s ease, background .12s ease, border-color .12s ease;
   }
+
   .btn.primary{
     background: rgba(255,255,255,.18);
-    border-color: rgba(255,255,255,.36);
+    border-color: rgba(255,255,255,.38);
   }
+
   .btn:hover{
     transform: translateY(-1px);
     background: rgba(255,255,255,.16);
-    border-color: rgba(255,255,255,.44);
+    border-color: rgba(255,255,255,.46);
   }
 
-  /* sections */
+  /* ---------- SECTION BASE ---------- */
   .section{
-    margin: 2.8rem 0;
+    margin: 3.1rem 0;
   }
+
   .section h2{
     margin: 0 0 .55rem;
-    font-size: 1.7rem;
+    font-size: 1.75rem;
     line-height: 1.2;
   }
-  .muted{ opacity:.86; }
-  .section-intro{ max-width: 72ch; }
 
-  /* cards */
-  .cards{
+  .section-intro{
+    max-width: 78ch;
+    opacity: .86;
+  }
+
+  /* Cards / steps styling (pairs with site.css) */
+  .cards, .steps{
     display:grid;
     grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-    gap: 1.2rem;
-    margin-top: 1.2rem;
+    gap: 1.4rem;
+    margin-top: 1.25rem;
   }
-  .card{
-    border: 1px solid rgba(0,0,0,.08);
-    border-radius: 18px;
-    padding: 1.2rem 1.2rem 1.05rem;
+
+  .card, .step{
     background: #fff;
+    border: 1px solid rgba(0,0,0,.08);
+    border-radius: 20px;
     box-shadow: 0 14px 36px rgba(0,0,0,.08);
+  }
+
+  .card{
+    padding: 1.35rem 1.35rem 1.2rem;
     transition: transform .12s ease, box-shadow .12s ease;
   }
   .card:hover{
     transform: translateY(-1px);
     box-shadow: 0 18px 44px rgba(0,0,0,.10);
   }
-  .card h3{ margin: 0 0 .45rem; }
-  .card ul{ margin: .6rem 0 0; padding-left: 1.05rem; }
+
+  .card h3{
+    margin: 0 0 .5rem;
+    font-size: 1.25rem;
+  }
+
+  .card p{
+    margin: .35rem 0 .65rem;
+    opacity: .82;
+  }
+
+  .card ul{
+    margin: .6rem 0 0;
+    padding-left: 1.1rem;
+  }
   .card li{ margin: .3rem 0; }
+
   .card a{
     display:inline-block;
-    margin-top: .9rem;
+    margin-top: .95rem;
     text-decoration:none;
-    border-bottom: 1px solid rgba(0,0,0,.25);
+    border-bottom: 1px solid rgba(0,0,0,.28);
     padding-bottom: .08rem;
   }
 
-  /* steps */
-  .steps{
-    display:grid;
-    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-    gap: 1.2rem;
-    margin-top: 1.2rem;
-  }
   .step{
-    border: 1px solid rgba(0,0,0,.08);
-    border-radius: 18px;
-    padding: 1.05rem 1.15rem;
-    background: #fff;
+    padding: 1.1rem 1.2rem;
     box-shadow: 0 14px 36px rgba(0,0,0,.06);
   }
-  .step .nr{ font-weight: 700; opacity: .8; margin-bottom: .35rem; }
+  .step .nr{
+    font-weight: 700;
+    opacity: .85;
+    margin-bottom: .35rem;
+  }
 
   /* CTA */
   .cta{
-    border-radius: 20px;
-    padding: 1.4rem 1.4rem;
+    border-radius: 22px;
+    padding: 1.5rem 1.5rem;
     background: rgba(9,45,38,.06);
     border: 1px solid rgba(9,45,38,.12);
   }
 
+  /* Responsive hero */
   @media (max-width: 980px){
-    .hero-full{ min-height: 520px; }
-    .hero-inner{ padding: 2.2rem 0; }
-    .hero-title{ font-size: 2.25rem; }
-    .hero-quote{ font-size: 1.2rem; }
+    .hero-full{ min-height: 540px; }
+    .hero-inner{ min-height: 540px; padding: 2.4rem 0; }
+    .hero-title{ font-size: 2.35rem; }
+    .hero-quote{ font-size: 1.22rem; }
   }
 </style>
 
-<!-- FULL-WIDTH HERO -->
-<section class="hero-full">
+<!-- HERO (full width) -->
+<section class="hero-full hero-full">
   <div class="home-wrap hero-inner">
     <div>
       <div class="kicker">Eco-GenX · consultancy</div>
@@ -640,12 +666,12 @@
 
   <section class="section" id="diensten">
     <h2>Diensten</h2>
-    <p class="muted section-intro">Drie domeinen die je apart kan inzetten — of combineren in één traject.</p>
+    <p class="section-intro">Drie domeinen die je apart kan inzetten — of combineren in één traject.</p>
 
     <div class="cards">
       <div class="card">
         <h3>Restore</h3>
-        <p class="muted">Bodem- en waterherstel met phytoremediatie en nature-based oplossingen.</p>
+        <p>Bodem- en waterherstel met phytoremediatie en nature-based oplossingen.</p>
         <ul>
           <li>strategie &amp; haalbaarheidsinschatting</li>
           <li>soil/water assessment &amp; monitoringplan</li>
@@ -656,7 +682,7 @@
 
       <div class="card">
         <h3>MicroProof</h3>
-        <p class="muted">DNA/PCR en eDNA om te bewijzen wat werkt — en om bij te sturen.</p>
+        <p>DNA/PCR en eDNA om te bewijzen wat werkt — en om bij te sturen.</p>
         <ul>
           <li>eDNA monitoring &amp; detectie</li>
           <li>verificatie van bio-producten/claims</li>
@@ -667,7 +693,7 @@
 
       <div class="card">
         <h3>PlantIQ</h3>
-        <p class="muted">Plantgenetica en selectie als beslissingshulp voor robuuste teelt en herstel.</p>
+        <p>Plantgenetica en selectie als beslissingshulp voor robuuste teelt en herstel.</p>
         <ul>
           <li>marker-assisted selectie &amp; screening</li>
           <li>interpretatie van genetische data</li>
@@ -680,27 +706,27 @@
 
   <section class="section" id="aanpak">
     <h2>Eco-GenX aanpak</h2>
-    <p class="muted section-intro">Eenvoudig, meetbaar en iteratief: <strong>meten → begrijpen → optimaliseren</strong>.</p>
+    <p class="section-intro">Eenvoudig, meetbaar en iteratief: <strong>meten → begrijpen → optimaliseren</strong>.</p>
 
     <div class="steps">
       <div class="step">
         <div class="nr">1 · Meten</div>
-        <p class="muted">Staalname, veldobservaties en (waar zinvol) eDNA/PCR om objectief te starten.</p>
+        <p>Staalname, veldobservaties en (waar zinvol) eDNA/PCR om objectief te starten.</p>
       </div>
       <div class="step">
         <div class="nr">2 · Analyseren</div>
-        <p class="muted">Interpretatie en ontwerpkeuzes: wat is haalbaar, wat werkt, en wat moet je vermijden.</p>
+        <p>Interpretatie en ontwerpkeuzes: wat is haalbaar, wat werkt, en wat moet je vermijden.</p>
       </div>
       <div class="step">
         <div class="nr">3 · Optimaliseren</div>
-        <p class="muted">Plan of proefopzet + monitoring zodat je gericht kan bijsturen en aantonen wat werkt.</p>
+        <p>Plan of proefopzet + monitoring zodat je gericht kan bijsturen en aantonen wat werkt.</p>
       </div>
     </div>
   </section>
 
   <section class="section" id="projecten">
     <h2>Projecten</h2>
-    <p class="muted section-intro">Een paar voorbeelden (later kan je dit uitbreiden met cases, foto’s en resultaten).</p>
+    <p class="section-intro">Een paar voorbeelden (later kan je dit uitbreiden met cases, foto’s en resultaten).</p>
     <ul>
       <li>
 <strong>Herstelstrategie</strong> voor complexe verontreiniging met phytobenadering en monitoring.</li>
@@ -715,7 +741,7 @@
   <section class="section">
     <div class="cta">
       <h2>Even sparren?</h2>
-      <p class="muted section-intro">
+      <p class="section-intro">
         Stuur je locatie, je vraag en (als je hebt) bestaande analyses. Dan bekijk ik wat de slimste eerste stap is.
       </p>
       <div class="btnrow">
