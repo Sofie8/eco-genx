@@ -78,6 +78,8 @@ hero_image: /images/hero-me.jpg
   }
 </style>
 
+<div class="home-wrap">
+  
 <section class="hero">
   <div>
     <img src="{{ page.hero_image | relative_url }}" alt="Veldwerk en staalname in een natuurlijke omgeving">
@@ -188,3 +190,5 @@ hero_image: /images/hero-me.jpg
 ## Contact
 Have a site, sample set, or question in mind?  
 [Get in touch →]({{ '/contact/' | relative_url }})
+
+</div>
