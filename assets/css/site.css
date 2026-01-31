@@ -1,22 +1,22 @@
 /* =========================================================
    Eco-GenX — Site CSS (global)
+   Drop-in replacement for assets/css/site.css
    ========================================================= */
 
-/* ---------- base / fallback ---------- */
+/* ---------- base / tokens ---------- */
 :root{
   --maxw: 1200px;
   --pad: 1.25rem;
 
   /* eco palette */
-  --eco-dark: #0b3b2f;     /* donker groen */
-  --eco-dark-2: #0a2f26;   /* nog donkerder */
-  --eco-accent: #4bbf7a;   /* fris groen accent */
-  --eco-cream: #f6f4ee;    /* warme off-white */
+  --eco-dark: #0b3b2f;      /* donker groen */
+  --eco-dark-2: #082a22;    /* extra donker */
+  --eco-accent: #4bbf7a;    /* fris groen accent */
+  --eco-cream: #f6f4ee;     /* warme off-white */
 
   --shadow: 0 14px 36px rgba(0,0,0,.08);
   --shadow2: 0 18px 44px rgba(0,0,0,.10);
   --border: rgba(0,0,0,.08);
-  --text-muted: rgba(0,0,0,.72);
 }
 
 *{ box-sizing: border-box; }
@@ -25,7 +25,7 @@ body{
   font-family: system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
   line-height: 1.6;
   margin: 0;
-  overflow-x: hidden; /* voorkomt horizontale scrollbar bij full-bleed */
+  overflow-x: hidden;
 }
 
 h1,h2,h3{ line-height: 1.2; margin-top: 0; }
@@ -38,7 +38,7 @@ main{
   padding: 2.5rem var(--pad);
 }
 
-/* ---------- HEADER (compact + centered) ---------- */
+/* ---------- HEADER ---------- */
 header{ position: relative; z-index: 50; }
 header, header nav{ overflow: visible !important; }
 
@@ -102,6 +102,9 @@ nav.main-nav{
   flex-wrap: wrap;
   margin-left: auto;
   font-size: .95rem;
+
+  position: relative;
+  z-index: 2000;
 }
 
 nav.main-nav a{
@@ -113,54 +116,58 @@ nav.main-nav a:hover{
   background: rgba(255,255,255,.08);
 }
 
-/* ---------- DROPDOWN (keep for Over Eco-GenX) ---------- */
-nav.main-nav details.dropdown{
+/* ---------- Over Eco-GenX dropdown (robust) ---------- */
+.nav-dd{
   position: relative;
+  display: inline-flex;
+  align-items: center;
 }
 
-nav.main-nav details.dropdown summary{
-  cursor: pointer;
-  list-style: none;
-  padding: .45rem .75rem;
-  border-radius: .55rem;
-  border: 1px solid rgba(255,255,255,.22);
-  background: rgba(0,0,0,.06);
-  user-select: none;
-}
-nav.main-nav details.dropdown summary::-webkit-details-marker{ display:none; }
-
-nav.main-nav details.dropdown[open] summary{
-  background: rgba(255,255,255,.10);
-  border-color: rgba(255,255,255,.30);
+.nav-dd__trigger{
+  display: inline-flex;
+  align-items: center;
+  gap: .35rem;
+  padding: .35rem .45rem;
+  border-radius: .45rem;
+  text-decoration: none;
 }
 
-nav.main-nav .dropdown-menu{
+.nav-dd__trigger::after{
+  content: "▾";
+  font-size: .9em;
+  opacity: .85;
+}
+
+.nav-dd__menu{
   display: none;
   position: absolute;
-  top: 120%;
+  top: calc(100% + .6rem);
   left: 0;
-  min-width: 14rem;
+  min-width: 16rem;
   padding: .45rem 0;
   background: rgba(0,0,0,.82);
   border-radius: .75rem;
-  box-shadow: 0 12px 24px rgba(0,0,0,.25);
+  box-shadow: 0 16px 32px rgba(0,0,0,.30);
   z-index: 9999;
 }
 
-nav.main-nav details[open] .dropdown-menu{ display:block; }
-
-nav.main-nav .dropdown-menu a{
-  display:block;
+.nav-dd__menu a{
+  display: block;
   padding: .55rem .95rem;
   white-space: nowrap;
-  border-radius: 0;
+  text-decoration: none;
+  color: rgba(255,255,255,.90);
 }
-nav.main-nav .dropdown-menu a:hover{
+
+.nav-dd__menu a:hover{
   background: rgba(255,255,255,.10);
 }
 
-/* ---------- If you want to REMOVE "Diensten" dropdown: use a plain link in header.html
-   (No CSS needed; keeping dropdown styles doesn't hurt.) ---------- */
+/* open on hover + keyboard focus */
+.nav-dd:hover .nav-dd__menu,
+.nav-dd:focus-within .nav-dd__menu{
+  display: block;
+}
 
 /* responsive header */
 @media (max-width: 980px){
@@ -173,9 +180,28 @@ nav.main-nav .dropdown-menu a:hover{
   nav.main-nav{
     justify-content: center;
   }
+
+  /* mobile dropdown becomes simple list */
+  .nav-dd{ flex-direction: column; align-items: flex-start; }
+  .nav-dd__menu{
+    position: static;
+    display: block;
+    background: transparent;
+    box-shadow: none;
+    padding: .2rem 0 0;
+    min-width: unset;
+  }
+  .nav-dd__menu a{
+    color: inherit;
+    padding: .35rem .45rem;
+    border-radius: .45rem;
+  }
+  .nav-dd__menu a:hover{
+    background: rgba(255,255,255,.08);
+  }
 }
 
-/* ---------- FULL-BLEED helper (for hero etc.) ---------- */
+/* ---------- FULL-BLEED helper ---------- */
 .hero-full{
   width: 100vw;
   margin-left: calc(50% - 50vw);
@@ -195,6 +221,7 @@ nav.main-nav .dropdown-menu a:hover{
   .steps{ grid-template-columns: repeat(3, minmax(0, 1fr)) !important; }
 }
 
+/* Cards feel more premium */
 .card{
   border-radius: 20px !important;
   padding: 1.35rem 1.35rem 1.2rem !important;
@@ -207,21 +234,17 @@ nav.main-nav .dropdown-menu a:hover{
   box-shadow: var(--shadow2);
 }
 
+/* Steps */
 .step{
   border-radius: 20px !important;
   border: 1px solid var(--border) !important;
   box-shadow: 0 14px 36px rgba(0,0,0,.06);
 }
 
+/* CTA */
 .cta{ border-radius: 22px !important; }
 
-.muted{ opacity: .86; }
-
-/* =========================================================
-   Service landing "pills" (IsoDetect vibe)
-   Put this block at the TOP RIGHT of the page content
-   ========================================================= */
-
+/* ---------- Service landing "pills" (IsoDetect vibe) ---------- */
 .service-topbar{
   display: flex;
   justify-content: flex-end;
@@ -258,93 +281,13 @@ nav.main-nav .dropdown-menu a:hover{
   border-color: rgba(255,255,255,.22);
 }
 
-/* active/current page */
 .service-pills a.is-active{
   background: rgba(75,191,122,.22);
   border-color: rgba(75,191,122,.55);
   color: #fff;
 }
 
-/* mobile */
 @media (max-width: 980px){
   .service-topbar{ justify-content: center; }
   .service-pills{ border-radius: 18px; }
-}
-
-/* Ensure dropdowns are clickable and not blocked by nav-toggle */
-header.background { position: relative; z-index: 1000; }
-header.background .header-inner { position: relative; z-index: 1001; }
-header.background nav.main-nav { position: relative; z-index: 1002; }
-
-header.background .nav-toggle { position: relative; z-index: 1; }
-header.background nav.main-nav * { pointer-events: auto; }
-/* ===========================
-   NAV DROPDOWN (bulletproof)
-   =========================== */
-
-nav.main-nav { position: relative; z-index: 2000; }
-header.background, header.background .header-inner { position: relative; z-index: 2000; }
-
-/* Dropdown wrapper */
-.nav-dd { position: relative; display: inline-flex; align-items: center; }
-
-/* Trigger looks like normal nav link */
-.nav-dd__trigger{
-  text-decoration: none;
-  padding: .35rem .45rem;
-  border-radius: .45rem;
-  display: inline-flex;
-  align-items: center;
-  gap: .35rem;
-}
-.nav-dd__trigger::after{
-  content: "▾";
-  font-size: .9em;
-  opacity: .85;
-}
-
-/* Menu */
-.nav-dd__menu{
-  display: none;
-  position: absolute;
-  top: calc(100% + .55rem);
-  left: 0;
-  min-width: 15rem;
-  padding: .45rem 0;
-  background: rgba(0,0,0,.82);
-  border-radius: .75rem;
-  box-shadow: 0 16px 32px rgba(0,0,0,.30);
-  z-index: 9999;
-}
-.nav-dd__menu a{
-  display:block;
-  padding: .55rem .95rem;
-  white-space: nowrap;
-  text-decoration:none;
-  color: rgba(255,255,255,.90);
-}
-.nav-dd__menu a:hover{ background: rgba(255,255,255,.10); }
-
-/* Open on hover + keyboard focus */
-.nav-dd:hover .nav-dd__menu,
-.nav-dd:focus-within .nav-dd__menu{
-  display: block;
-}
-
-/* Mobile: show submenu as a simple list (no hover needed) */
-@media (max-width: 980px){
-  .nav-dd{ flex-direction: column; align-items: flex-start; }
-  .nav-dd__menu{
-    position: static;
-    display: block;
-    background: transparent;
-    box-shadow: none;
-    padding: .2rem 0 0;
-  }
-  .nav-dd__menu a{
-    padding: .35rem .45rem;
-    border-radius: .45rem;
-    color: inherit;
-  }
-  .nav-dd__menu a:hover{ background: rgba(255,255,255,.08); }
 }
