@@ -17,10 +17,11 @@
   {% endif %}
 >
   <div class="header-inner">
-    <a href="{{ "/" | relative_url }}" class="home" aria-label="Home">
+
+    <!-- Brand / Home -->
+    <a href="{{ '/' | relative_url }}" class="home" aria-label="Home">
       {%- comment -%}
-      Logo tijdelijk weg? Verwijder/rename images/logo.svg|png|jpg,
-      of zet in _config.yml: logo-text: true en laat logo files weg.
+      Logo tijdelijk weg? Verwijder/rename images/logo.svg|png|jpg
       {%- endcomment -%}
 
       {% if logo %}
@@ -45,33 +46,34 @@
       {% endif %}
     </a>
 
-    <input class="nav-toggle" type="checkbox" aria-label="show/hide nav">
+    <!-- Mobile toggle (template may use it) -->
+    <input class="nav-toggle" type="checkbox" aria-label="show/hide navigation">
 
+    <!-- Nav -->
     <nav class="main-nav" aria-label="Primary navigation">
       <a href="{{ '/' | relative_url }}">Home</a>
-      <details class="dropdown">
-  <summary>Over Eco-GenX</summary>
-  <div class="dropdown-menu">
-    <a href="{{ '/over/wie-ben-ik/' | relative_url }}">Wie ben ik?</a>
-    <a href="{{ '/over/missie-visie/' | relative_url }}">Missie & visie</a>
-    <a href="{{ '/over/voor-wie/' | relative_url }}">Voor wie</a>
-    <a href="{{ '/over/onderzoek/' | relative_url }}">Onderzoek</a>
-    <a href="{{ '/over/artikels-lezingen/' | relative_url }}">Artikels & lezingen</a>
-  </div>
-</details>
 
+      <!-- Over Eco-GenX dropdown -->
       <details class="dropdown">
-        <summary>Diensten</summary>
+        <summary>Over Eco-GenX</summary>
         <div class="dropdown-menu">
-      <a href="{{ '/restore/' | relative_url }}">Diensten</a>
+          <a href="{{ '/over/wie-ben-ik/' | relative_url }}">Wie ben ik?</a>
+          <a href="{{ '/over/missie-visie/' | relative_url }}">Missie & visie</a>
+          <a href="{{ '/over/voor-wie/' | relative_url }}">Voor wie</a>
+          <a href="{{ '/over/onderzoek/' | relative_url }}">Onderzoek</a>
+          <a href="{{ '/over/artikels-lezingen/' | relative_url }}">Artikels & lezingen</a>
         </div>
       </details>
 
-      <!-- Deze linken springen naar secties op je homepage -->
+      <!-- Diensten is GEEN dropdown -->
+      <a href="{{ '/restore/' | relative_url }}">Diensten</a>
+
+      <!-- jump links to homepage sections -->
       <a href="{{ '/#aanpak' | relative_url }}">Eco-GenX aanpak</a>
       <a href="{{ '/#projecten' | relative_url }}">Projecten</a>
 
       <a href="{{ '/contact/' | relative_url }}">Contact</a>
     </nav>
+
   </div>
 </header>
