@@ -6,25 +6,42 @@ body {
 }
 
 main {
-  max-width: 980px;
+  max-width: 1100px;           /* iets breder dan 980, rustiger voor cards */
   margin: 0 auto;
-  padding: 3rem 1.25rem;
+  padding: 2.5rem 1.25rem;
+  box-sizing: border-box;
 }
 
 h1, h2, h3 { line-height: 1.2; }
-
 a { text-underline-offset: 0.2em; }
 
 header { position: relative; z-index: 50; }
 
-/* ---------- Header compact + centered nav ---------- */
-
-/* maak de header compacter */
+/* ---------- HEADER: compact, centered, premium ---------- */
 header.background {
-  padding: 0.6rem 0 !important;
+  padding: 0.65rem 0 !important;
+  display: block; /* template kan flex zetten, wij doen inner wrapper */
 }
 
-/* titel/subtitel compacter */
+/* maak header op home niet overdreven hoog */
+header.background[data-big]{
+  padding: 0.85rem 0 !important;
+}
+
+/* inner wrapper centreren */
+header.background .header-inner{
+  max-width: 1120px;
+  margin: 0 auto;
+  padding: 0 1.25rem;
+  box-sizing: border-box;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+/* Titel/subtitel compacter */
 header.background .title {
   font-size: 1.25rem !important;
   line-height: 1.1 !important;
@@ -34,24 +51,26 @@ header.background .subtitle {
   opacity: 0.85 !important;
 }
 
-/* nav minder breed + netjes gecentreerd */
-header.background {
-  display: flex;
+/* logo minder dominant */
+header.background .logo{
+  width: 34px;
+  height: 34px;
+  display: inline-flex;
   align-items: center;
-  justify-content: space-between;
-  gap: 1rem;
+  justify-content: center;
+  margin-right: .6rem;
+  opacity: .9;
+}
+header.background .logo img,
+header.background .logo svg{
+  width: 34px;
+  height: 34px;
 }
 
-/* beperk totale breedte van header-inhoud */
-header.background > a.home,
-header.background > nav.main-nav {
-  max-width: 1100px;
-}
-
-/* nav rechts maar niet "uit elkaar getrokken" */
+/* nav layout */
 nav.main-nav {
   display: flex;
-  gap: 1.1rem;
+  gap: 1.05rem;
   align-items: center;
   justify-content: flex-end;
   flex-wrap: wrap;
@@ -59,11 +78,70 @@ nav.main-nav {
   margin-left: auto;
 }
 
-/* dropdown knop wat subtieler */
-nav.main-nav .dropbtn {
-  padding: .45rem .7rem !important;
-  border-radius: .5rem !important;
+/* link look wat netter */
+nav.main-nav a{
+  text-decoration: none;
+  padding: .35rem .25rem;
+  border-radius: .4rem;
+}
+nav.main-nav a:hover{
+  background: rgba(255,255,255,.08);
+}
+
+/* dropdown via <details> */
+nav.main-nav details.dropdown{
+  position: relative;
+}
+nav.main-nav details.dropdown summary{
+  cursor: pointer;
+  list-style: none;
+  padding: .45rem .7rem;
+  border-radius: .55rem;
+  border: 1px solid rgba(255,255,255,.22);
+  background: rgba(0,0,0,.06);
+}
+nav.main-nav details.dropdown summary::-webkit-details-marker { display:none; }
+nav.main-nav details.dropdown[open] summary{
+  background: rgba(255,255,255,.10);
+  border-color: rgba(255,255,255,.30);
+}
+
+/* dropdown menu */
+nav.main-nav .dropdown-menu{
+  display: none;
+  position: absolute;
+  top: 120%;
+  left: 0;
+  min-width: 14rem;
+  padding: .4rem 0;
+  background: rgba(0,0,0,.80);
+  border-radius: .75rem;
+  box-shadow: 0 12px 24px rgba(0,0,0,.25);
+  z-index: 9999;
+}
+nav.main-nav details[open] .dropdown-menu { display:block; }
+
+nav.main-nav .dropdown-menu a{
+  display: block;
+  padding: .5rem .9rem;
+  white-space: nowrap;
+}
+nav.main-nav .dropdown-menu a:hover{
+  background: rgba(255,255,255,.10);
 }
 
 /* zorg dat dropdown niet gecropt wordt */
 header, header nav { overflow: visible !important; }
+
+/* responsive: bij small screens mag menu onder elkaar */
+@media (max-width: 980px){
+  header.background .header-inner{
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: .6rem;
+    text-align: center;
+  }
+  nav.main-nav{
+    justify-content: center;
+  }
+}
