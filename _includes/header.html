@@ -16,67 +16,55 @@
     data-big
   {% endif %}
 >
-  <a href="{{ "/" | relative_url }}" class="home">
-    {% if logo %}
-      <span class="logo">
-        {% if svg %}
-          {{ svg | file_read }}
-        {% else %}
-          <img src="{{ logo | relative_url | uri_escape }}" alt="logo">
-        {% endif %}
-      </span>
-    {% endif %}
-    {% if site.logo-text != false %}
-      <span class="title-text" data-tooltip="Home">
-        {% if site.title and site.show-title != false %}
-          <span class="title">{{ site.title }}</span>
-        {% endif %}
-        {% if site.subtitle and site.show-subtitle != false %}
-          <span class="subtitle">{{ site.subtitle }}</span>
-        {% endif %}
-      </span>
-    {% endif %}
-  </a>
+  <div class="header-inner">
+    <a href="{{ "/" | relative_url }}" class="home" aria-label="Home">
+      {%- comment -%}
+      Logo tijdelijk weg? Verwijder/rename images/logo.svg|png|jpg,
+      of zet in _config.yml: logo-text: true en laat logo files weg.
+      {%- endcomment -%}
 
-  <input class="nav-toggle" type="checkbox" aria-label="show/hide nav">
+      {% if logo %}
+        <span class="logo" aria-hidden="true">
+          {% if svg %}
+            {{ svg | file_read }}
+          {% else %}
+            <img src="{{ logo | relative_url | uri_escape }}" alt="">
+          {% endif %}
+        </span>
+      {% endif %}
 
-<nav class="main-nav">
-  <a href="{{ '/about/' | relative_url }}">About</a>
+      {% if site.logo-text != false %}
+        <span class="title-text" data-tooltip="Home">
+          {% if site.title and site.show-title != false %}
+            <span class="title">{{ site.title }}</span>
+          {% endif %}
+          {% if site.subtitle and site.show-subtitle != false %}
+            <span class="subtitle">{{ site.subtitle }}</span>
+          {% endif %}
+        </span>
+      {% endif %}
+    </a>
 
-  <details class="dropdown">
-    <summary>Services</summary>
-    <div class="dropdown-menu">
-      <a href="{{ '/restore/' | relative_url }}">Restore</a>
-      <a href="{{ '/microproof/' | relative_url }}">MicroProof</a>
-      <a href="{{ '/plantiq/' | relative_url }}">PlantIQ</a>
-    </div>
-  </details>
+    <input class="nav-toggle" type="checkbox" aria-label="show/hide nav">
 
-  <a href="{{ '/projects/' | relative_url }}">Projects</a>
-  <a href="{{ '/contact/' | relative_url }}">Contact</a>
-</nav>
+    <nav class="main-nav" aria-label="Primary navigation">
+      <a href="{{ '/' | relative_url }}">Home</a>
+      <a href="{{ '/about/' | relative_url }}">Over Eco-GenX</a>
 
-<style>
-  /* Simple dropdown styling (works without touching SCSS) */
-  header nav.main-nav { display:flex; gap:1.4rem; align-items:center; }
-  header nav.main-nav a { text-decoration:none; }
-  header nav.main-nav details.dropdown { position:relative; }
-  header nav.main-nav details.dropdown summary {
-    cursor:pointer; list-style:none;
-  }
-  header nav.main-nav details.dropdown summary::-webkit-details-marker { display:none; }
-  header nav.main-nav .dropdown-menu {
-    display:none; position:absolute; top:120%; left:0;
-    min-width: 14rem; padding: .4rem 0;
-    background: rgba(0,0,0,.75);
-    border-radius: .6rem;
-    box-shadow: 0 12px 24px rgba(0,0,0,.25);
-    z-index: 9999;
-  }
-  header nav.main-nav details[open] .dropdown-menu { display:block; }
-  header nav.main-nav .dropdown-menu a {
-    display:block; padding: .45rem .9rem; white-space:nowrap;
-  }
-  header nav.main-nav .dropdown-menu a:hover { background: rgba(255,255,255,.08); }
-</style>
+      <details class="dropdown">
+        <summary>Diensten</summary>
+        <div class="dropdown-menu">
+          <a href="{{ '/restore/' | relative_url }}">Restore</a>
+          <a href="{{ '/microproof/' | relative_url }}">MicroProof</a>
+          <a href="{{ '/plantiq/' | relative_url }}">PlantIQ</a>
+        </div>
+      </details>
+
+      <!-- Deze linken springen naar secties op je homepage -->
+      <a href="{{ '/#aanpak' | relative_url }}">Eco-GenX aanpak</a>
+      <a href="{{ '/#projecten' | relative_url }}">Projecten</a>
+
+      <a href="{{ '/contact/' | relative_url }}">Contact</a>
+    </nav>
+  </div>
 </header>
