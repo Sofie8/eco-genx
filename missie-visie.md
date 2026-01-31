@@ -5,31 +5,15 @@ permalink: /over/missie-visie/
 ---
 
 <style>
-  /* =========================================
-     Force this page to be full width
-     (your template wraps markdown in extra containers)
-     ========================================= */
-  main{
-    max-width: none !important;
-    padding: 0 !important;
-    overflow: visible !important;
-  }
-  /* common wrappers in lab website templates / markdown layouts */
-  main > *,
-  main .content,
-  main article,
-  main .page,
-  main .post{
-    max-width: none !important;
-    padding: 0 !important;
-    margin: 0 !important;
-    overflow: visible !important;
-  }
-
-  /* =========================================
-     Missie/Visie layout (Biologic vibe)
-     ========================================= */
+  /* Maak elke block zelf full width (werkt altijd, ongeacht wrappers) */
   .mv-block{
+    position: relative;
+    left: 50%;
+    right: 50%;
+    width: 100vw;
+    margin-left: -50vw;
+    margin-right: -50vw;
+
     display:grid;
     grid-template-columns: 1.15fr 1fr;
     min-height: 560px;
@@ -68,7 +52,6 @@ permalink: /over/missie-visie/
     margin: 0 0 .85rem;
     font-size: 2.55rem;
     line-height: 1.06;
-    letter-spacing: .02em;
   }
 
   .mv-text p{
@@ -79,6 +62,7 @@ permalink: /over/missie-visie/
     opacity: .92;
   }
 
+  /* reverse order (image right) */
   .mv-block.reverse{
     grid-template-columns: 1fr 1.15fr;
   }
