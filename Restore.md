@@ -1,10 +1,12 @@
 ---
 title: Restore
-permalink: /Restore/
+layout: default
+permalink: /restore/
 nav:
   order: 1
   tooltip: Restore
 ---
+
 
 <div class="service-topbar">
   <div class="service-pills">
