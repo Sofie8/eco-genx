@@ -6,10 +6,14 @@ hero_image: /images/hero.jpg
 ---
 
 <style>
-.home-wrap{
-  max-width: 1100px;
-  margin: 0 auto;
-}  
+  .home-wrap{
+    width: 100%;
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 1.25rem;
+    box-sizing: border-box;
+  }
+
   .hero {
     display: grid;
     grid-template-columns: 1.2fr 1fr;
@@ -83,116 +87,112 @@ hero_image: /images/hero.jpg
 </style>
 
 <div class="home-wrap">
-  
-<section class="hero">
-  <div>
-    <img src="{{ page.hero_image | relative_url }}" alt="Veldwerk en staalname in een natuurlijke omgeving">
-  </div>
 
-  <div>
-    <div class="kicker">Eco-GenX · consultancy</div>
-    <h1>Engineering Nature</h1>
-
-    <p class="quote"><strong>Milieuvraagstuk?</strong> Ik vertaal de beste wetenschap naar oplossingen die werken in de praktijk — van water en bodem tot landschapsherstel.</p>
-
-    <p class="muted">
-      Ik help je met advies en onderzoek rond nature-based oplossingen, phytotechnologie (planten, microben, gerichte additieven)
-      en <em>DNA-based proof</em> om te meten en te onderbouwen wat er écht gebeurt op het terrein.
-    </p>
-
-    <div class="btnrow">
-      <a class="btn primary" href="{{ '/restore/' | relative_url }}">Bekijk diensten</a>
-      <a class="btn secondary" href="{{ '/contact/' | relative_url }}">Neem contact op</a>
-    </div>
-  </div>
-</section>
-
-<section class="section" id="diensten">
-  <h2>Diensten</h2>
-  <p class="muted">Drie domeinen die je apart kan inzetten — of combineren in één traject.</p>
-
-  <div class="cards">
-    <div class="card">
-      <h3>Restore</h3>
-      <p>Bodem- en waterherstel met phytoremediatie en nature-based oplossingen.</p>
-      <ul>
-        <li>strategie & haalbaarheidsinschatting</li>
-        <li>soil/water assessment & monitoringplan</li>
-        <li>hersteltrajecten voor gezonde, productieve sites</li>
-      </ul>
-      <a href="{{ '/restore/' | relative_url }}">Meer over Restore →</a>
+  <section class="hero">
+    <div>
+      <img src="{{ page.hero_image | relative_url }}" alt="Veldwerk en staalname in een natuurlijke omgeving">
     </div>
 
-    <div class="card">
-      <h3>MicroProof</h3>
-      <p>DNA/PCR en eDNA om te bewijzen wat werkt — en om bij te sturen.</p>
-      <ul>
-        <li>eDNA monitoring & detectie</li>
-        <li>verificatie van bio-producten/claims</li>
-        <li>microbieel profiel & kwantificatie</li>
-      </ul>
-      <a href="{{ '/microproof/' | relative_url }}">Meer over MicroProof →</a>
-    </div>
+    <div>
+      <div class="kicker">Eco-GenX · consultancy</div>
+      <h1>Engineering Nature</h1>
 
-    <div class="card">
-      <h3>PlantIQ</h3>
-      <p>Plantgenetica en selectie als beslissingshulp voor robuuste teelt en herstel.</p>
-      <ul>
-        <li>marker-assisted selectie & screening</li>
-        <li>interpretatie van genetische data</li>
-        <li>advies voor keuze van soorten/rassen</li>
-      </ul>
-      <a href="{{ '/plantiq/' | relative_url }}">Meer over PlantIQ →</a>
-    </div>
-  </div>
-</section>
+      <p class="quote"><strong>Milieuvraagstuk?</strong> Ik vertaal de beste wetenschap naar oplossingen die werken in de praktijk — van water en bodem tot landschapsherstel.</p>
 
-<section class="section" id="aanpak">
-  <h2>Eco-GenX aanpak</h2>
-  <p class="muted">Eenvoudig, meetbaar en iteratief: <strong>meten → begrijpen → optimaliseren</strong>.</p>
+      <p class="muted">
+        Ik help je met advies en onderzoek rond nature-based oplossingen, phytotechnologie (planten, microben, gerichte additieven)
+        en <em>DNA-based proof</em> om te meten en te onderbouwen wat er écht gebeurt op het terrein.
+      </p>
 
-  <div class="steps">
-    <div class="step">
-      <div class="nr">1 · Meten</div>
-      <p>Staalname, veldobservaties en (waar zinvol) eDNA/PCR om objectief te starten.</p>
+      <div class="btnrow">
+        <a class="btn primary" href="{{ '/restore/' | relative_url }}">Bekijk diensten</a>
+        <a class="btn secondary" href="{{ '/contact/' | relative_url }}">Neem contact op</a>
+      </div>
     </div>
-    <div class="step">
-      <div class="nr">2 · Analyseren</div>
-      <p>Interpretatie en ontwerpkeuzes: wat is haalbaar, wat werkt, en wat moet je vermijden.</p>
-    </div>
-    <div class="step">
-      <div class="nr">3 · Optimaliseren</div>
-      <p>Plan of proefopzet + monitoring zodat je gericht kan bijsturen en aantonen wat werkt.</p>
-    </div>
-  </div>
-</section>
+  </section>
 
-<section class="section" id="projecten">
-  <h2>Projecten</h2>
-  <p class="muted">Een paar voorbeelden (hier kan je later cases met foto’s en resultaten van maken).</p>
-  <ul>
-    <li><strong>Herstelstrategie</strong> voor complexe verontreiniging met phytobenadering en monitoring.</li>
-    <li><strong>Field-verificatie</strong> van bioremediatie: meten of claims kloppen met DNA-based proof.</li>
-    <li><strong>Plantselectie</strong> als beslissingshulp voor robuustere toepassing op terrein/teelt.</li>
-  </ul>
-  <p><a href="{{ '/projects/' | relative_url }}">Bekijk projecten →</a></p>
-</section>
+  <section class="section" id="diensten">
+    <h2>Diensten</h2>
+    <p class="muted">Drie domeinen die je apart kan inzetten — of combineren in één traject.</p>
 
-<section class="section">
-  <div class="cta">
-    <h2>Even sparren?</h2>
-    <p class="muted">
-      Stuur je locatie, je vraag en (als je hebt) bestaande analyses. Dan bekijk ik wat de slimste eerste stap is.
-    </p>
-    <div class="btnrow">
-      <a class="btn primary" href="{{ '/contact/' | relative_url }}">Contacteer mij</a>
-      <a class="btn secondary" href="{{ '/about/' | relative_url }}">Meer over Eco-GenX</a>
+    <div class="cards">
+      <div class="card">
+        <h3>Restore</h3>
+        <p>Bodem- en waterherstel met phytoremediatie en nature-based oplossingen.</p>
+        <ul>
+          <li>strategie & haalbaarheidsinschatting</li>
+          <li>soil/water assessment & monitoringplan</li>
+          <li>hersteltrajecten voor gezonde, productieve sites</li>
+        </ul>
+        <a href="{{ '/restore/' | relative_url }}">Meer over Restore →</a>
+      </div>
+
+      <div class="card">
+        <h3>MicroProof</h3>
+        <p>DNA/PCR en eDNA om te bewijzen wat werkt — en om bij te sturen.</p>
+        <ul>
+          <li>eDNA monitoring & detectie</li>
+          <li>verificatie van bio-producten/claims</li>
+          <li>microbieel profiel & kwantificatie</li>
+        </ul>
+        <a href="{{ '/microproof/' | relative_url }}">Meer over MicroProof →</a>
+      </div>
+
+      <div class="card">
+        <h3>PlantIQ</h3>
+        <p>Plantgenetica en selectie als beslissingshulp voor robuuste teelt en herstel.</p>
+        <ul>
+          <li>marker-assisted selectie & screening</li>
+          <li>interpretatie van genetische data</li>
+          <li>advies voor keuze van soorten/rassen</li>
+        </ul>
+        <a href="{{ '/plantiq/' | relative_url }}">Meer over PlantIQ →</a>
+      </div>
     </div>
-  </div>
-</section>
+  </section>
 
-## Contact
-Have a site, sample set, or question in mind?  
-[Get in touch →]({{ '/contact/' | relative_url }})
+  <section class="section" id="aanpak">
+    <h2>Eco-GenX aanpak</h2>
+    <p class="muted">Eenvoudig, meetbaar en iteratief: <strong>meten → begrijpen → optimaliseren</strong>.</p>
+
+    <div class="steps">
+      <div class="step">
+        <div class="nr">1 · Meten</div>
+        <p>Staalname, veldobservaties en (waar zinvol) eDNA/PCR om objectief te starten.</p>
+      </div>
+      <div class="step">
+        <div class="nr">2 · Analyseren</div>
+        <p>Interpretatie en ontwerpkeuzes: wat is haalbaar, wat werkt, en wat moet je vermijden.</p>
+      </div>
+      <div class="step">
+        <div class="nr">3 · Optimaliseren</div>
+        <p>Plan of proefopzet + monitoring zodat je gericht kan bijsturen en aantonen wat werkt.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="projecten">
+    <h2>Projecten</h2>
+    <p class="muted">Een paar voorbeelden (hier kan je later cases met foto’s en resultaten van maken).</p>
+    <ul>
+      <li><strong>Herstelstrategie</strong> voor complexe verontreiniging met phytobenadering en monitoring.</li>
+      <li><strong>Field-verificatie</strong> van bioremediatie: meten of claims kloppen met DNA-based proof.</li>
+      <li><strong>Plantselectie</strong> als beslissingshulp voor robuustere toepassing op terrein/teelt.</li>
+    </ul>
+    <p><a href="{{ '/projects/' | relative_url }}">Bekijk projecten →</a></p>
+  </section>
+
+  <section class="section">
+    <div class="cta">
+      <h2>Even sparren?</h2>
+      <p class="muted">
+        Stuur je locatie, je vraag en (als je hebt) bestaande analyses. Dan bekijk ik wat de slimste eerste stap is.
+      </p>
+      <div class="btnrow">
+        <a class="btn primary" href="{{ '/contact/' | relative_url }}">Contacteer mij</a>
+        <a class="btn secondary" href="{{ '/about/' | relative_url }}">Meer over Eco-GenX</a>
+      </div>
+    </div>
+  </section>
 
 </div>
