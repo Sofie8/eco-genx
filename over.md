@@ -2,6 +2,7 @@
 title: Over Eco-GenX
 layout: default
 permalink: /over/
+redirect_to: /over/wie-ben-ik/
 nav:
   order: 2
   tooltip: Over Eco-GenX
