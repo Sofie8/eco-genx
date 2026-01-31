@@ -383,61 +383,43 @@
 
 
 <header class="background" style="--image: url('/eco-genx/images/background.jpg')" data-dark="true" data-big>
-  <a href="/eco-genx/" class="home">
-    
-    
-      <span class="title-text" data-tooltip="Home">
-        
-          <span class="title">Eco-GenX</span>
-        
-        
-          <span class="subtitle">Engineering nature</span>
-        
-      </span>
-    
-  </a>
+  <div class="header-inner">
+    <a href="/eco-genx/" class="home" aria-label="Home">
 
-  <input class="nav-toggle" type="checkbox" aria-label="show/hide nav">
+      
+        <span class="title-text" data-tooltip="Home">
+          
+            <span class="title">Eco-GenX</span>
+          
+          
+            <span class="subtitle">Engineering nature</span>
+          
+        </span>
+      
+    </a>
 
-<nav class="main-nav">
-  <a href="/eco-genx/about/">About</a>
+    <input class="nav-toggle" type="checkbox" aria-label="show/hide nav">
 
-  <details class="dropdown">
-    <summary>Services</summary>
-    <div class="dropdown-menu">
-      <a href="/eco-genx/restore/">Restore</a>
-      <a href="/eco-genx/microproof/">MicroProof</a>
-      <a href="/eco-genx/plantiq/">PlantIQ</a>
-    </div>
-  </details>
+    <nav class="main-nav" aria-label="Primary navigation">
+      <a href="/eco-genx/">Home</a>
+      <a href="/eco-genx/about/">Over Eco-GenX</a>
 
-  <a href="/eco-genx/projects/">Projects</a>
-  <a href="/eco-genx/contact/">Contact</a>
-</nav>
+      <details class="dropdown">
+        <summary>Diensten</summary>
+        <div class="dropdown-menu">
+          <a href="/eco-genx/restore/">Restore</a>
+          <a href="/eco-genx/microproof/">MicroProof</a>
+          <a href="/eco-genx/plantiq/">PlantIQ</a>
+        </div>
+      </details>
 
-<style>
-  /* Simple dropdown styling (works without touching SCSS) */
-  header nav.main-nav { display:flex; gap:1.4rem; align-items:center; }
-  header nav.main-nav a { text-decoration:none; }
-  header nav.main-nav details.dropdown { position:relative; }
-  header nav.main-nav details.dropdown summary {
-    cursor:pointer; list-style:none;
-  }
-  header nav.main-nav details.dropdown summary::-webkit-details-marker { display:none; }
-  header nav.main-nav .dropdown-menu {
-    display:none; position:absolute; top:120%; left:0;
-    min-width: 14rem; padding: .4rem 0;
-    background: rgba(0,0,0,.75);
-    border-radius: .6rem;
-    box-shadow: 0 12px 24px rgba(0,0,0,.25);
-    z-index: 9999;
-  }
-  header nav.main-nav details[open] .dropdown-menu { display:block; }
-  header nav.main-nav .dropdown-menu a {
-    display:block; padding: .45rem .9rem; white-space:nowrap;
-  }
-  header nav.main-nav .dropdown-menu a:hover { background: rgba(255,255,255,.08); }
-</style>
+      <!-- Deze linken springen naar secties op je homepage -->
+      <a href="/eco-genx/#aanpak">Eco-GenX aanpak</a>
+      <a href="/eco-genx/#projecten">Projecten</a>
+
+      <a href="/eco-genx/contact/">Contact</a>
+    </nav>
+  </div>
 </header>
 
     <main>
