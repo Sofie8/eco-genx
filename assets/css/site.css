@@ -270,3 +270,11 @@ nav.main-nav .dropdown-menu a:hover{
   .service-topbar{ justify-content: center; }
   .service-pills{ border-radius: 18px; }
 }
+
+/* Ensure dropdowns are clickable and not blocked by nav-toggle */
+header.background { position: relative; z-index: 1000; }
+header.background .header-inner { position: relative; z-index: 1001; }
+header.background nav.main-nav { position: relative; z-index: 1002; }
+
+header.background .nav-toggle { position: relative; z-index: 1; }
+header.background nav.main-nav * { pointer-events: auto; }
