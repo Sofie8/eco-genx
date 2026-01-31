@@ -1,14 +1,11 @@
 /* =========================================================
    Eco-GenX — Site CSS (global)
-   Drop-in replacement for assets/css/site.css
    ========================================================= */
 
-/* ---------- base / tokens ---------- */
 :root{
   --maxw: 1200px;
   --pad: 1.25rem;
 
-  /* eco palette */
   --eco-dark: #0b3b2f;
   --eco-dark-2: #082a22;
   --eco-accent: #4bbf7a;
@@ -31,12 +28,12 @@ body{
 h1,h2,h3{ line-height: 1.2; margin-top: 0; }
 a{ text-underline-offset: 0.2em; }
 
-/* content area */
+/* main content area */
 main{
   max-width: var(--maxw);
   margin: 0 auto;
   padding: 2.5rem var(--pad);
-  overflow: visible !important; /* belangrijk voor dropdown + full-bleed breakout */
+  overflow: visible !important;
 }
 
 /* ---------- HEADER ---------- */
@@ -47,8 +44,6 @@ header.background{
   display: block;
   padding: .65rem 0 !important;
 }
-
-/* home page header (template adds data-big) */
 header.background[data-big]{
   padding: .85rem 0 !important;
 }
@@ -70,7 +65,6 @@ header.background a.home{
   text-decoration: none;
 }
 
-/* title/subtitle */
 header.background .title{
   font-size: 1.25rem !important;
   line-height: 1.1 !important;
@@ -80,7 +74,6 @@ header.background .subtitle{
   opacity: .85 !important;
 }
 
-/* logo small (if present) */
 header.background .logo{
   width: 34px;
   height: 34px;
@@ -103,7 +96,6 @@ nav.main-nav{
   flex-wrap: wrap;
   margin-left: auto;
   font-size: .95rem;
-
   position: relative;
   z-index: 2000;
 }
@@ -117,75 +109,60 @@ nav.main-nav a:hover{
   background: rgba(255,255,255,.08);
 }
 
-/* ---------- Over Eco-GenX dropdown (robust + clickable) ---------- */
+/* ---------- CLICK dropdown ---------- */
 .nav-dd{
   position: relative;
   display: inline-flex;
   align-items: center;
 }
 
-/* Hover-bridge: voorkomt dat menu dichtklapt als je van trigger naar menu beweegt */
-.nav-dd::after{
-  content: "";
-  position: absolute;
-  left: 0;
-  right: 0;
-  top: 100%;
-  height: .75rem;      /* “brug” tussen trigger en menu */
-}
-
 .nav-dd__trigger{
+  appearance: none;
+  border: 0;
+  background: transparent;
+  color: inherit;
+  font: inherit;
+  cursor: pointer;
+
   display: inline-flex;
   align-items: center;
   gap: .35rem;
   padding: .35rem .45rem;
   border-radius: .45rem;
-  text-decoration: none;
+}
+.nav-dd__trigger:hover{
+  background: rgba(255,255,255,.08);
 }
 
-.nav-dd__trigger::after{
-  content: "▾";
-  font-size: .9em;
-  opacity: .85;
-}
-
-/* menu */
 .nav-dd__menu{
   display: none;
   position: absolute;
-
-  /* GEEN gap in top (anders klapt hij dicht) */
   top: 100%;
   margin-top: .55rem;
-
   left: 0;
+
   min-width: 16rem;
   padding: .45rem 0;
-  background: rgba(0,0,0,.82);
+  background: rgba(0,0,0,.85);
   border-radius: .75rem;
   box-shadow: 0 16px 32px rgba(0,0,0,.30);
   z-index: 9999;
 }
+
+.nav-dd.open .nav-dd__menu{ display: block; }
 
 .nav-dd__menu a{
   display: block;
   padding: .55rem .95rem;
   white-space: nowrap;
   text-decoration: none;
-  color: rgba(255,255,255,.90);
+  color: rgba(255,255,255,.92);
 }
-
 .nav-dd__menu a:hover{
   background: rgba(255,255,255,.10);
 }
 
-/* open on hover + keyboard focus */
-.nav-dd:hover .nav-dd__menu,
-.nav-dd:focus-within .nav-dd__menu{
-  display: block;
-}
-
-/* ---------- responsive header ---------- */
+/* responsive header */
 @media (max-width: 980px){
   header.background .header-inner{
     flex-wrap: wrap;
@@ -197,19 +174,18 @@ nav.main-nav a:hover{
     justify-content: center;
   }
 
-  /* mobile dropdown becomes a simple list */
+  /* on mobile show submenu inline when open (still click) */
   .nav-dd{ flex-direction: column; align-items: flex-start; }
-  .nav-dd::after{ display:none; }
-
   .nav-dd__menu{
     position: static;
-    display: block;
+    display: none;
     background: transparent;
     box-shadow: none;
     padding: .2rem 0 0;
     margin-top: 0;
     min-width: unset;
   }
+  .nav-dd.open .nav-dd__menu{ display: block; }
   .nav-dd__menu a{
     color: inherit;
     padding: .35rem .45rem;
@@ -220,8 +196,7 @@ nav.main-nav a:hover{
   }
 }
 
-/* ---------- FULL-BLEED helpers (robust breakout) ---------- */
-/* Gebruik deze classes in pages waar je full width wil */
+/* ---------- FULL-BLEED helper (robust breakout) ---------- */
 .hero-full,
 .full-bleed{
   position: relative;
@@ -232,7 +207,7 @@ nav.main-nav a:hover{
   margin-right: -50vw;
 }
 
-/* ---------- HOME sections polish ---------- */
+/* ---------- HOME polish ---------- */
 .section p,
 .card,
 .step{ text-align: left !important; }
@@ -245,7 +220,6 @@ nav.main-nav a:hover{
   .steps{ grid-template-columns: repeat(3, minmax(0, 1fr)) !important; }
 }
 
-/* premium cards */
 .card{
   border-radius: 20px !important;
   padding: 1.35rem 1.35rem 1.2rem !important;
@@ -266,7 +240,7 @@ nav.main-nav a:hover{
 
 .cta{ border-radius: 22px !important; }
 
-/* ---------- Service landing "pills" ---------- */
+/* ---------- Service pills ---------- */
 .service-topbar{
   display: flex;
   justify-content: flex-end;
