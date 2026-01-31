@@ -6,11 +6,18 @@ permalink: /over/missie-visie/
 
 <style>
   /* full-bleed: break out of container */
-  .full-bleed{
-    width: 100vw;
-    margin-left: calc(50% - 50vw);
-    margin-right: calc(50% - 50vw);
-  }
+.full-bleed{
+  position: relative;
+  left: 50%;
+  right: 50%;
+  width: 100vw;
+  margin-left: -50vw;
+  margin-right: -50vw;
+
+  /* dit haalt de main-padding “rand” weg zodat het echt pagina-breed voelt */
+  margin-top: -2.5rem;
+  margin-bottom: -2.5rem;
+}
 
   .mv-block{
     display:grid;
