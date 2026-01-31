@@ -278,3 +278,73 @@ header.background nav.main-nav { position: relative; z-index: 1002; }
 
 header.background .nav-toggle { position: relative; z-index: 1; }
 header.background nav.main-nav * { pointer-events: auto; }
+/* ===========================
+   NAV DROPDOWN (bulletproof)
+   =========================== */
+
+nav.main-nav { position: relative; z-index: 2000; }
+header.background, header.background .header-inner { position: relative; z-index: 2000; }
+
+/* Dropdown wrapper */
+.nav-dd { position: relative; display: inline-flex; align-items: center; }
+
+/* Trigger looks like normal nav link */
+.nav-dd__trigger{
+  text-decoration: none;
+  padding: .35rem .45rem;
+  border-radius: .45rem;
+  display: inline-flex;
+  align-items: center;
+  gap: .35rem;
+}
+.nav-dd__trigger::after{
+  content: "▾";
+  font-size: .9em;
+  opacity: .85;
+}
+
+/* Menu */
+.nav-dd__menu{
+  display: none;
+  position: absolute;
+  top: calc(100% + .55rem);
+  left: 0;
+  min-width: 15rem;
+  padding: .45rem 0;
+  background: rgba(0,0,0,.82);
+  border-radius: .75rem;
+  box-shadow: 0 16px 32px rgba(0,0,0,.30);
+  z-index: 9999;
+}
+.nav-dd__menu a{
+  display:block;
+  padding: .55rem .95rem;
+  white-space: nowrap;
+  text-decoration:none;
+  color: rgba(255,255,255,.90);
+}
+.nav-dd__menu a:hover{ background: rgba(255,255,255,.10); }
+
+/* Open on hover + keyboard focus */
+.nav-dd:hover .nav-dd__menu,
+.nav-dd:focus-within .nav-dd__menu{
+  display: block;
+}
+
+/* Mobile: show submenu as a simple list (no hover needed) */
+@media (max-width: 980px){
+  .nav-dd{ flex-direction: column; align-items: flex-start; }
+  .nav-dd__menu{
+    position: static;
+    display: block;
+    background: transparent;
+    box-shadow: none;
+    padding: .2rem 0 0;
+  }
+  .nav-dd__menu a{
+    padding: .35rem .45rem;
+    border-radius: .45rem;
+    color: inherit;
+  }
+  .nav-dd__menu a:hover{ background: rgba(255,255,255,.08); }
+}
