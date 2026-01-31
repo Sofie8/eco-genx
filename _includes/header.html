@@ -49,7 +49,18 @@
 
     <nav class="main-nav" aria-label="Primary navigation">
       <a href="{{ '/' | relative_url }}">Home</a>
-      <a href="{{ '/about/' | relative_url }}">Over Eco-GenX</a>
+      <details class="dropdown">
+  <summary>
+    <a class="summary-link" href="{{ '/over/wie-ben-ik/' | relative_url }}">Over Eco-GenX</a>
+  </summary>
+  <div class="dropdown-menu">
+    <a href="{{ '/over/wie-ben-ik/' | relative_url }}">Wie ben ik?</a>
+    <a href="{{ '/over/missie-visie/' | relative_url }}">Missie & visie</a>
+    <a href="{{ '/over/voor-wie/' | relative_url }}">Voor wie</a>
+    <a href="{{ '/over/onderzoek/' | relative_url }}">Onderzoek</a>
+    <a href="{{ '/over/artikels-lezingen/' | relative_url }}">Artikels & lezingen</a>
+  </div>
+</details>
 
       <details class="dropdown">
         <summary>Diensten</summary>
