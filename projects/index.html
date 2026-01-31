@@ -385,8 +385,8 @@
 <header class="background" style="--image: url('/eco-genx/images/background.jpg')" data-dark="true">
   <div class="header-inner">
 
+    <!-- Brand -->
     <a href="/eco-genx/" class="home" aria-label="Home">
-      
 
       
         <span class="title-text">
@@ -400,13 +400,11 @@
       
     </a>
 
-    <!-- kill the template toggle (it blocks clicks in many themes) -->
-    <!-- <input class="nav-toggle" type="checkbox" aria-label="show/hide navigation"> -->
-
+    <!-- Nav -->
     <nav class="main-nav" aria-label="Primary navigation">
       <a href="/eco-genx/">Home</a>
 
-      <!-- Over Eco-GenX dropdown: CSS hover/focus (no <details>) -->
+      <!-- Over Eco-GenX dropdown (no <details>; robust) -->
       <div class="nav-dd">
         <a class="nav-dd__trigger" href="/eco-genx/over/wie-ben-ik/">Over Eco-GenX</a>
         <div class="nav-dd__menu" role="menu" aria-label="Over Eco-GenX submenu">
@@ -418,11 +416,13 @@
         </div>
       </div>
 
-      <!-- Diensten = gewone link (MAAR: /restore/ moet bestaan, zie stap 3) -->
+      <!-- Diensten = gewone link (naar Restore landing) -->
       <a href="/eco-genx/restore/">Diensten</a>
 
+      <!-- Jump links -->
       <a href="/eco-genx/#aanpak">Eco-GenX aanpak</a>
       <a href="/eco-genx/#projecten">Projecten</a>
+
       <a href="/eco-genx/contact/">Contact</a>
     </nav>
 
