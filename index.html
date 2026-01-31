@@ -459,202 +459,189 @@
 
   <section class="background" data-size="page">
     <style>
-  /* ---------- page container ---------- */
+  /* page container */
   .home-wrap{
     width: 100%;
     max-width: 1120px;
     margin: 0 auto;
-    padding: 1.25rem 1.25rem 2.5rem;
+    padding: 0 1.25rem;
     box-sizing: border-box;
   }
 
-  /* ---------- typography helpers ---------- */
-  .muted { opacity: .86; }
-  .lead  { font-size: 1.08rem; line-height: 1.65; max-width: 60ch; }
-  .section-intro { max-width: 72ch; }
-
-  /* ---------- hero ---------- */
-  .hero{
-    display: grid;
-    grid-template-columns: 1.15fr 1fr;
-    gap: 2.25rem;
-    align-items: center;
-    padding: 1rem 0 1.5rem;
-  }
-
-  .hero-media{
-    border-radius: 18px;
-    overflow: hidden;
-    border: 1px solid rgba(255,255,255,.14);
-    background: rgba(0,0,0,.06);
-    box-shadow: 0 14px 36px rgba(0,0,0,.18);
-  }
-
-  .hero-media img{
+  /* FULL-WIDTH HERO (biologic/ossiado vibe) */
+  .hero-full{
+    position: relative;
     width: 100%;
-    height: 420px;
-    object-fit: cover;
-    display: block;
+    min-height: 520px;
+    background-image: url("/eco-genx/images/hero.jpg");
+    background-size: cover;
+    background-position: center;
+    border-bottom: 1px solid rgba(0,0,0,.08);
+  }
+  .hero-full::before{
+    content:"";
+    position:absolute; inset:0;
+    background: linear-gradient(90deg,
+      rgba(9,45,38,.78) 0%,
+      rgba(9,45,38,.62) 45%,
+      rgba(9,45,38,.20) 100%);
+  }
+  .hero-inner{
+    position: relative;
+    min-height: 520px;
+    display: grid;
+    align-items: center;
+    padding: 3.2rem 0;
   }
 
   .kicker{
     font-size: .86rem;
-    letter-spacing: .06em;
+    letter-spacing: .08em;
     text-transform: uppercase;
-    opacity: .85;
-    margin-bottom: .4rem;
+    opacity: .9;
+    margin-bottom: .6rem;
+    color: rgba(255,255,255,.86);
   }
 
-  .hero h1{
-    margin: 0 0 .55rem;
-    font-size: 2.45rem;
-    line-height: 1.08;
+  .hero-title{
+    margin: 0 0 .65rem;
+    font-size: 3rem;
+    line-height: 1.05;
+    color: #fff;
+    max-width: 18ch;
   }
 
-  .quote{
-    font-size: 1.2rem;
+  .hero-quote{
+    margin: .6rem 0 1.1rem;
+    font-size: 1.35rem;
     line-height: 1.35;
-    margin: .7rem 0 1rem;
-    max-width: 55ch;
+    color: rgba(255,255,255,.92);
+    max-width: 58ch;
+  }
+
+  .hero-lead{
+    margin: 0;
+    font-size: 1.05rem;
+    line-height: 1.65;
+    color: rgba(255,255,255,.84);
+    max-width: 72ch;
   }
 
   .btnrow{
-    display: flex;
-    gap: .8rem;
-    flex-wrap: wrap;
-    margin-top: 1.15rem;
+    display:flex;
+    gap:.8rem;
+    flex-wrap:wrap;
+    margin-top: 1.4rem;
   }
-
   .btn{
-    display: inline-flex;
-    align-items: center;
-    gap: .45rem;
-    padding: .65rem 1rem;
+    display:inline-flex;
+    align-items:center;
+    gap:.45rem;
+    padding:.7rem 1.05rem;
     border-radius: 12px;
-    text-decoration: none;
-    border: 1px solid rgba(255,255,255,.22);
-    background: rgba(255,255,255,.06);
+    text-decoration:none;
+    border: 1px solid rgba(255,255,255,.28);
+    background: rgba(255,255,255,.10);
+    color: #fff;
     transition: transform .12s ease, background .12s ease, border-color .12s ease;
   }
-
   .btn.primary{
-    background: rgba(255,255,255,.14);
-    border-color: rgba(255,255,255,.28);
+    background: rgba(255,255,255,.18);
+    border-color: rgba(255,255,255,.36);
   }
-
   .btn:hover{
     transform: translateY(-1px);
-    background: rgba(255,255,255,.12);
-    border-color: rgba(255,255,255,.34);
+    background: rgba(255,255,255,.16);
+    border-color: rgba(255,255,255,.44);
   }
 
-  /* ---------- sections ---------- */
+  /* sections */
   .section{
-    margin: 2.6rem 0;
-    padding-top: 1.2rem;
-    border-top: 1px solid rgba(255,255,255,.10);
+    margin: 2.8rem 0;
   }
-
   .section h2{
     margin: 0 0 .55rem;
-    font-size: 1.6rem;
+    font-size: 1.7rem;
     line-height: 1.2;
   }
+  .muted{ opacity:.86; }
+  .section-intro{ max-width: 72ch; }
 
-  /* ---------- cards grid ---------- */
+  /* cards */
   .cards{
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-    gap: 1.15rem;
+    display:grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 1.2rem;
     margin-top: 1.2rem;
   }
-
   .card{
-    border: 1px solid rgba(255,255,255,.12);
-    border-radius: 16px;
-    padding: 1.15rem 1.15rem 1rem;
-    background: rgba(0,0,0,.07);
-    box-shadow: 0 10px 26px rgba(0,0,0,.12);
-    transition: transform .12s ease, border-color .12s ease, background .12s ease;
-    height: 100%;
+    border: 1px solid rgba(0,0,0,.08);
+    border-radius: 18px;
+    padding: 1.2rem 1.2rem 1.05rem;
+    background: #fff;
+    box-shadow: 0 14px 36px rgba(0,0,0,.08);
+    transition: transform .12s ease, box-shadow .12s ease;
   }
-
   .card:hover{
     transform: translateY(-1px);
-    border-color: rgba(255,255,255,.22);
-    background: rgba(0,0,0,.09);
+    box-shadow: 0 18px 44px rgba(0,0,0,.10);
   }
-
-  .card h3{ margin: 0 0 .45rem; font-size: 1.18rem; }
-  .card p { margin: .35rem 0 .6rem; }
-
-  .card ul{
-    margin: .5rem 0 0;
-    padding-left: 1.05rem;
-  }
-
-  .card li{ margin: .28rem 0; }
-
+  .card h3{ margin: 0 0 .45rem; }
+  .card ul{ margin: .6rem 0 0; padding-left: 1.05rem; }
+  .card li{ margin: .3rem 0; }
   .card a{
-    display: inline-block;
-    margin-top: .85rem;
-    text-decoration: none;
-    border-bottom: 1px solid rgba(255,255,255,.25);
-    padding-bottom: .1rem;
+    display:inline-block;
+    margin-top: .9rem;
+    text-decoration:none;
+    border-bottom: 1px solid rgba(0,0,0,.25);
+    padding-bottom: .08rem;
   }
 
-  /* ---------- steps ---------- */
+  /* steps */
   .steps{
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-    gap: 1.15rem;
+    display:grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 1.2rem;
     margin-top: 1.2rem;
   }
-
   .step{
-    border: 1px solid rgba(255,255,255,.12);
-    border-radius: 16px;
-    padding: 1rem 1.1rem;
-    background: rgba(0,0,0,.06);
-  }
-
-  .step .nr{
-    font-weight: 700;
-    opacity: .9;
-    margin-bottom: .35rem;
-  }
-
-  /* ---------- CTA ---------- */
-  .cta{
-    border: 1px solid rgba(255,255,255,.16);
+    border: 1px solid rgba(0,0,0,.08);
     border-radius: 18px;
-    padding: 1.35rem 1.35rem;
-    background: rgba(0,0,0,.10);
-    box-shadow: 0 12px 32px rgba(0,0,0,.14);
+    padding: 1.05rem 1.15rem;
+    background: #fff;
+    box-shadow: 0 14px 36px rgba(0,0,0,.06);
+  }
+  .step .nr{ font-weight: 700; opacity: .8; margin-bottom: .35rem; }
+
+  /* CTA */
+  .cta{
+    border-radius: 20px;
+    padding: 1.4rem 1.4rem;
+    background: rgba(9,45,38,.06);
+    border: 1px solid rgba(9,45,38,.12);
   }
 
-  /* ---------- responsive ---------- */
   @media (max-width: 980px){
-    .hero{ grid-template-columns: 1fr; }
-    .hero-media img{ height: 320px; }
-    .hero h1{ font-size: 2.05rem; }
+    .hero-full{ min-height: 520px; }
+    .hero-inner{ padding: 2.2rem 0; }
+    .hero-title{ font-size: 2.25rem; }
+    .hero-quote{ font-size: 1.2rem; }
   }
 </style>
 
-<div class="home-wrap">
-
-  <section class="hero">
-    <div class="hero-media">
-      <img src="/eco-genx/images/hero.jpg" alt="Veldwerk en staalname in een natuurlijke omgeving">
-    </div>
-
+<!-- FULL-WIDTH HERO -->
+<section class="hero-full">
+  <div class="home-wrap hero-inner">
     <div>
       <div class="kicker">Eco-GenX · consultancy</div>
-      <h1>Engineering Nature</h1>
+      <h1 class="hero-title">Engineering nature</h1>
 
-      <p class="quote"><strong>Milieuvraagstuk?</strong> Ik vertaal de beste wetenschap naar oplossingen die werken in de praktijk — van water en bodem tot landschapsherstel.</p>
+      <p class="hero-quote">
+        <strong>Milieuvraagstuk?</strong> Ik vertaal de beste wetenschap naar oplossingen die werken in de praktijk —
+        van water en bodem tot landschapsherstel.
+      </p>
 
-      <p class="lead muted">
+      <p class="hero-lead">
         Ik help je met advies en onderzoek rond nature-based oplossingen, phytotechnologie (planten, microben, gerichte additieven)
         en <em>DNA-based proof</em> om te meten en te onderbouwen wat er écht gebeurt op het terrein.
       </p>
@@ -664,7 +651,10 @@
         <a class="btn" href="/eco-genx/contact/">Neem contact op</a>
       </div>
     </div>
-  </section>
+  </div>
+</section>
+
+<div class="home-wrap">
 
   <section class="section" id="diensten">
     <h2>Diensten</h2>
