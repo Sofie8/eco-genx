@@ -6,6 +6,10 @@ hero_image: /images/hero-me.jpg
 ---
 
 <style>
+.home-wrap{
+  max-width: 1100px;
+  margin: 0 auto;
+}  
   .hero {
     display: grid;
     grid-template-columns: 1.2fr 1fr;
