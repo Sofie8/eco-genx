@@ -18,12 +18,7 @@
 >
   <div class="header-inner">
 
-    <!-- Brand -->
     <a href="{{ '/' | relative_url }}" class="home" aria-label="Home">
-      {%- comment -%}
-      Logo tijdelijk weg? Verwijder/rename images/logo.svg|png|jpg
-      {%- endcomment -%}
-
       {% if logo %}
         <span class="logo" aria-hidden="true">
           {% if svg %}
@@ -46,13 +41,15 @@
       {% endif %}
     </a>
 
-    <!-- Nav -->
     <nav class="main-nav" aria-label="Primary navigation">
       <a href="{{ '/' | relative_url }}">Home</a>
 
-      <!-- Over Eco-GenX dropdown -->
-      <div class="nav-dd">
-        <a class="nav-dd__trigger" href="{{ '/over/wie-ben-ik/' | relative_url }}">Over Eco-GenX</a>
+      <!-- CLICK dropdown (stays open) -->
+      <div class="nav-dd" id="dd-about">
+        <button class="nav-dd__trigger" type="button" aria-haspopup="true" aria-expanded="false">
+          Over Eco-GenX <span aria-hidden="true">▾</span>
+        </button>
+
         <div class="nav-dd__menu" role="menu" aria-label="Over Eco-GenX submenu">
           <a role="menuitem" href="{{ '/over/wie-ben-ik/' | relative_url }}">Wie ben ik?</a>
           <a role="menuitem" href="{{ '/over/missie-visie/' | relative_url }}">Missie & visie</a>
@@ -63,14 +60,44 @@
         </div>
       </div>
 
-      <!-- Diensten = gewone link -->
       <a href="{{ '/restore/' | relative_url }}">Diensten</a>
-
-      <!-- Main sections -->
       <a href="{{ '/projects/' | relative_url }}">Projecten</a>
       <a href="{{ '/certificaten/' | relative_url }}">Certificaten</a>
       <a href="{{ '/contact/' | relative_url }}">Contact</a>
     </nav>
 
   </div>
+
+  <!-- tiny JS: keeps dropdown open until outside click -->
+  <script>
+    (function () {
+      const dd = document.getElementById('dd-about');
+      if (!dd) return;
+      const btn = dd.querySelector('.nav-dd__trigger');
+
+      function close() {
+        dd.classList.remove('open');
+        btn.setAttribute('aria-expanded', 'false');
+      }
+      function toggle() {
+        const isOpen = dd.classList.toggle('open');
+        btn.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+      }
+
+      btn.addEventListener('click', function (e) {
+        e.preventDefault();
+        e.stopPropagation();
+        toggle();
+      });
+
+      dd.querySelector('.nav-dd__menu').addEventListener('click', function (e) {
+        e.stopPropagation(); // clicks in menu shouldn't close instantly
+      });
+
+      document.addEventListener('click', close);
+      document.addEventListener('keydown', function (e) {
+        if (e.key === 'Escape') close();
+      });
+    })();
+  </script>
 </header>
