@@ -36,6 +36,7 @@ main{
   max-width: var(--maxw);
   margin: 0 auto;
   padding: 2.5rem var(--pad);
+  overflow: visible !important; /* belangrijk voor dropdown + full-bleed breakout */
 }
 
 /* ---------- HEADER ---------- */
@@ -47,6 +48,7 @@ header.background{
   padding: .65rem 0 !important;
 }
 
+/* home page header (template adds data-big) */
 header.background[data-big]{
   padding: .85rem 0 !important;
 }
@@ -115,11 +117,21 @@ nav.main-nav a:hover{
   background: rgba(255,255,255,.08);
 }
 
-/* ---------- Over Eco-GenX dropdown ---------- */
+/* ---------- Over Eco-GenX dropdown (robust + clickable) ---------- */
 .nav-dd{
   position: relative;
   display: inline-flex;
   align-items: center;
+}
+
+/* Hover-bridge: voorkomt dat menu dichtklapt als je van trigger naar menu beweegt */
+.nav-dd::after{
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 100%;
+  height: .75rem;      /* “brug” tussen trigger en menu */
 }
 
 .nav-dd__trigger{
@@ -137,10 +149,15 @@ nav.main-nav a:hover{
   opacity: .85;
 }
 
+/* menu */
 .nav-dd__menu{
   display: none;
   position: absolute;
-  top: calc(100% + .6rem);
+
+  /* GEEN gap in top (anders klapt hij dicht) */
+  top: 100%;
+  margin-top: .55rem;
+
   left: 0;
   min-width: 16rem;
   padding: .45rem 0;
@@ -162,12 +179,13 @@ nav.main-nav a:hover{
   background: rgba(255,255,255,.10);
 }
 
+/* open on hover + keyboard focus */
 .nav-dd:hover .nav-dd__menu,
 .nav-dd:focus-within .nav-dd__menu{
   display: block;
 }
 
-/* responsive header */
+/* ---------- responsive header ---------- */
 @media (max-width: 980px){
   header.background .header-inner{
     flex-wrap: wrap;
@@ -181,12 +199,15 @@ nav.main-nav a:hover{
 
   /* mobile dropdown becomes a simple list */
   .nav-dd{ flex-direction: column; align-items: flex-start; }
+  .nav-dd::after{ display:none; }
+
   .nav-dd__menu{
     position: static;
     display: block;
     background: transparent;
     box-shadow: none;
     padding: .2rem 0 0;
+    margin-top: 0;
     min-width: unset;
   }
   .nav-dd__menu a{
@@ -199,19 +220,16 @@ nav.main-nav a:hover{
   }
 }
 
-/* ---------- FULL-BLEED helper (for hero / wide sections) ---------- */
+/* ---------- FULL-BLEED helpers (robust breakout) ---------- */
+/* Gebruik deze classes in pages waar je full width wil */
 .hero-full,
 .full-bleed{
+  position: relative;
+  left: 50%;
+  right: 50%;
   width: 100vw;
-  margin-left: calc(50% - 50vw);
-  margin-right: calc(50% - 50vw);
-}
-
-/* full-bleed inner container */
-.bleed-inner{
-  max-width: var(--maxw);
-  margin: 0 auto;
-  padding: 0 var(--pad);
+  margin-left: -50vw;
+  margin-right: -50vw;
 }
 
 /* ---------- HOME sections polish ---------- */
@@ -294,52 +312,4 @@ nav.main-nav a:hover{
 @media (max-width: 980px){
   .service-topbar{ justify-content: center; }
   .service-pills{ border-radius: 18px; }
-}
-
-/* ---------- Missie & Visie full-width sections (Biologic vibe) ---------- */
-.mv-split{
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  min-height: 520px;
-}
-
-.mv-img{
-  min-height: 520px;
-  background-size: cover;
-  background-position: center;
-}
-
-.mv-panel{
-  background: var(--eco-cream);
-  padding: 4rem 3.2rem;
-  display: flex;
-  align-items: center;
-}
-
-.mv-panel .kicker{
-  letter-spacing: .12em;
-  text-transform: uppercase;
-  font-size: .85rem;
-  opacity: .7;
-  margin-bottom: .75rem;
-}
-
-.mv-panel h1, .mv-panel h2{
-  font-size: 3rem;
-  letter-spacing: .04em;
-  margin: 0 0 1.2rem;
-  line-height: 1.05;
-}
-
-.mv-panel p{
-  font-size: 1.05rem;
-  max-width: 46ch;
-  margin: 0;
-}
-
-@media (max-width: 980px){
-  .mv-split{ grid-template-columns: 1fr; }
-  .mv-img{ min-height: 320px; }
-  .mv-panel{ padding: 2.4rem 1.4rem; }
-  .mv-panel h1, .mv-panel h2{ font-size: 2.2rem; }
 }
