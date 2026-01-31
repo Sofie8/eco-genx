@@ -5,20 +5,30 @@ permalink: /over/missie-visie/
 ---
 
 <style>
-  /* full-bleed: break out of container */
-.full-bleed{
-  position: relative;
-  left: 50%;
-  right: 50%;
-  width: 100vw;
-  margin-left: -50vw;
-  margin-right: -50vw;
+  /* =========================================
+     Force this page to be full width
+     (your template wraps markdown in extra containers)
+     ========================================= */
+  main{
+    max-width: none !important;
+    padding: 0 !important;
+    overflow: visible !important;
+  }
+  /* common wrappers in lab website templates / markdown layouts */
+  main > *,
+  main .content,
+  main article,
+  main .page,
+  main .post{
+    max-width: none !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    overflow: visible !important;
+  }
 
-  /* dit haalt de main-padding “rand” weg zodat het echt pagina-breed voelt */
-  margin-top: -2.5rem;
-  margin-bottom: -2.5rem;
-}
-
+  /* =========================================
+     Missie/Visie layout (Biologic vibe)
+     ========================================= */
   .mv-block{
     display:grid;
     grid-template-columns: 1.15fr 1fr;
@@ -56,8 +66,9 @@ permalink: /over/missie-visie/
 
   .mv-text h1, .mv-text h2{
     margin: 0 0 .85rem;
-    font-size: 2.35rem;
-    line-height: 1.08;
+    font-size: 2.55rem;
+    line-height: 1.06;
+    letter-spacing: .02em;
   }
 
   .mv-text p{
@@ -83,46 +94,42 @@ permalink: /over/missie-visie/
   }
 </style>
 
-<div class="full-bleed">
+<!-- MISSIE -->
+<section class="mv-block">
+  <div class="mv-photo">
+    <img src="{{ '/images/about-mission-1.jpg' | relative_url }}" alt="Eco-GenX missie — natuur-gebaseerde oplossingen">
+  </div>
 
-  <!-- MISSIE -->
-  <section class="mv-block">
-    <div class="mv-photo">
-      <img src="{{ '/images/about-mission-1.jpg' | relative_url }}" alt="Eco-GenX missie — natuur-gebaseerde oplossingen">
-    </div>
+  <div class="mv-text">
+    <div class="eyebrow">Missie</div>
+    <h1>Data-gedreven, natuur-gebaseerde oplossingen.</h1>
+    <p>
+      Eco-GenX is dé partner voor data-gedreven, natuur-gebaseerde oplossingen in bodemherstel en landbouw.
+      Wij combineren ecologische expertise met genetische precisie om meetbaar bewijs te leveren,
+      risico’s te beheren en uw projectdoelen te realiseren.
+    </p>
+    <p style="opacity:.78; margin:0;">
+      Resultaten waar je beslissingen op kan nemen — van analyse tot monitoring en bijsturing.
+    </p>
+  </div>
+</section>
 
-    <div class="mv-text">
-      <div class="eyebrow">Missie</div>
-      <h1>Data-gedreven, natuur-gebaseerde oplossingen.</h1>
-      <p>
-        Eco-GenX is dé partner voor data-gedreven, natuur-gebaseerde oplossingen in bodemherstel en landbouw.
-        Wij combineren ecologische expertise met genetische precisie om meetbaar bewijs te leveren,
-        risico’s te beheren en uw projectdoelen te realiseren.
-      </p>
-      <p style="opacity:.78; margin:0;">
-        Resultaten waar je beslissingen op kan nemen — van analyse tot monitoring en bijsturing.
-      </p>
-    </div>
-  </section>
+<!-- VISIE -->
+<section class="mv-block reverse">
+  <div class="mv-text">
+    <div class="eyebrow">Visie</div>
+    <h2>De natuur als meest efficiënte technologie.</h2>
+    <p>
+      Wij werken aan een toekomst waarin de natuur de meest efficiënte technologie is.
+      Door biologische processen intelligent te sturen met data, bieden we zekerheid bij complexe milieu- en landbouwprojecten.
+      Zo maken we landschappen veerkrachtiger, productiever en schoner.
+    </p>
+    <p style="opacity:.78; margin:0;">
+      Niet alleen inzetten — maar ook begrijpen, sturen en meten.
+    </p>
+  </div>
 
-  <!-- VISIE -->
-  <section class="mv-block reverse">
-    <div class="mv-text">
-      <div class="eyebrow">Visie</div>
-      <h2>De natuur als meest efficiënte technologie.</h2>
-      <p>
-        Wij werken aan een toekomst waarin de natuur de meest efficiënte technologie is.
-        Door biologische processen intelligent te sturen met data, bieden we zekerheid bij complexe milieu- en landbouwprojecten.
-        Zo maken we landschappen veerkrachtiger, productiever en schoner.
-      </p>
-      <p style="opacity:.78; margin:0;">
-        Niet alleen inzetten — maar ook begrijpen, sturen en meten.
-      </p>
-    </div>
-
-    <div class="mv-photo">
-      <img src="{{ '/images/about-mission-2.jpg' | relative_url }}" alt="Eco-GenX visie — veerkrachtige landschappen">
-    </div>
-  </section>
-
-</div>
+  <div class="mv-photo">
+    <img src="{{ '/images/about-mission-2.jpg' | relative_url }}" alt="Eco-GenX visie — veerkrachtige landschappen">
+  </div>
+</section>
