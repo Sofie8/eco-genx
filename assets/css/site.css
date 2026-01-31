@@ -287,3 +287,49 @@ nav.main-nav a:hover{
   .service-topbar{ justify-content: center; }
   .service-pills{ border-radius: 18px; }
 }
+/* ---------- Fix: dropdown trigger looks like a normal nav item ---------- */
+.nav-dd__trigger{
+  appearance: none;
+  -webkit-appearance: none;
+  border: 0 !important;
+  background: transparent !important;
+  color: rgba(255,255,255,.92) !important;
+  font: inherit;
+  cursor: pointer;
+
+  display: inline-flex;
+  align-items: center;
+  gap: .35rem;
+
+  padding: .35rem .45rem;
+  border-radius: .45rem;
+
+  /* remove native focus glow/shadow in some browsers */
+  box-shadow: none !important;
+  outline: none;
+}
+
+.nav-dd__trigger:hover{
+  background: rgba(255,255,255,.08) !important;
+}
+
+/* nicer keyboard focus (accessible) */
+.nav-dd__trigger:focus-visible{
+  outline: 2px solid rgba(255,255,255,.35);
+  outline-offset: 2px;
+}
+
+/* keep arrow subtle and aligned */
+.nav-dd__trigger span{
+  opacity: .85;
+  transform: translateY(1px);
+}
+
+/* when open, same “active” feel as hover */
+.nav-dd.open .nav-dd__trigger{
+  background: rgba(255,255,255,.10) !important;
+}
+.nav-dd__menu{
+  background: rgba(11,59,47,.96) !important; /* eco dark */
+  border: 1px solid rgba(255,255,255,.12);
+}
