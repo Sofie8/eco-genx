@@ -1,9 +1,13 @@
 ---
-title: PlantIQ
-permalink: /PlantIQ/
+title: MicroProof
+layout: default
+permalink: /microproof/
+redirect_from:
+  - /MicroProof/
+  - /Microproof/
 nav:
-  order: 1
-  tooltip: PlantIQ
+  order: 2
+  tooltip: MicroProof
 ---
 
 <div class="service-topbar">
