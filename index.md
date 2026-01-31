@@ -2,7 +2,7 @@
 title: Home
 layout: default
 permalink: /
-hero_image: /images/hero-me.jpg
+hero_image: /images/hero.jpg
 ---
 
 <style>
