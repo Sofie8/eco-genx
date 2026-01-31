@@ -385,11 +385,11 @@
 <header class="background" style="--image: url('/eco-genx/images/background.jpg')" data-dark="true">
   <div class="header-inner">
 
-    <!-- Brand / Home -->
     <a href="/eco-genx/" class="home" aria-label="Home">
+      
 
       
-        <span class="title-text" data-tooltip="Home">
+        <span class="title-text">
           
             <span class="title">Eco-GenX</span>
           
@@ -400,32 +400,29 @@
       
     </a>
 
-    <!-- Mobile toggle (template may use it) -->
-    <input class="nav-toggle" type="checkbox" aria-label="show/hide navigation">
+    <!-- kill the template toggle (it blocks clicks in many themes) -->
+    <!-- <input class="nav-toggle" type="checkbox" aria-label="show/hide navigation"> -->
 
-    <!-- Nav -->
     <nav class="main-nav" aria-label="Primary navigation">
       <a href="/eco-genx/">Home</a>
 
-      <!-- Over Eco-GenX dropdown -->
-      <details class="dropdown">
-        <summary>Over Eco-GenX</summary>
-        <div class="dropdown-menu">
-          <a href="/eco-genx/over/wie-ben-ik/">Wie ben ik?</a>
-          <a href="/eco-genx/over/missie-visie/">Missie &amp; visie</a>
-          <a href="/eco-genx/over/voor-wie/">Voor wie</a>
-          <a href="/eco-genx/over/onderzoek/">Onderzoek</a>
-          <a href="/eco-genx/over/artikels-lezingen/">Artikels &amp; lezingen</a>
+      <!-- Over Eco-GenX dropdown: CSS hover/focus (no <details>) -->
+      <div class="nav-dd">
+        <a class="nav-dd__trigger" href="/eco-genx/over/wie-ben-ik/">Over Eco-GenX</a>
+        <div class="nav-dd__menu" role="menu" aria-label="Over Eco-GenX submenu">
+          <a role="menuitem" href="/eco-genx/over/wie-ben-ik/">Wie ben ik?</a>
+          <a role="menuitem" href="/eco-genx/over/missie-visie/">Missie &amp; visie</a>
+          <a role="menuitem" href="/eco-genx/over/voor-wie/">Voor wie</a>
+          <a role="menuitem" href="/eco-genx/over/onderzoek/">Onderzoek</a>
+          <a role="menuitem" href="/eco-genx/over/artikels-lezingen/">Artikels &amp; lezingen</a>
         </div>
-      </details>
+      </div>
 
-      <!-- Diensten is GEEN dropdown -->
+      <!-- Diensten = gewone link (MAAR: /restore/ moet bestaan, zie stap 3) -->
       <a href="/eco-genx/restore/">Diensten</a>
 
-      <!-- jump links to homepage sections -->
       <a href="/eco-genx/#aanpak">Eco-GenX aanpak</a>
       <a href="/eco-genx/#projecten">Projecten</a>
-
       <a href="/eco-genx/contact/">Contact</a>
     </nav>
 
