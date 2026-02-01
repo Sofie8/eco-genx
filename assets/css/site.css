@@ -426,3 +426,24 @@ nav.main-nav a:hover{
    Utility: hard hide for filtered tiles
    ========================================================= */
 .tile.is-hidden{ display: none !important; }
+/* =========================================================
+   GLOBAL PATCH — stop centered text + stop fixed header
+   ========================================================= */
+
+/* Force left alignment where the theme tries to center */
+main, main *{
+  text-align: left;
+}
+
+/* Ensure header/nav is NOT fixed */
+header,
+header.background,
+.site-header,
+.header{
+  position: relative !important;
+  top: auto !important;
+}
+
+body{
+  padding-top: 0 !important;
+}
