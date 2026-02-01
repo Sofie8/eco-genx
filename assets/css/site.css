@@ -340,3 +340,47 @@ nav.main-nav a:hover{
   .service-topbar{ justify-content: center; }
   .service-pills{ border-radius: 18px; }
 }
+/* =========================================================
+   FIX: project-hero mag NIET sticky/fixed zijn
+   ========================================================= */
+
+.project-hero,
+.project-header,
+.proj-hero,
+.hero-project{
+  position: relative !important;
+  top: auto !important;
+  bottom: auto !important;
+  left: auto !important;
+  right: auto !important;
+  inset: auto !important;
+  transform: none !important;
+}
+
+/* als je per ongeluk sticky gebruikt */
+.project-hero{
+  position: relative !important;
+  sticky: none !important; /* harmless fallback */
+}
+
+/* als je hero 100vh was en “te lang” blijft staan */
+.project-hero{
+  min-height: 62vh !important;   /* pas gerust aan */
+  height: auto !important;
+}
+
+/* zorg dat achtergrond netjes achter de tekst zit */
+.project-hero .project-hero__bg,
+.project-hero .hero-bg,
+.project-hero .bg{
+  position: absolute !important;
+  inset: 0 !important;
+  z-index: 0 !important;
+}
+
+.project-hero .project-hero__inner,
+.project-hero .hero-inner,
+.project-hero .inner{
+  position: relative !important;
+  z-index: 1 !important;
+}
