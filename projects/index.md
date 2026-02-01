@@ -1,130 +1,264 @@
+---
+title: Projecten
+layout: default
+permalink: /projects/
+---
+
 <style>
-  /* =======================================================
-     Certified block (Home) — 2x2 grid zoals je voorbeeld
-     ======================================================= */
-  .cert-wrap{
-    position: relative;
-    left: 50%;
-    right: 50%;
-    width: 100vw;
-    margin-left: -50vw;
-    margin-right: -50vw;
+  /* =========================================================
+     PROJECTS — Filter bar + tile grid (Offshoots-like start)
+     ========================================================= */
 
+  /* full width page */
+  main{ max-width:none !important; padding:0 !important; overflow:visible !important; }
+  main > *, main .content, main article, main .page, main .post{
+    max-width:none !important; padding:0 !important; margin:0 !important; overflow:visible !important;
+  }
+
+  .projects-page{
+    --max: 1200px;
+    --pad: 1.25rem;
+    --cream: var(--eco-cream, #f6f4ee);
+    --ink: rgba(0,0,0,.86);
+    --muted: rgba(0,0,0,.62);
+    --line: rgba(0,0,0,.10);
+    --chip: #d8d8d8;
+    --chip-active: #3a3a3a;
+  }
+
+  .projects-top{
     background: #fff;
-    border-top: 1px solid rgba(0,0,0,.06);
-    border-bottom: 1px solid rgba(0,0,0,.06);
+    border-bottom: 1px solid var(--line);
+    padding: 1.2rem 0 .9rem;
+  }
+  .projects-top__inner{
+    max-width: var(--max);
+    margin: 0 auto;
+    padding: 0 var(--pad);
   }
 
-  .cert-grid{
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-  }
-
-  .cert-cell{
-    min-height: 360px;
-  }
-
-  .cert-photo{
-    position: relative;
-    overflow: hidden;
-  }
-  .cert-photo img{
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    display: block;
-  }
-
-  .cert-text{
-    padding: 3.2rem 3rem;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-  }
-
-  .cert-eyebrow{
-    font-size: .85rem;
-    letter-spacing: .10em;
+  .filters-title{
+    font-size: .95rem;
+    letter-spacing: .08em;
     text-transform: uppercase;
-    opacity: .75;
-    margin-bottom: .75rem;
+    opacity: .8;
+    margin: 0 0 .65rem;
   }
 
-  .cert-text h2{
-    margin: 0 0 1rem;
-    font-size: 1.9rem;
-    line-height: 1.12;
+  /* chip bar */
+  .chipbar{
+    display:flex;
+    flex-wrap:wrap;
+    gap: .55rem .55rem;
+  }
+  .chip{
+    appearance:none;
+    border: 0;
+    background: var(--chip);
+    color: rgba(0,0,0,.78);
+    padding: .5rem .7rem;
+    border-radius: 0;
+    cursor:pointer;
+    font: inherit;
+    font-size: .95rem;
+    line-height: 1.2;
+    transition: filter .12s ease, transform .12s ease, background .12s ease, color .12s ease;
+  }
+  .chip:hover{ filter: brightness(.96); transform: translateY(-1px); }
+  .chip.is-active{
+    background: var(--chip-active);
+    color: #fff;
   }
 
-  .cert-text p{
+  /* tiles area */
+  .projects-tiles{
+    background: var(--cream);
+    padding: 1.25rem 0 2.8rem;
+  }
+  .projects-tiles__inner{
+    max-width: var(--max);
+    margin: 0 auto;
+    padding: 0 var(--pad);
+  }
+
+  /* masonry using columns (simple + looks like your example) */
+  .tilegrid{
+    column-count: 5;
+    column-gap: .9rem;
+  }
+  .tile{
+    break-inside: avoid;
     margin: 0 0 .9rem;
-    line-height: 1.7;
-    opacity: .86;
-    max-width: 68ch;
+    display:block;
+    position: relative;
+    text-decoration:none;
+    color: inherit;
+    background: rgba(0,0,0,.06);
+    overflow:hidden;
+    border-radius: 0;
+    border: 1px solid rgba(0,0,0,.06);
+  }
+  .tile img{
+    width: 100%;
+    height: auto;
+    display:block;
+  }
+  .tile::after{
+    content:"";
+    position:absolute; inset:0;
+    background: linear-gradient(0deg, rgba(0,0,0,.45), rgba(0,0,0,0) 55%);
+    opacity: 0;
+    transition: opacity .15s ease;
+  }
+  .tile:hover::after{ opacity: 1; }
+
+  .tile-cap{
+    position:absolute;
+    left: .8rem;
+    right: .8rem;
+    bottom: .7rem;
+    z-index: 2;
+    opacity: 0;
+    transform: translateY(6px);
+    transition: opacity .15s ease, transform .15s ease;
+    color: #fff;
+  }
+  .tile:hover .tile-cap{
+    opacity: 1;
+    transform: translateY(0);
+  }
+  .tile-cap strong{
+    display:block;
+    font-size: 1.05rem;
+    line-height: 1.25;
+  }
+  .tile-cap span{
+    display:block;
+    font-size: .92rem;
+    opacity: .9;
+    margin-top: .2rem;
   }
 
-  .cert-link{
-    margin-top: .6rem;
-    font-weight: 600;
-    text-decoration: none;
-    color: rgba(11,59,47,.92);
-    border-bottom: 1px solid rgba(11,59,47,.35);
-    align-self: flex-start;
-    padding-bottom: .08rem;
+  .empty{
+    padding: 1.2rem;
+    border: 1px dashed rgba(0,0,0,.25);
+    background: rgba(255,255,255,.55);
+    color: var(--muted);
   }
 
-  /* mobile */
+  @media (max-width: 1200px){
+    .tilegrid{ column-count: 4; }
+  }
   @media (max-width: 980px){
-    .cert-grid{ grid-template-columns: 1fr; }
-    .cert-text{ padding: 2.1rem 1.25rem; }
-    .cert-cell{ min-height: unset; }
-    .cert-photo{ height: 320px; }
+    .tilegrid{ column-count: 2; }
+  }
+  @media (max-width: 520px){
+    .tilegrid{ column-count: 1; }
   }
 </style>
 
-<section class="cert-wrap" aria-label="Gecertificeerde kwaliteit">
-  <div class="cert-grid">
+<div class="projects-page">
 
-    <!-- 1) FOTO linksboven -->
-    <div class="cert-cell cert-photo">
-      <img src="{{ '/images/cert-1.jpg' | relative_url }}" alt="Staalnames en analytische kwaliteitsaanpak">
+  <!-- TOP FILTERS (start meteen zoals je screenshot) -->
+  <section class="projects-top">
+    <div class="projects-top__inner">
+      <p class="filters-title">Filters</p>
+
+      {% comment %}
+      Verzamel alle tags uit de project-collectie, maak unieke lijst.
+      {% endcomment %}
+      {% assign items = site.projects | sort: "order" %}
+      {% assign alltags = "" | split: "|" %}
+      {% for p in items %}
+        {% if p.tags %}
+          {% for t in p.tags %}
+            {% assign alltags = alltags | push: t %}
+          {% endfor %}
+        {% endif %}
+      {% endfor %}
+      {% assign alltags = alltags | uniq | sort %}
+
+      <div class="chipbar" id="projFilters">
+        <button class="chip is-active" type="button" data-filter="all">All</button>
+        {% for t in alltags %}
+          <button class="chip" type="button" data-filter="{{ t | downcase | replace: ' ', '-' }}">{{ t }}</button>
+        {% endfor %}
+      </div>
     </div>
+  </section>
 
-    <!-- 2) TEKST rechtsboven -->
-    <div class="cert-cell cert-text">
-      <div class="cert-eyebrow">Gecertificeerde kwaliteitsaanpak</div>
-      <h2>Meetbaar bewijs — decision-ready advies</h2>
-      <p>
-        Eco-GenX combineert veldwerk, labo en data om onzekerheid weg te nemen.
-        Niet “mooie beloftes”, maar onderbouwde conclusies die je kan verdedigen —
-        technisch én praktisch.
-      </p>
-      <p>
-        Van staalname en interpretatie tot monitoring en bijsturing: je krijgt duidelijke
-        stappen en een aanpak die reproduceerbaar is.
-      </p>
-      <a class="cert-link" href="{{ '/certificaten/' | relative_url }}">Bekijk certificaten →</a>
+  <!-- TILES -->
+  <section class="projects-tiles">
+    <div class="projects-tiles__inner">
+      {% if items and items.size > 0 %}
+        <div class="tilegrid" id="projGrid">
+          {% for p in items %}
+            {% assign tagstr = "" %}
+            {% if p.tags %}
+              {% for t in p.tags %}
+                {% assign norm = t | downcase | replace: ' ', '-' %}
+                {% assign tagstr = tagstr | append: norm | append: " " %}
+              {% endfor %}
+            {% endif %}
+
+            <a class="tile" href="{{ p.url | relative_url }}" data-tags="{{ tagstr | strip }}">
+              {% if p.cover %}
+                <img src="{{ p.cover | relative_url }}" alt="{{ p.title }}">
+              {% else %}
+                <img src="{{ '/images/projects/placeholder.jpg' | relative_url }}" alt="{{ p.title }}">
+              {% endif %}
+
+              <div class="tile-cap">
+                <strong>{{ p.title }}</strong>
+                {% if p.location or p.year %}
+                  <span>
+                    {% if p.location %}{{ p.location }}{% endif %}
+                    {% if p.location and p.year %} · {% endif %}
+                    {% if p.year %}{{ p.year }}{% endif %}
+                  </span>
+                {% endif %}
+              </div>
+            </a>
+          {% endfor %}
+        </div>
+      {% else %}
+        <div class="empty">
+          Nog geen projecten gevonden. Maak map <code>_projects</code> en voeg projectbestanden toe met <code>cover</code> en <code>tags</code>.
+        </div>
+      {% endif %}
     </div>
+  </section>
 
-    <!-- 3) TEKST linksonder -->
-    <div class="cert-cell cert-text">
-      <div class="cert-eyebrow">Analytische expertise</div>
-      <h2>Kwaliteit die je project versnelt</h2>
-      <p>
-        Door slim te meten (multi-line-of-evidence) kan je sneller beslissen:
-        wat werkt, waar zit het risico, en welke interventie levert het meeste effect.
-      </p>
-      <p>
-        Ideaal voor bodemherstel, fytoremediatie, monitoring van natuurlijke attenuatie
-        en verificatie van bio-claims.
-      </p>
-      <a class="cert-link" href="{{ '/contact/' | relative_url }}">Even sparren →</a>
-    </div>
+</div>
 
-    <!-- 4) FOTO rechtsonder -->
-    <div class="cert-cell cert-photo">
-      <img src="{{ '/images/cert-2.jpg' | relative_url }}" alt="Laboratoriumanalyse en pipetteren">
-    </div>
+<script>
+  (function(){
+    const filters = document.getElementById('projFilters');
+    const grid = document.getElementById('projGrid');
+    if(!filters || !grid) return;
 
-  </div>
-</section>
+    const chips = Array.from(filters.querySelectorAll('.chip'));
+    const tiles = Array.from(grid.querySelectorAll('.tile'));
+
+    function setActive(btn){
+      chips.forEach(c => c.classList.remove('is-active'));
+      btn.classList.add('is-active');
+    }
+
+    function apply(filter){
+      tiles.forEach(tile => {
+        const tags = (tile.getAttribute('data-tags') || '').toLowerCase();
+        const show = (filter === 'all') ? true : tags.split(/\s+/).includes(filter);
+        tile.style.display = show ? '' : 'none';
+      });
+    }
+
+    filters.addEventListener('click', (e) => {
+      const btn = e.target.closest('.chip');
+      if(!btn) return;
+      const filter = btn.getAttribute('data-filter');
+      setActive(btn);
+      apply(filter);
+    });
+  })();
+</script>
