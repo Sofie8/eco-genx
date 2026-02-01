@@ -456,271 +456,264 @@
   <section class="background" data-size="page">
     <style>
   /* =========================================================
-     ARTIKELS & LEZINGEN — Eco-GenX (full-bleed + cards)
-     + FIX: header/nav niet sticky op deze pagina
+     Artikels & lezingen — Eco-GenX style
+     Full-width hero (NOT too tall) + content blocks
+     Scoped: .al
      ========================================================= */
 
-  /* ---------- FIX: header/navbar mag NIET sticky op deze pagina ---------- */
-  header,
-  header.background,
-  header nav,
-  nav.main-nav,
-  .site-header,
-  .navbar,
-  .nav-wrapper{
-    position: static !important;
-    top: auto !important;
-  }
-  header.is-sticky,
-  header.sticky,
-  .sticky,
-  .is-sticky{
-    position: static !important;
-    top: auto !important;
-  }
-  body{ padding-top: 0 !important; }
-
-  /* ---------- Full width page ---------- */
+  /* full width page */
   main{ max-width:none !important; padding:0 !important; overflow:visible !important; }
   main > *, main .content, main article, main .page, main .post{
     max-width:none !important; padding:0 !important; margin:0 !important; overflow:visible !important;
   }
 
+  /* hide default injected page title (theme-dependent) */
+  .page-title,
+  .page-header,
+  .page-header h1,
+  h1.page-title,
+  main > h1:first-child{
+    display:none !important;
+  }
+
   .al{
     --max: 1200px;
     --pad: 1.25rem;
-
-    --eco-dark: var(--eco-dark, #0b3b2f);
-    --eco-dark-2: var(--eco-dark-2, #082a22);
-    --eco-cream: var(--eco-cream, #f6f4ee);
-
+    --cream: var(--eco-cream, #f6f4ee);
+    --green: var(--eco-dark, #0b3b2f);
+    --green2: var(--eco-dark-2, #082a22);
     --ink: rgba(0,0,0,.86);
     --muted: rgba(0,0,0,.66);
     --line: rgba(0,0,0,.10);
-
-    --shadow: 0 14px 36px rgba(0,0,0,.08);
-    --shadow2: 0 18px 44px rgba(0,0,0,.10);
   }
 
-  /* ---------- HERO ---------- */
-.al-hero{
-  position: relative;
-  left: 50%; right: 50%;
-  width: 100vw;
-  margin-left: -50vw; margin-right: -50vw;
-
-  min-height: 520px;
-  background: var(--eco-dark-2);
-  overflow: hidden;
-}
-
-/* full-bleed image stays full width */
-.al-hero img{
-  width:100%;
-  height:100%;
-  object-fit: cover;
-  display:block;
-  min-height: 520px;
-}
-
-.al-hero::after{
-  content:"";
-  position:absolute; inset:0;
-  background: linear-gradient(90deg,
-    rgba(8,42,34,.86) 0%,
-    rgba(8,42,34,.66) 45%,
-    rgba(8,42,34,.18) 100%);
-}
-
-/* ✅ inner content is LIMITED in width (zoals Projects) */
-.al-hero__inner{
-  position:absolute;
-  inset:0;
-  display:flex;
-  align-items:flex-end;
-  padding: 3.0rem 0 2.4rem;
-}
-
-/* ✅ THIS is the key: max width like projects */
-.al-hero__content{
-  max-width: 1200px;      /* <-- zelfde max als projects */
-  width: 100%;
-  margin: 0 auto;
-  padding: 0 1.25rem;     /* <-- zelfde padding als projects */
-  color: rgba(255,255,255,.92);
-}
-
-/* make title block not too wide */
-.al-title{
-  margin: 0 0 .6rem;
-  font-size: 3rem;
-  line-height: 1.04;
-  letter-spacing: .02em;
-  max-width: 20ch;        /* ✅ iets compacter */
-}
-
-.al-lead{
-  margin: 0;
-  max-width: 70ch;        /* ✅ compacter zoals projects */
-  line-height: 1.7;
-  opacity: .92;
-  font-size: 1.06rem;
-}
-
-/* responsive */
-@media (max-width: 980px){
-  .al-title{ font-size: 2.25rem; max-width: 22ch; }
-  .al-lead{ max-width: 68ch; }
-}
-
-  /* ---------- BODY ---------- */
-  .al-body{
-    background: var(--eco-cream);
+  /* ---------- HERO (full width, but NOT tall) ---------- */
+  .al-hero{
     position: relative;
     left: 50%; right: 50%;
     width: 100vw;
     margin-left: -50vw; margin-right: -50vw;
-    padding: 2.6rem 0 3.4rem;
-    border-top: 1px solid rgba(0,0,0,.06);
+
+    height: 320px;               /* ✅ minder hoog */
+    background: var(--green2);
+    overflow: hidden;
+    border-bottom: 1px solid rgba(0,0,0,.08);
   }
-  .al-body__inner{
+
+  .al-hero img{
+    width:100%;
+    height:100%;
+    object-fit: cover;
+    object-position: center;
+    display:block;
+  }
+
+  .al-hero::after{
+    content:"";
+    position:absolute; inset:0;
+    background: linear-gradient(90deg,
+      rgba(8,42,34,.86) 0%,
+      rgba(8,42,34,.66) 45%,
+      rgba(8,42,34,.18) 100%);
+    pointer-events:none;
+  }
+
+  .al-hero__inner{
+    position:absolute;
+    inset:0;
+    display:flex;
+    align-items:flex-end;
+    padding: 1.6rem 0 1.2rem;    /* ✅ minder padding */
+  }
+  .al-hero__inner .inner{
     max-width: var(--max);
     margin: 0 auto;
     padding: 0 var(--pad);
-    display: grid;
-    grid-template-columns: 1.1fr .9fr;
-    gap: 1.8rem;
-    align-items: start;
+    color: rgba(255,255,255,.92);
   }
 
-  .panel{
+  .al-eyebrow{
+    font-size: .86rem;
+    letter-spacing: .10em;
+    text-transform: uppercase;
+    opacity: .88;
+    margin-bottom: .55rem;
+  }
+  .al-title{
+    margin: 0 0 .35rem;
+    font-size: 2.35rem;
+    line-height: 1.08;
+    letter-spacing: .02em;
+    max-width: 26ch;
+  }
+  .al-subtitle{
+    margin: 0;
+    max-width: 78ch;
+    opacity: .92;
+    line-height: 1.7;
+    font-size: 1.02rem;
+  }
+
+  /* ---------- BODY WRAP ---------- */
+  .al-body{
+    background: var(--cream);
+    position: relative;
+    left: 50%; right: 50%;
+    width: 100vw;
+    margin-left: -50vw; margin-right: -50vw;
+    padding: 2.2rem 0 3.0rem;
+    border-top: 1px solid rgba(0,0,0,.06);
+  }
+  .al-body .inner{
+    max-width: var(--max);
+    margin: 0 auto;
+    padding: 0 var(--pad);
+  }
+
+  /* ---------- SECTION HEAD ---------- */
+  .al-section{
+    margin: 0 0 2.0rem;
+  }
+  .al-section h2{
+    margin: 0 0 .6rem;
+    font-size: 1.65rem;
+    line-height: 1.2;
+    color: var(--ink);
+  }
+  .al-section p{
+    margin: 0;
+    color: rgba(0,0,0,.74);
+    line-height: 1.75;
+    max-width: 85ch;
+  }
+
+  /* ---------- GRID (cards) ---------- */
+  .al-grid{
+    display:grid;
+    grid-template-columns: 1.1fr .9fr;
+    gap: 1.5rem;
+    align-items: start;
+    margin-top: 1.2rem;
+  }
+
+  .al-card{
     background: rgba(255,255,255,.62);
     border: 1px solid rgba(0,0,0,.08);
     border-radius: 18px;
-    box-shadow: var(--shadow);
     overflow: hidden;
+    box-shadow: 0 14px 36px rgba(0,0,0,.06);
   }
-  .panel__head{
-    padding: 1.25rem 1.35rem 1.05rem;
-    border-bottom: 1px solid rgba(0,0,0,.06);
+
+  .al-card__pad{
+    padding: 1.25rem 1.35rem;
   }
-  .panel__head h2{
-    margin: 0 0 .35rem;
-    font-size: 1.45rem;
+
+  .al-card h3{
+    margin: 0 0 .45rem;
+    font-size: 1.15rem;
     color: var(--ink);
   }
-  .panel__head p{
-    margin: 0;
-    color: var(--muted);
+
+  .al-list{
+    margin: .65rem 0 0;
+    padding-left: 1.15rem;
+    color: rgba(0,0,0,.74);
+    line-height: 1.75;
+  }
+  .al-list li{ margin: .35rem 0; }
+
+  /* image block */
+  .al-figure{
+    position: relative;
+    overflow: hidden;
+    background: rgba(0,0,0,.06);
+  }
+  .al-figure img{
+    width: 100%;
+    height: 100%;
+    display:block;
+    object-fit: cover;
+  }
+
+  /* for “document/photo” preview cards */
+  .al-figure.fixed{
+    height: 360px;
+  }
+
+  /* ---------- CTA row ---------- */
+  .al-cta{
+    margin-top: 1.8rem;
+    background: rgba(9,45,38,.06);
+    border: 1px solid rgba(9,45,38,.12);
+    border-radius: 22px;
+    padding: 1.35rem 1.35rem;
+    display:flex;
+    flex-wrap:wrap;
+    gap: .9rem 1.1rem;
+    align-items:center;
+    justify-content: space-between;
+  }
+  .al-cta strong{
+    display:block;
+    margin-bottom: .25rem;
+    color: var(--ink);
+  }
+  .al-cta p{
+    margin:0;
+    color: rgba(0,0,0,.72);
     line-height: 1.7;
     max-width: 75ch;
   }
-
-  .panel__body{
-    padding: 1.25rem 1.35rem 1.35rem;
-  }
-
-  /* media block inside panel */
-  .media{
-    border-radius: 16px;
-    overflow: hidden;
-    border: 1px solid rgba(0,0,0,.08);
-    background: rgba(0,0,0,.04);
-    box-shadow: 0 14px 36px rgba(0,0,0,.06);
-  }
-  .media img{
-    width:100%;
-    height: 320px;
-    object-fit: cover;
-    display:block;
-  }
-  .media .cap{
-    padding: .85rem .95rem;
-    color: var(--muted);
-    line-height: 1.65;
-    background: rgba(255,255,255,.70);
-  }
-
-  /* cards list */
-  .cards{
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: 1rem;
-  }
-  .card{
-    border: 1px solid rgba(0,0,0,.08);
-    border-radius: 16px;
-    padding: 1rem 1.05rem;
-    background: rgba(255,255,255,.55);
-    box-shadow: 0 14px 36px rgba(0,0,0,.05);
-  }
-  .card h3{
-    margin: 0 0 .35rem;
-    font-size: 1.1rem;
-    color: var(--ink);
-  }
-  .card p{
-    margin: 0;
-    color: var(--muted);
-    line-height: 1.65;
-  }
-
-  .list{
-    margin: .75rem 0 0;
-    padding-left: 1.2rem;
-    color: rgba(0,0,0,.74);
-  }
-  .list li{ margin: .35rem 0; }
-
-  /* CTA */
-  .al-cta{
-    margin-top: 1.4rem;
-    padding: 1.25rem 1.35rem;
-    border-radius: 18px;
-    border: 1px solid rgba(11,59,47,.18);
-    background: rgba(11,59,47,.08);
-  }
-  .al-cta h3{ margin: 0 0 .35rem; color: var(--ink); }
-  .al-cta p{ margin: 0; color: var(--muted); line-height: 1.7; }
-  .btnrow{
+  .al-btnrow{
     display:flex;
-    gap:.7rem;
+    gap:.75rem;
     flex-wrap:wrap;
-    margin-top: .95rem;
   }
-  .btn{
+  .al-btn{
     display:inline-flex;
     align-items:center;
     justify-content:center;
-    padding: .65rem .95rem;
+    padding: .7rem 1rem;
     border-radius: 12px;
-    text-decoration:none;
     border: 1px solid rgba(11,59,47,.22);
-    background: rgba(11,59,47,.10);
+    background: rgba(11,59,47,.06);
+    text-decoration:none;
     color: rgba(11,59,47,.92);
+    white-space:nowrap;
     font-weight: 600;
   }
-  .btn:hover{ background: rgba(11,59,47,.14); }
+  .al-btn:hover{ background: rgba(11,59,47,.10); }
 
+  .al-btn.primary{
+    background: rgba(11,59,47,.92);
+    border-color: rgba(11,59,47,.92);
+    color: rgba(255,255,255,.92);
+  }
+  .al-btn.primary:hover{ filter: brightness(1.05); }
+
+  /* ---------- RESPONSIVE ---------- */
   @media (max-width: 980px){
-    .al-title{ font-size: 2.25rem; }
-    .al-body__inner{ grid-template-columns: 1fr; }
-    .media img{ height: 280px; }
+    .al-hero{ height: 240px; }
+    .al-hero__inner{ padding: 1.2rem 0 1rem; }
+    .al-title{ font-size: 1.95rem; }
+    .al-grid{ grid-template-columns: 1fr; }
+    .al-figure.fixed{ height: 300px; }
   }
 </style>
 
 <div class="al">
 
   <!-- HERO -->
-  <section class="al-hero">
-    <img src="/eco-genx/images/artikels-hero.jpg" alt="Lezingen en kennisdeling Eco-GenX">
+  <section class="al-hero" aria-label="Artikels en lezingen">
+    <!-- ✅ upload deze foto als /images/artikels-hero.jpg -->
+    <img src="/eco-genx/images/artikels-hero.jpg" alt="Artikels en lezingen">
     <div class="al-hero__inner">
-      <div class="al-hero__content">
-        <div class="al-eyebrow">Over Eco-GenX · Artikels &amp; lezingen</div>
-        <h1 class="al-title">Kennis, praktijk &amp; communicatie</h1>
-        <p class="al-lead">
-          Ik deel inzichten uit fytotechnologie, bodem- en milieumicrobiologie en data-gedreven monitoring —
-          via richtlijnen, artikels en lezingen voor professionals én burgers.
+      <div class="inner">
+        <div class="al-eyebrow">Over Eco-GenX</div>
+        <h1 class="al-title">Artikels &amp; lezingen</h1>
+        <p class="al-subtitle">
+          Kennisdeling voor burgers, organisaties en overheden — met focus op heldere uitleg, praktische toepasbaarheid
+          en meetbaar onderbouwde keuzes.
         </p>
       </div>
     </div>
@@ -728,82 +721,122 @@
 
   <!-- BODY -->
   <section class="al-body">
-    <div class="al-body__inner">
+    <div class="inner">
 
-      <!-- LEFT: Code van Goede Praktijk -->
-      <div class="panel">
-        <div class="panel__head">
-          <h2>Code van Goede Praktijk Fytoremediatie (OVAM)</h2>
-          <p>
-            Ik was mede-auteur van een praktijkgerichte handleiding om fytoremediatie correct en efficiënt toe te passen in Vlaanderen.
-            Van ontwerpkeuzes tot monitoring en kwaliteitsbewaking.
-          </p>
-        </div>
+      <!-- INTRO -->
+      <div class="al-section">
+        <h2>Wat je hier vindt</h2>
+        <p>
+          Een overzicht van publicaties, presentaties en materiaal dat ik inzet in lezingen en workshops.
+          Je kan dit later uitbreiden met PDF’s, links en extra foto’s.
+        </p>
+      </div>
 
-        <div class="panel__body">
-          <div class="media">
-            <img src="/eco-genx/images/code-ovam-cover.jpg" alt="Cover Code van Goede Praktijk Fytoremediatie">
-            <div class="cap">
-              Upload hier je cover/scan. Bestandsnaam-tip: <strong>images/code-ovam-cover.jpg</strong>
-              (of pas het pad hierboven aan).
+      <!-- GRID: Code van goede praktijk (OVAM) -->
+      <div class="al-section">
+        <div class="al-grid">
+
+          <div class="al-card">
+            <div class="al-card__pad">
+              <h3>Code van goede praktijk (OVAM)</h3>
+              <p>
+                Ik schreef een code van goede praktijk rond (… jouw onderwerp …). Hier kan je
+                een scan/preview tonen en later een downloadlink toevoegen.
+              </p>
+              <ul class="al-list">
+                <li>heldere richtlijnen en toepasbare stappen</li>
+                <li>focus op kwaliteit, veiligheid en bewijsvoering</li>
+                <li>bruikbaar voor praktijk, beleid en communicatie</li>
+              </ul>
             </div>
           </div>
 
-          <ul class="list">
-            <li>praktische richtlijnen voor ontwerp en implementatie</li>
-            <li>risico’s beheersen met meetbaar bewijs</li>
-            <li>monitoring: wat, wanneer en waarom meten</li>
-          </ul>
+          <div class="al-card">
+            <!-- ✅ upload deze foto als /images/code-ovam.jpg (scan/preview) -->
+            <div class="al-figure fixed">
+              <img src="/eco-genx/images/code-ovam.jpg" alt="Code van goede praktijk (OVAM) preview">
+            </div>
+            <div class="al-card__pad">
+              <p style="margin:0; color: rgba(0,0,0,.68); line-height:1.65;">
+                Tip: gebruik een brede screenshot of een nette cover van je document.
+              </p>
+            </div>
+          </div>
 
-          <div class="al-cta">
-            <h3>Wil je dit toepassen op jouw site?</h3>
-            <p>Stuur je context en doel. Dan vertaal ik richtlijnen naar een evidence-plan met haalbare stappen.</p>
-            <div class="btnrow">
-              <a class="btn" href="/eco-genx/contact/">Contacteer mij →</a>
-              <a class="btn" href="/eco-genx/restore/">Bekijk Restore →</a>
+        </div>
+      </div>
+
+      <!-- GRID: Lezingen -->
+      <div class="al-section">
+        <div class="al-grid">
+
+          <div class="al-card">
+            <div class="al-card__pad">
+              <h3>Lezingen &amp; sessies voor burgers</h3>
+              <p>
+                Ik geef lezingen en Q&amp;A’s (bv. PFAS/bodem/water, nature-based oplossingen, monitoring en interpretatie).
+                Altijd met ruimte voor vragen en vertaald naar “wat betekent dit concreet?”.
+              </p>
+              <ul class="al-list">
+                <li>uitleg zonder jargon, met correcte nuance</li>
+                <li>praktische handvaten voor vragen en beslissingen</li>
+                <li>duiding van meetdata en onzekerheden</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="al-card">
+            <!-- ✅ upload deze foto als /images/lezing-1.jpg -->
+            <div class="al-figure fixed">
+              <img src="/eco-genx/images/lezing-1.jpg" alt="Lezing / presentatie">
+            </div>
+            <div class="al-card__pad">
+              <p style="margin:0; color: rgba(0,0,0,.68); line-height:1.65;">
+                Voeg meerdere lezingfoto’s toe door extra cards te dupliceren (lezing-2.jpg, lezing-3.jpg…).
+              </p>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- OPTIONAL: extra row met 3 foto’s -->
+      <div class="al-section">
+        <h2>Foto’s (optioneel)</h2>
+        <p style="margin-bottom:1rem;">
+          Wil je een kleine galerij? Upload drie beelden en zet ze hieronder.
+        </p>
+
+        <div style="display:grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap:1rem;">
+          <div class="al-card">
+            <div class="al-figure" style="height:220px;">
+              <img src="/eco-genx/images/lezing-2.jpg" alt="Lezing foto 2">
+            </div>
+          </div>
+          <div class="al-card">
+            <div class="al-figure" style="height:220px;">
+              <img src="/eco-genx/images/lezing-3.jpg" alt="Lezing foto 3">
+            </div>
+          </div>
+          <div class="al-card">
+            <div class="al-figure" style="height:220px;">
+              <img src="/eco-genx/images/lezing-4.jpg" alt="Lezing foto 4">
             </div>
           </div>
         </div>
       </div>
 
-      <!-- RIGHT: Artikels + lezingen (cards) -->
-      <div class="panel">
-        <div class="panel__head">
-          <h2>Lezingen &amp; communicatie</h2>
+      <!-- CTA -->
+      <div class="al-cta">
+        <div>
+          <strong>Lezing of sessie organiseren?</strong>
           <p>
-            Voor burgers, bedrijven en organisaties: helder, onderbouwd en toepasbaar.
-            Voeg hieronder makkelijk foto’s/links toe per lezing of artikel.
+            Stuur het thema, doelgroep en context. Dan stel ik een heldere opzet voor met voorbeelden en ruimte voor vragen.
           </p>
         </div>
-
-        <div class="panel__body">
-          <div class="cards">
-
-            <div class="card">
-              <h3>Lezing · Bodem als levend systeem</h3>
-              <p>Korte intro (plaats, doelgroep, thema). Voeg een foto toe of link later.</p>
-            </div>
-
-            <div class="card">
-              <h3>Lezing · PFAS &amp; nature-based herstel</h3>
-              <p>Hoe combineer je risico, meetplan en realistische interventies — met transparante monitoring.</p>
-            </div>
-
-            <div class="card">
-              <h3>Artikel / bijdrage · Praktijk &amp; beleid</h3>
-              <p>Snippets van publicaties of bijdragen (met eventueel download/link later).</p>
-            </div>
-
-          </div>
-
-          <div style="margin-top:1rem;" class="media">
-            <img src="/eco-genx/images/lezing-01.jpg" alt="Foto van een lezing of workshop">
-            <div class="cap">
-              Upload een lezingfoto als <strong>images/lezing-02.jpg</strong> (of pas het pad aan).
-              Wil je meerdere? Ik kan er een mooie gallery van maken.
-            </div>
-          </div>
-
+        <div class="al-btnrow">
+          <a class="al-btn primary" href="/eco-genx/contact/">Contacteer mij</a>
+          <a class="al-btn" href="/eco-genx/over/missie-visie/">Missie &amp; visie</a>
         </div>
       </div>
 
