@@ -1,5 +1,5 @@
 /* =========================================================
-   Eco-GenX — Site CSS (global)
+   Eco-GenX — Site CSS (global) — CLEAN + STABLE
    ========================================================= */
 
 :root{
@@ -21,7 +21,6 @@
 }
 
 *{ box-sizing: border-box; }
-
 html, body{ height: 100%; }
 
 body{
@@ -29,8 +28,12 @@ body{
   line-height: 1.6;
   margin: 0;
   overflow-x: hidden;
+
   color: var(--ink);
   background: #fff;
+
+  /* ✅ veilige default: links uitlijnen zonder alles te overrulen */
+  text-align: left;
 }
 
 img{ max-width: 100%; height: auto; display: block; }
@@ -47,27 +50,40 @@ a{
   color: inherit;
   text-underline-offset: .2em;
 }
-
 a:hover{ opacity: .95; }
 
-/* main content area (default pages) */
+/* =========================================================
+   Main content area (default pages)
+   ========================================================= */
 main{
   max-width: var(--maxw);
   margin: 0 auto;
   padding: 2.5rem var(--pad);
   overflow: visible !important;
+
+  /* ✅ help tegen theme-centering */
+  text-align: left;
 }
 
 /* =========================================================
    HEADER — NEVER fixed/sticky (scrolls with page)
    ========================================================= */
+
+/* cover many themes */
 header,
-header.background{
+header.background,
+.site-header,
+.header{
   position: relative !important;
   top: auto !important;
+  left: auto !important;
+  right: auto !important;
   inset: auto !important;
   z-index: 50;
 }
+
+/* sommige themes zetten body padding-top voor sticky header */
+body{ padding-top: 0 !important; }
 
 header, header nav{ overflow: visible !important; }
 
@@ -136,7 +152,7 @@ nav.main-nav{
   margin-left: auto;
   font-size: .95rem;
   position: relative;
-  z-index: 2000;
+  z-index: 2000; /* dropdown boven alles */
 }
 
 /* CAPS for all top-level links */
@@ -290,7 +306,7 @@ nav.main-nav a:hover{
 }
 
 /* =========================================================
-   HOME polish — generic reusable cards/steps/cta
+   HOME polish — reusable cards/steps/cta
    ========================================================= */
 .section p,
 .card,
@@ -328,9 +344,7 @@ nav.main-nav a:hover{
   padding: 1.1rem 1.2rem;
 }
 
-.cta{
-  border-radius: 22px !important;
-}
+.cta{ border-radius: 22px !important; }
 
 /* =========================================================
    Service pills (optional)
@@ -387,7 +401,6 @@ nav.main-nav a:hover{
 
 /* =========================================================
    HARD FIXES — Project hero must NEVER be sticky/fixed
-   (covers most class names you used earlier)
    ========================================================= */
 .project-hero,
 .project-header,
@@ -402,9 +415,7 @@ nav.main-nav a:hover{
   transform: none !important;
 }
 
-.project-hero{
-  height: auto !important;
-}
+.project-hero{ height: auto !important; }
 
 /* keep background behind text if theme uses bg wrappers */
 .project-hero .project-hero__bg,
@@ -426,24 +437,3 @@ nav.main-nav a:hover{
    Utility: hard hide for filtered tiles
    ========================================================= */
 .tile.is-hidden{ display: none !important; }
-/* =========================================================
-   GLOBAL PATCH — stop centered text + stop fixed header
-   ========================================================= */
-
-/* Force left alignment where the theme tries to center */
-main, main *{
-  text-align: left;
-}
-
-/* Ensure header/nav is NOT fixed */
-header,
-header.background,
-.site-header,
-.header{
-  position: relative !important;
-  top: auto !important;
-}
-
-body{
-  padding-top: 0 !important;
-}
