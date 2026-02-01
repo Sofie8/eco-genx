@@ -7,7 +7,7 @@ year: 2026
 location: "Vlaanderen"
 client: "—"
 scope: "Assess → design → monitoring"
-tags: [restore]
+tags: [PFAS]
 cover: /images/project/pfas-zabra-cover.jpg
 subtitle: "Van staalname en risicobeoordeling tot multi-line-of-evidence monitoring."
 gallery:
