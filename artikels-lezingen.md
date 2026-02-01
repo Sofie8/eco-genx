@@ -254,7 +254,7 @@ permalink: /over/artikels-lezingen/
 
   <!-- HERO -->
   <section class="al-hero">
-    <img src="{{ '/images/about-talks-hero.jpg' | relative_url }}" alt="Lezingen en kennisdeling Eco-GenX">
+    <img src="{{ '/images/artikels-hero.jpg' | relative_url }}" alt="Lezingen en kennisdeling Eco-GenX">
     <div class="al-hero__inner">
       <div class="al-hero__content">
         <div class="al-eyebrow">Over Eco-GenX · Artikels & lezingen</div>
@@ -338,9 +338,9 @@ permalink: /over/artikels-lezingen/
           </div>
 
           <div style="margin-top:1rem;" class="media">
-            <img src="{{ '/images/talks-1.jpg' | relative_url }}" alt="Foto van een lezing of workshop">
+            <img src="{{ '/images/lezing-01.jpg' | relative_url }}" alt="Foto van een lezing of workshop">
             <div class="cap">
-              Upload een lezingfoto als <strong>images/talks-1.jpg</strong> (of pas het pad aan).
+              Upload een lezingfoto als <strong>images/lezing-02.jpg</strong> (of pas het pad aan).
               Wil je meerdere? Ik kan er een mooie gallery van maken.
             </div>
           </div>
