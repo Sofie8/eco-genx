@@ -5,7 +5,7 @@ permalink: /projects/
 ---
 
 <style>
-  /* Hide theme-injected title (soms zit die in header blocks) */
+  /* Hide any default page title injected by theme/layout */
   .page-title,
   .page-header,
   .page-header h1,
@@ -31,20 +31,15 @@ permalink: /projects/
 
   /* TOP FILTERS */
   .projects-top{
-    background: #fff;
+    background:#fff;
     border-bottom: 1px solid var(--line);
     padding: 1.2rem 0 .9rem;
-
-    position: relative;
-    z-index: 999;            /* boven alles */
-    pointer-events: auto;
   }
   .projects-top__inner{
     max-width: var(--max);
     margin: 0 auto;
     padding: 0 var(--pad);
   }
-
   .filters-title{
     font-size: .95rem;
     letter-spacing: .08em;
@@ -53,33 +48,47 @@ permalink: /projects/
     margin: 0 0 .65rem;
   }
 
+  /* --- CSS-only filter controls (radio + label as chip) --- */
+  .projfilter{
+    position: absolute;
+    left: -9999px;
+    width: 1px; height: 1px;
+    overflow: hidden;
+  }
   .chipbar{
     display:flex;
     flex-wrap:wrap;
-    gap: .55rem .55rem;
+    gap: .55rem;
+    align-items:center;
   }
   .chip{
-    appearance:none;
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
     border: 0;
     background: var(--chip);
     color: rgba(0,0,0,.78);
     padding: .5rem .7rem;
-    border-radius: 0;
     cursor:pointer;
     font: inherit;
     font-size: .95rem;
     line-height: 1.2;
     transition: filter .12s ease, transform .12s ease, background .12s ease, color .12s ease;
+    user-select:none;
   }
   .chip:hover{ filter: brightness(.96); transform: translateY(-1px); }
-  .chip.is-active{ background: var(--chip-active); color: #fff; }
+
+  /* active chip based on checked radio */
+  #f-all:checked ~ .projects-top .chip[for="f-all"],
+  .projects-page .projfilter:checked + .chip{
+    background: var(--chip-active);
+    color: #fff;
+  }
 
   /* GRID area */
   .projects-tiles{
     background: var(--cream);
     padding: 1.25rem 0 2.8rem;
-    position: relative;
-    z-index: 1;
   }
   .projects-tiles__inner{
     max-width: var(--max);
@@ -93,7 +102,6 @@ permalink: /projects/
     grid-template-columns: repeat(4, minmax(0, 1fr));
     gap: .9rem;
   }
-
   .tile{
     display:block;
     text-decoration:none;
@@ -105,9 +113,9 @@ permalink: /projects/
   }
 
   .tile-media{
-    width: 100%;
+    width:100%;
     height: 220px;
-    overflow: hidden;
+    overflow:hidden;
     position: relative;
   }
   .tile-media img{
@@ -118,7 +126,6 @@ permalink: /projects/
     transform: scale(1.001);
   }
 
-  /* hover overlay mag clicks niet blokkeren */
   .tile::after{
     content:"";
     position:absolute;
@@ -140,10 +147,11 @@ permalink: /projects/
     transform: translateY(6px);
     transition: opacity .15s ease, transform .15s ease;
     color: #fff;
-    pointer-events:none; /* tile blijft overal klikbaar */
   }
-  .tile:hover .tile-cap{ opacity: 1; transform: translateY(0); }
-
+  .tile:hover .tile-cap{
+    opacity: 1;
+    transform: translateY(0);
+  }
   .tile-cap strong{
     display:block;
     font-size: 1.05rem;
@@ -177,53 +185,73 @@ permalink: /projects/
   }
 </style>
 
+{% assign items = site.projects | sort: "order" %}
+
+{% comment %}
+Collect unique tags + build CSS filter rules.
+{% endcomment %}
+{% assign alltags = "" | split: "|" %}
+{% for p in items %}
+  {% if p.tags %}
+    {% for t in p.tags %}
+      {% assign alltags = alltags | push: t %}
+    {% endfor %}
+  {% endif %}
+{% endfor %}
+{% assign alltags = alltags | uniq | sort %}
+
+<style>
+  /* CSS-only filtering rules generated from tags */
+  {% for t in alltags %}
+    {% assign norm = t | downcase | replace: ' ', '-' %}
+    #f-{{ norm }}:checked ~ .projects-tiles .tile:not(.tag-{{ norm }}){ display:none !important; }
+  {% endfor %}
+</style>
+
 <div class="projects-page">
+
+  <!-- radios must be before the sections to use ~ selectors -->
+  <input class="projfilter" type="radio" name="pf" id="f-all" checked>
+
+  {% for t in alltags %}
+    {% assign norm = t | downcase | replace: ' ', '-' %}
+    <input class="projfilter" type="radio" name="pf" id="f-{{ norm }}">
+  {% endfor %}
 
   <section class="projects-top" aria-label="Filters">
     <div class="projects-top__inner">
       <p class="filters-title">Filters</p>
 
-      {% comment %}
-      ✅ BELANGRIJK:
-      - page.url is /projects/
-      - als je index.md per ongeluk in je collection zit, filteren we die eruit
-      {% endcomment %}
-
-      {% assign items = site.projects | sort: "order" | where_exp: "p", "p.url != page.url" %}
-
-      {% assign alltags = "" | split: "|" %}
-      {% for p in items %}
-        {% if p.tags %}
-          {% for t in p.tags %}
-            {% assign alltags = alltags | push: t %}
-          {% endfor %}
-        {% endif %}
-      {% endfor %}
-      {% assign alltags = alltags | uniq | sort %}
-
-      <div class="chipbar" id="projFilters">
-        <button class="chip is-active" type="button" data-filter="all">All</button>
+      <div class="chipbar">
+        <label class="chip" for="f-all">All</label>
         {% for t in alltags %}
-          <button class="chip" type="button" data-filter="{{ t | downcase | replace: ' ', '-' }}">{{ t }}</button>
+          {% assign norm = t | downcase | replace: ' ', '-' %}
+          <label class="chip" for="f-{{ norm }}">{{ t }}</label>
         {% endfor %}
       </div>
     </div>
   </section>
 
-  <section class="projects-tiles" aria-label="Projecten">
+  <section class="projects-tiles" aria-label="Project tiles">
     <div class="projects-tiles__inner">
+
       {% if items and items.size > 0 %}
-        <div class="tilegrid" id="projGrid">
+        <div class="tilegrid">
           {% for p in items %}
-            {% assign tagstr = "" %}
+            {%- comment -%}
+            Skip if a weird item equals this index page (extra safety)
+            {%- endcomment -%}
+            {% if p.url == page.url %}{% continue %}{% endif %}
+
+            {% assign klass = "" %}
             {% if p.tags %}
               {% for t in p.tags %}
                 {% assign norm = t | downcase | replace: ' ', '-' %}
-                {% assign tagstr = tagstr | append: norm | append: " " %}
+                {% assign klass = klass | append: " tag-" | append: norm %}
               {% endfor %}
             {% endif %}
 
-            <a class="tile" href="{{ p.url | relative_url }}" data-tags="{{ tagstr | strip }}">
+            <a class="tile{{ klass }}" href="{{ p.url | relative_url }}">
               <div class="tile-media">
                 {% if p.cover %}
                   <img src="{{ p.cover | relative_url }}" alt="{{ p.title }}">
@@ -246,51 +274,10 @@ permalink: /projects/
           {% endfor %}
         </div>
       {% else %}
-        <div class="empty">
-          Nog geen projecten gevonden. Voeg projectbestanden toe met <code>cover</code> en <code>tags</code>.
-        </div>
+        <div class="empty">Nog geen projecten gevonden.</div>
       {% endif %}
+
     </div>
   </section>
 
 </div>
-
-<script>
-document.addEventListener('DOMContentLoaded', function () {
-  const filters = document.getElementById('projFilters');
-  const grid = document.getElementById('projGrid');
-  if (!filters || !grid) return;
-
-  const chips = Array.from(filters.querySelectorAll('button.chip'));
-  const tiles = Array.from(grid.querySelectorAll('a.tile'));
-
-  function setActive(btn){
-    chips.forEach(c => c.classList.remove('is-active'));
-    btn.classList.add('is-active');
-  }
-
-  function apply(filter){
-    tiles.forEach(tile => {
-      const tags = (tile.getAttribute('data-tags') || '').toLowerCase().trim();
-      const tagList = tags ? tags.split(/\s+/).filter(Boolean) : [];
-      const show = (filter === 'all') ? true : tagList.includes(filter);
-
-      tile.classList.toggle('is-hidden', !show);
-    });
-  }
-
-  // initial
-  apply('all');
-
-  filters.addEventListener('click', function(e){
-    const btn = e.target.closest('button.chip');
-    if(!btn) return;
-
-    e.preventDefault();
-    const filter = (btn.getAttribute('data-filter') || 'all').toLowerCase().trim();
-
-    setActive(btn);
-    apply(filter);
-  });
-});
-</script>
