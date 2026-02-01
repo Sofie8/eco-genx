@@ -1,7 +1,7 @@
 ---
 title: Onderzoek & ontwikkeling
 layout: default
-permalink: /onderzoek/
+permalink: over/onderzoek/
 # 1 groepsafbeelding met logo's (wordt in ELKE accordion-content getoond)
 logo_group: /images/onderzoek-logos.png
 ---
