@@ -2,9 +2,6 @@
 title: Onderzoek
 layout: default
 permalink: /over/onderzoek/
-nav:
-  order: 4
-  tooltip: Onderzoek
 ---
 
 <style>
