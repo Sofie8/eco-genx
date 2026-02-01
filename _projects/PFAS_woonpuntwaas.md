@@ -10,6 +10,10 @@ scope: "Assess → design → monitoring"
 tags: [restore]
 cover: /images/projects/pfas-sintgillis.jpg
 subtitle: "Van staalname en risicobeoordeling tot multi-line-of-evidence monitoring."
+gallery:
+  - /images/projects/pfas-SG1.jpg
+  - /images/projects/pfas-SG2.jpg
+  - /images/projects/pfas-SG3.jpg
 ---
 
 ## Context
