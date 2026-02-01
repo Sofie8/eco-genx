@@ -205,7 +205,7 @@ nav:
 </style>
 
 <!-- HERO (full width) -->
-<section class="hero-full hero-full">
+<section class="hero-full">
   <div class="home-wrap hero-inner">
     <div>
       <div class="kicker">Eco-GenX · consultancy</div>
@@ -304,31 +304,38 @@ nav:
 
   <section class="section">
     <div class="cta">
-      <h2>Even sparren?</h2>
+      <h2>Meetbaar bewijs</h2>
       <p class="section-intro">
-        Stuur je locatie, je vraag en (als je hebt) bestaande analyses. Dan bekijk ik wat de slimste eerste stap is.
+        Ik combineer veldwerk, labo en data om onzekerheid weg te nemen.
+        Geen ‘mooie belofte’, maar resultaten waar je beslissingen op kan nemen.
       </p>
       <div class="btnrow">
         <a class="btn primary" href="{{ '/contact/' | relative_url }}">Contacteer mij</a>
-        <a class="btn" href="{{ '/about/' | relative_url }}">Meer over Eco-GenX</a>
+        <a class="btn" href="{{ '/over/missie-visie/' | relative_url }}">Missie & visie</a>
       </div>
     </div>
   </section>
 
 </div>
-<div class="grid-2x2">
-  <div class="cell photo">
-    <img src="{{ '/images/cert-1.jpg' | relative_url }}" alt="Analytische kwaliteit & meetbaar bewijs">
-  </div>
-  <div class="cell text">
-    <h2>Meetbaar bewijs, decision-ready advies.</h2>
-    <p>
-      Ik combineer fieldwork, labo en data om onzekerheid weg te nemen.
-      Geen ‘mooie belofte’, maar een aanpak die je kan verantwoorden — technisch én praktisch.
-    </p>
-    <p>
-      Van staalname en interpretatie tot monitoring en bijsturing: je krijgt duidelijke stappen en heldere conclusies.
-    </p>
-    <a href="{{ '/contact/' | relative_url }}">Even afstemmen →</a>
+
+<!-- Full-bleed proof block (uses your global .full-bleed helper in site.css) -->
+<div class="full-bleed">
+  <div class="grid-2x2">
+    <div class="cell photo">
+      <img src="{{ '/images/cert-1.jpg' | relative_url }}" alt="Analytische kwaliteit & meetbaar bewijs">
+    </div>
+    <div class="cell text">
+      <h2>Meetbaar bewijs, decision-ready advies.</h2>
+      <p>
+        Ik combineer fieldwork, labo en data om onzekerheid weg te nemen.
+        Geen ‘mooie belofte’, maar een aanpak die je kan verantwoorden — technisch én praktisch.
+      </p>
+      <p>
+        Van staalname en interpretatie tot monitoring en bijsturing: je krijgt duidelijke stappen en heldere conclusies.
+      </p>
+      <p>
+        <a href="{{ '/contact/' | relative_url }}">Even afstemmen →</a>
+      </p>
+    </div>
   </div>
 </div>
