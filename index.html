@@ -502,8 +502,14 @@
   <section class="background" data-size="page">
     <style>
   /* =======================================================
-     Home page (final) — relies on global assets/css/site.css
+     Home page — relies on global assets/css/site.css
      ======================================================= */
+
+  :root{
+    --eco-dark: #0b3b2f;
+    --eco-dark-2: #082a22;
+    --eco-cream: #f6f4ee;
+  }
 
   /* Container for inner content blocks */
   .home-wrap{
@@ -622,7 +628,7 @@
     opacity: .86;
   }
 
-  /* Cards / steps styling (pairs with site.css) */
+  /* Cards / steps */
   .cards, .steps{
     display:grid;
     grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
@@ -680,20 +686,110 @@
     margin-bottom: .35rem;
   }
 
-  /* CTA */
-  .cta{
+  /* ---------- Meetbaar bewijs CTA (donkergroen, leesbaar) ---------- */
+  .cta-proof{
     border-radius: 22px;
-    padding: 1.5rem 1.5rem;
-    background: rgba(9,45,38,.06);
-    border: 1px solid rgba(9,45,38,.12);
+    padding: 1.65rem 1.65rem;
+    background: linear-gradient(180deg, rgba(11,59,47,.96), rgba(8,42,34,.96));
+    border: 1px solid rgba(255,255,255,.10);
+    color: rgba(255,255,255,.92);
+  }
+  .cta-proof h2{
+    margin: 0 0 .55rem;
+    color: #fff;
+  }
+  .cta-proof .section-intro{
+    opacity: .9;
+    color: rgba(255,255,255,.88);
   }
 
-  /* Responsive hero */
+  /* ---------- Certified block (Home) — 2x2 grid zoals voorbeeld ---------- */
+  .cert-wrap{
+    position: relative;
+    left: 50%;
+    right: 50%;
+    width: 100vw;
+    margin-left: -50vw;
+    margin-right: -50vw;
+
+    background: #fff;
+    border-top: 1px solid rgba(0,0,0,.06);
+    border-bottom: 1px solid rgba(0,0,0,.06);
+  }
+
+  .cert-grid{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .cert-cell{
+    min-height: 360px;
+  }
+
+  .cert-photo{
+    position: relative;
+    overflow: hidden;
+    background: rgba(0,0,0,.04);
+  }
+  .cert-photo img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+
+  .cert-text{
+    padding: 3.2rem 3rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  .cert-eyebrow{
+    font-size: .85rem;
+    letter-spacing: .10em;
+    text-transform: uppercase;
+    opacity: .75;
+    margin-bottom: .75rem;
+    color: rgba(0,0,0,.72);
+  }
+
+  .cert-text h2{
+    margin: 0 0 1rem;
+    font-size: 1.9rem;
+    line-height: 1.12;
+    color: rgba(0,0,0,.88);
+  }
+
+  .cert-text p{
+    margin: 0 0 .9rem;
+    line-height: 1.7;
+    opacity: .86;
+    max-width: 68ch;
+    color: rgba(0,0,0,.72);
+  }
+
+  .cert-link{
+    margin-top: .6rem;
+    font-weight: 650;
+    text-decoration: none;
+    color: rgba(11,59,47,.95);
+    border-bottom: 1px solid rgba(11,59,47,.35);
+    align-self: flex-start;
+    padding-bottom: .08rem;
+  }
+
+  /* mobile */
   @media (max-width: 980px){
     .hero-full{ min-height: 540px; }
     .hero-inner{ min-height: 540px; padding: 2.4rem 0; }
     .hero-title{ font-size: 2.35rem; }
     .hero-quote{ font-size: 1.22rem; }
+
+    .cert-grid{ grid-template-columns: 1fr; }
+    .cert-text{ padding: 2.1rem 1.25rem; }
+    .cert-cell{ min-height: unset; }
+    .cert-photo{ height: 320px; }
   }
 </style>
 
@@ -799,7 +895,7 @@
   </section>
 
   <section class="section">
-    <div class="cta">
+    <div class="cta-proof">
       <h2>Meetbaar bewijs</h2>
       <p class="section-intro">
         Ik combineer veldwerk, labo en data om onzekerheid weg te nemen.
@@ -814,95 +910,13 @@
 
 </div>
 
-<p>/* =======================================================
-     Certified block (Home) — 2x2 grid zoals je voorbeeld
-     ======================================================= */
-  .cert-wrap{
-    position: relative;
-    left: 50%;
-    right: 50%;
-    width: 100vw;
-    margin-left: -50vw;
-    margin-right: -50vw;</p>
-
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>background: #fff;
-border-top: 1px solid rgba(0,0,0,.06);
-border-bottom: 1px solid rgba(0,0,0,.06);   }
-</code></pre></div></div>
-
-<p>.cert-grid{
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-  }</p>
-
-<p>.cert-cell{
-    min-height: 360px;
-  }</p>
-
-<p>.cert-photo{
-    position: relative;
-    overflow: hidden;
-  }
-  .cert-photo img{
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    display: block;
-  }</p>
-
-<p>.cert-text{
-    padding: 3.2rem 3rem;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-  }</p>
-
-<p>.cert-eyebrow{
-    font-size: .85rem;
-    letter-spacing: .10em;
-    text-transform: uppercase;
-    opacity: .75;
-    margin-bottom: .75rem;
-  }</p>
-
-<p>.cert-text h2{
-    margin: 0 0 1rem;
-    font-size: 1.9rem;
-    line-height: 1.12;
-  }</p>
-
-<p>.cert-text p{
-    margin: 0 0 .9rem;
-    line-height: 1.7;
-    opacity: .86;
-    max-width: 68ch;
-  }</p>
-
-<p>.cert-link{
-    margin-top: .6rem;
-    font-weight: 600;
-    text-decoration: none;
-    color: rgba(11,59,47,.92);
-    border-bottom: 1px solid rgba(11,59,47,.35);
-    align-self: flex-start;
-    padding-bottom: .08rem;
-  }</p>
-
-<p>/* mobile */
-  @media (max-width: 980px){
-    .cert-grid{ grid-template-columns: 1fr; }
-    .cert-text{ padding: 2.1rem 1.25rem; }
-    .cert-cell{ min-height: unset; }
-    .cert-photo{ height: 320px; }
-  }
-&lt;/style&gt;</p>
-
+<!-- CERTIFIED 2x2 BLOCK (full-bleed) -->
 <section class="cert-wrap" aria-label="Gecertificeerde kwaliteit">
   <div class="cert-grid">
 
     <!-- 1) FOTO linksboven -->
     <div class="cert-cell cert-photo">
-      <img src="/eco-genx/images/cert-1.jpg" alt="Staalnames en analytische kwaliteitsaanpak">
+      <img src="/eco-genx/images/cert-1.jpg" alt="Analytische kwaliteit &amp; meetbaar bewijs">
     </div>
 
     <!-- 2) TEKST rechtsboven -->
@@ -933,7 +947,7 @@ border-bottom: 1px solid rgba(0,0,0,.06);   }
         Ideaal voor bodemherstel, fytoremediatie, monitoring van natuurlijke attenuatie
         en verificatie van bio-claims.
       </p>
-      <a class="cert-link" href="/eco-genx/contact/">Bekijk certificaten →</a>
+      <a class="cert-link" href="/eco-genx/certificaten/">Ga naar certificaten →</a>
     </div>
 
     <!-- 4) FOTO rechtsonder -->
