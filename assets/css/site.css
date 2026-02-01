@@ -384,3 +384,7 @@ nav.main-nav a:hover{
   position: relative !important;
   z-index: 1 !important;
 }
+/* ✅ hard hide (werkt altijd) */
+.tile.is-hidden{ 
+  display: none !important;
+}
