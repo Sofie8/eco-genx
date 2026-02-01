@@ -471,38 +471,26 @@
 
   /* =========================================================
      CRITICAL FIX: hero mag nooit sticky/fixed zijn
-     (anders bedekt hij je content bij scroll)
+     + hero mag clicks niet blokkeren buiten zichzelf
      ========================================================= */
-  .proj-hero,
-  .proj-hero__media,
-  .proj-hero__inner,
-  .proj-hero__titlebox{
+  .proj-hero{
     position: relative !important;
     top: auto !important;
-    inset: auto !important;
-    transform: none !important;
-  }
-
-  /* HERO container */
-  .proj-hero{
     left: 50%; right: 50%;
     width: 100vw;
     margin-left: -50vw; margin-right: -50vw;
 
     background: var(--green2);
     border-bottom: 1px solid rgba(0,0,0,.08);
-
-    z-index: 0; /* <-- onder body */
+    z-index: 0;
   }
 
-  /* HERO image area */
   .proj-hero__media{
     width: 100%;
     height: min(56vh, 640px);
     min-height: 360px;
     overflow: hidden;
-
-    position: relative !important; /* keep */
+    position: relative;
   }
   .proj-hero__media img{
     width:100%;
@@ -520,12 +508,13 @@
     pointer-events:none;
   }
 
-  /* Title overlay over hero (this can stay absolute, but only inside hero) */
+  /* Title overlay inside hero only */
   .proj-hero__inner{
-    position:absolute !important;
-    inset: 0 !important;
+    position:absolute;
+    inset: 0;
     display:flex;
     align-items:flex-end;
+    pointer-events:none; /* overlay mag niks blokkeren */
   }
   .proj-hero__titlebox{
     width:100%;
@@ -536,7 +525,9 @@
     margin: 0 auto;
     padding: 0 var(--pad);
     color: rgba(255,255,255,.92);
+    pointer-events:auto; /* links in titlebox wél klikbaar */
   }
+
   .proj-eyebrow{
     font-size: .86rem;
     letter-spacing: .10em;
@@ -559,7 +550,6 @@
     font-size: 1.05rem;
   }
 
-  /* back link */
   .proj-back{
     display:inline-flex;
     gap:.4rem;
@@ -574,14 +564,13 @@
   /* BODY */
   .proj-body{
     background: var(--cream);
+    position: relative;
     left: 50%; right: 50%;
     width: 100vw;
     margin-left: -50vw; margin-right: -50vw;
     padding: 2.4rem 0 3.2rem;
     border-top: 1px solid rgba(0,0,0,.06);
-
-    position: relative;
-    z-index: 2; /* <-- BODY altijd boven hero */
+    z-index: 2;
   }
 
   .proj-body .inner{
@@ -594,7 +583,6 @@
     align-items: start;
   }
 
-  /* content */
   .proj-content{
     background: rgba(255,255,255,.55);
     border: 1px solid rgba(0,0,0,.08);
@@ -618,7 +606,6 @@
     padding-left: 1.15rem;
   }
 
-  /* sidebar */
   .proj-side{
     position: sticky;
     top: 1.25rem;
@@ -638,15 +625,8 @@
     text-transform: uppercase;
     opacity: .92;
   }
-  .kv{
-    display:grid;
-    grid-template-columns: 1fr;
-    gap: .55rem;
-  }
-  .kv .row{
-    padding-top: .55rem;
-    border-top: 1px solid rgba(255,255,255,.14);
-  }
+  .kv{ display:grid; grid-template-columns: 1fr; gap: .55rem; }
+  .kv .row{ padding-top: .55rem; border-top: 1px solid rgba(255,255,255,.14); }
   .kv .row:first-child{ border-top: 0; padding-top: 0; }
   .k{ font-size: .82rem; letter-spacing: .08em; text-transform: uppercase; opacity:.82; }
   .v{ margin-top:.15rem; line-height:1.5; }
@@ -683,7 +663,7 @@
     grid-template-columns: repeat(3, minmax(0, 1fr));
     gap: 1rem;
   }
-  .gal a, .gal figure{
+  .gal figure{
     margin: 0;
     border-radius: 18px;
     overflow: hidden;
@@ -695,7 +675,7 @@
   .gal img{
     width:100%;
     height: 260px;
-    object-fit: cover;
+    object-fit: cover; /* altijd zelfde grootte */
     display:block;
   }
   .cap{
@@ -747,7 +727,6 @@
   <section class="proj-body">
     <div class="inner">
 
-      <!-- LEFT: content -->
       <article class="proj-content">
         <h2 id="context">Context</h2>
 <p>Korte schets van de site of de vraag. Wat is het probleem, wat is het doel, en welke randvoorwaarden zijn er?</p>
@@ -771,7 +750,6 @@
 
       </article>
 
-      <!-- RIGHT: meta -->
       <aside class="proj-side" aria-label="Projectkenmerken">
         <div class="proj-meta">
           <h3>Kenmerken</h3>
@@ -812,7 +790,6 @@
 
     </div>
 
-    <!-- GALLERY (optional) -->
     
       <div class="proj-gallery">
         <h2>Beelden</h2>
