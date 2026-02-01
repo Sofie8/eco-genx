@@ -1,7 +1,7 @@
 ---
 title: Onderzoek
 layout: default
-permalink: /onderzoek/
+permalink: /over/onderzoek/
 nav:
   order: 4
   tooltip: Onderzoek
