@@ -5,6 +5,15 @@ permalink: /projects/
 ---
 
 <style>
+  /* Hide the default page title that the theme/layout injects */
+.page-title,
+.page-header,
+.page-header h1,
+h1.page-title,
+main > h1:first-child{
+  display:none !important;
+}
+
   /* =========================================================
      PROJECTS — Filter bar + uniform tile grid (Offshoots-like)
      Fixes:
