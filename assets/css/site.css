@@ -65,6 +65,7 @@ header.background a.home{
   text-decoration: none;
 }
 
+/* title/subtitle */
 header.background .title{
   font-size: 1.25rem !important;
   line-height: 1.1 !important;
@@ -74,6 +75,7 @@ header.background .subtitle{
   opacity: .85 !important;
 }
 
+/* logo */
 header.background .logo{
   width: 34px;
   height: 34px;
@@ -100,53 +102,91 @@ nav.main-nav{
   z-index: 2000;
 }
 
+/* ✅ CAPS fix voor ALLE items (links) */
 nav.main-nav a{
   text-decoration: none;
   padding: .35rem .45rem;
   border-radius: .45rem;
+
+  text-transform: uppercase;
+  letter-spacing: .06em;
 }
+
 nav.main-nav a:hover{
   background: rgba(255,255,255,.08);
 }
 
-/* ---------- CLICK dropdown ---------- */
+/* ---------- CLICK dropdown wrapper ---------- */
 .nav-dd{
   position: relative;
   display: inline-flex;
   align-items: center;
 }
 
+/* ✅ CAPS fix + “link-look” voor dropdown trigger button */
 .nav-dd__trigger{
   appearance: none;
-  border: 0;
-  background: transparent;
-  color: inherit;
+  -webkit-appearance: none;
+  border: 0 !important;
+  background: transparent !important;
+  color: rgba(255,255,255,.92) !important;
   font: inherit;
   cursor: pointer;
 
   display: inline-flex;
   align-items: center;
   gap: .35rem;
+
   padding: .35rem .45rem;
   border-radius: .45rem;
+
+  box-shadow: none !important;
+  outline: none;
+
+  /* ✅ CAPS zoals HOME */
+  text-transform: uppercase;
+  letter-spacing: .06em;
 }
+
 .nav-dd__trigger:hover{
-  background: rgba(255,255,255,.08);
+  background: rgba(255,255,255,.08) !important;
+}
+
+/* nicer keyboard focus */
+.nav-dd__trigger:focus-visible{
+  outline: 2px solid rgba(255,255,255,.35);
+  outline-offset: 2px;
+}
+
+/* arrow */
+.nav-dd__trigger span{
+  opacity: .85;
+  transform: translateY(1px);
+}
+
+.nav-dd.open .nav-dd__trigger{
+  background: rgba(255,255,255,.10) !important;
 }
 
 .nav-dd__menu{
   display: none;
   position: absolute;
   top: 100%;
-  margin-top: .55rem;
   left: 0;
+  margin-top: .55rem;
 
   min-width: 16rem;
   padding: .45rem 0;
-  background: rgba(0,0,0,.85);
+
+  background: rgba(11,59,47,.96) !important; /* eco dark */
+  border: 1px solid rgba(255,255,255,.12);
   border-radius: .75rem;
+
   box-shadow: 0 16px 32px rgba(0,0,0,.30);
   z-index: 9999;
+
+  /* ✅ nooit buiten scherm */
+  max-width: calc(100vw - 2rem);
 }
 
 .nav-dd.open .nav-dd__menu{ display: block; }
@@ -157,7 +197,12 @@ nav.main-nav a:hover{
   white-space: nowrap;
   text-decoration: none;
   color: rgba(255,255,255,.92);
+
+  /* dropdown-items mogen NIET per se caps, maar wel consistent met nav */
+  text-transform: none;
+  letter-spacing: 0;
 }
+
 .nav-dd__menu a:hover{
   background: rgba(255,255,255,.10);
 }
@@ -174,22 +219,27 @@ nav.main-nav a:hover{
     justify-content: center;
   }
 
-  /* on mobile show submenu inline when open (still click) */
+  /* mobile: submenu inline when open */
   .nav-dd{ flex-direction: column; align-items: flex-start; }
   .nav-dd__menu{
     position: static;
     display: none;
-    background: transparent;
+    background: transparent !important;
     box-shadow: none;
+    border: 0;
     padding: .2rem 0 0;
     margin-top: 0;
     min-width: unset;
+    max-width: 100%;
   }
   .nav-dd.open .nav-dd__menu{ display: block; }
+
   .nav-dd__menu a{
     color: inherit;
     padding: .35rem .45rem;
     border-radius: .45rem;
+    text-transform: none; /* menu-items op mobile: leesbaar */
+    letter-spacing: 0;
   }
   .nav-dd__menu a:hover{
     background: rgba(255,255,255,.08);
@@ -240,7 +290,7 @@ nav.main-nav a:hover{
 
 .cta{ border-radius: 22px !important; }
 
-/* ---------- Service pills ---------- */
+/* ---------- Service pills (als je ze nog gebruikt op pages) ---------- */
 .service-topbar{
   display: flex;
   justify-content: flex-end;
@@ -269,6 +319,9 @@ nav.main-nav a:hover{
   border: 1px solid rgba(255,255,255,.14);
   background: rgba(255,255,255,.06);
   transition: transform .12s ease, background .12s ease, border-color .12s ease;
+
+  text-transform: none; /* pills: niet caps */
+  letter-spacing: 0;
 }
 
 .service-pills a:hover{
@@ -287,51 +340,3 @@ nav.main-nav a:hover{
   .service-topbar{ justify-content: center; }
   .service-pills{ border-radius: 18px; }
 }
-/* ---------- Fix: dropdown trigger looks like a normal nav item ---------- */
-.nav-dd__trigger{
-  appearance: none;
-  -webkit-appearance: none;
-  border: 0 !important;
-  background: transparent !important;
-  color: rgba(255,255,255,.92) !important;
-  font: inherit;
-  cursor: pointer;
-
-  display: inline-flex;
-  align-items: center;
-  gap: .35rem;
-
-  padding: .35rem .45rem;
-  border-radius: .45rem;
-
-  /* remove native focus glow/shadow in some browsers */
-  box-shadow: none !important;
-  outline: none;
-}
-
-.nav-dd__trigger:hover{
-  background: rgba(255,255,255,.08) !important;
-}
-
-/* nicer keyboard focus (accessible) */
-.nav-dd__trigger:focus-visible{
-  outline: 2px solid rgba(255,255,255,.35);
-  outline-offset: 2px;
-}
-
-/* keep arrow subtle and aligned */
-.nav-dd__trigger span{
-  opacity: .85;
-  transform: translateY(1px);
-}
-
-/* when open, same “active” feel as hover */
-.nav-dd.open .nav-dd__trigger{
-  background: rgba(255,255,255,.10) !important;
-}
-.nav-dd__menu{
-  background: rgba(11,59,47,.96) !important; /* eco dark */
-  border: 1px solid rgba(255,255,255,.12);
-}
-/* optional: submenu nooit buiten scherm */
-.nav-dd__menu { max-width: calc(100vw - 2rem); }
