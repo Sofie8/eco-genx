@@ -1,5 +1,5 @@
 ---
-title: "PFAS strategie & evidence-plan"
+title: "PFAS Zabra"
 layout: project
 order: 1
 category: Restore
@@ -10,6 +10,10 @@ scope: "Assess → design → monitoring"
 tags: [restore, microproof]
 cover: /images/projects/pfas-zabra-cover.jpg
 subtitle: "Van staalname en risicobeoordeling tot multi-line-of-evidence monitoring."
+gallery:
+  - /images/projects/pfas-Z1.jpg
+  - /images/projects/pfas-Z2.jpg
+  - /images/projects/pfas-Z3.jpg
 ---
 
 ## Context
@@ -27,3 +31,4 @@ Korte schets van de site of de vraag. Wat is het probleem, wat is het doel, en w
 
 ## Resultaat (optioneel)
 Hier kan je later resultaten, grafieken, foto’s en lessons learned toevoegen.
+
