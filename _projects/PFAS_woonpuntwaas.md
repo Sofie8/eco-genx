@@ -7,7 +7,7 @@ year: 2026
 location: "Vlaanderen"
 client: "—"
 scope: "Assess → design → monitoring"
-tags: [feest]
+tags: [PFAS]
 subtitle: "Van staalname en risicobeoordeling tot multi-line-of-evidence monitoring."
 cover: /images/project/pfas-sintgillis-cover.jpg
 gallery:
