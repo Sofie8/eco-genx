@@ -8,19 +8,18 @@ location: "Vlaanderen"
 client: "—"
 scope: "Assess → design → monitoring"
 tags: [restore]
-cover: /images/projects/pfas-sintgillis.jpg
 subtitle: "Van staalname en risicobeoordeling tot multi-line-of-evidence monitoring."
-cover: /project/images/pfas-sintgillis-cover.jpg
+cover: /_project/images/pfas-sintgillis-cover.jpg
 gallery:
-  - /project/images/pfas-SG01.jpg
-  - /project/images/pfas-SG06.jpg
-  - /project/images/pfas-SG07.jpg
-  - /project/images/pfas-SG08.jpg
-  - /project/images/pfas-SG09.jpg
-  - /project/images/pfas-SG010.jpg
-  - /project/images/pfas-SG011.jpg
-  - /project/images/pfas-SG12.jpg
-  - /project/images/pfas-SG13.jpg
+  - /_project/images/pfas-SG01.jpg
+  - /_project/images/pfas-SG06.jpg
+  - /_project/images/pfas-SG07.jpg
+  - /_project/images/pfas-SG08.jpg
+  - /_project/images/pfas-SG09.jpg
+  - /_project/images/pfas-SG010.jpg
+  - /_project/images/pfas-SG011.jpg
+  - /_project/images/pfas-SG12.jpg
+  - /_project/images/pfas-SG13.jpg
 ---
 
 ## Context
