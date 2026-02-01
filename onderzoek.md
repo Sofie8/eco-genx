@@ -1,392 +1,441 @@
 ---
-title: Onderzoek
+title: Onderzoek & ontwikkeling
 layout: default
-permalink: /over/onderzoek/
+permalink: over/onderzoek/
+
+# ✅ logo’s (upload zelf naar /images/logos/)
+logos:
+  - src: /images/logos/vmm.svg
+    alt: Vlaamse Milieumaatschappij
+    href: https://www.vmm.be/
+  - src: /images/logos/uhasselt.svg
+    alt: UHasselt
+    href: https://www.uhasselt.be/
+  - src: /images/logos/iflux.svg
+    alt: iFLUX
+    href: https://iflux.be/
+
+# ✅ Lopende projecten via Eco-GenX (vennootschap)
+ongoing_company:
+  - title: "Barebeek (Zemst) — PFAS piloot & demonstratie"
+    subtitle: "Nature-based ingrepen om PFAS-vang efficiënter te maken in de sedimentvang, met multi-line-of-evidence monitoring."
+    body: >
+      Pilootproject rond innovatieve in-situ sanering om verspreiding van PFAS via sediment en oppervlaktewater te reduceren.
+      Traject met nulmeting → ontwerp → real-scale implementatie → effectmonitoring, inclusief concentraties én fluxen (richting grondwater/oppervlaktewater).
+    tags: ["Eco-GenX", "PFAS", "wetlands", "monitoring"]
+  - title: "PFAS RESOLVE — evidence & monitoring (voorbeeld)"
+    subtitle: "Korte uitleg wat jij wil tonen (later aanvullen)."
+    body: "Vul hier later details aan: doel, aanpak, deliverables, partners, status."
+    tags: ["Eco-GenX", "PFAS", "evidence"]
+
+# ✅ Lopende academische projecten (UHasselt 20%)
+ongoing_academic:
+  - title: "Academisch project — (placeholder)"
+    subtitle: "1 zin: focus, consortium, jouw rol."
+    body: "Vul aan met doel, methodes, en wat het oplevert."
+    tags: ["UHasselt", "onderzoek", "monitoring"]
+
+# ✅ Archief 2019–2024 (1 rubriek)
+archive_2019_2024:
+  - title: "Titel archiefproject — korte omschrijving"
+    subtitle: "1 zin: waarom relevant, wat werd gedaan."
+    body: "Hier kan je later 3–6 regels context + jouw rol + outcome toevoegen."
+    tags: ["Eco-GenX", "bodem"]
 ---
 
 <style>
   /* =========================================================
-     Onderzoek — ISOdetect-ish: hero image + accordions
-     Scope: .rdo
+     ONDERZOEK — hero + accordions (ISOdetect/HPC-style)
+     Scope: .rnd
      ========================================================= */
 
-  /* full width page */
+  /* full width (zoals je services/projects) */
   main{ max-width:none !important; padding:0 !important; overflow:visible !important; }
   main > *, main .content, main article, main .page, main .post{
     max-width:none !important; padding:0 !important; margin:0 !important; overflow:visible !important;
   }
 
-  .rdo{
+  .rnd{
     --max: 1200px;
     --pad: 1.25rem;
-
     --cream: var(--eco-cream, #f6f4ee);
     --green: var(--eco-dark, #0b3b2f);
     --green2: var(--eco-dark-2, #082a22);
-
     --ink: rgba(0,0,0,.86);
     --muted: rgba(0,0,0,.66);
     --line: rgba(0,0,0,.10);
   }
 
-  /* HERO full width */
-  .rdo-hero{
+  /* HERO */
+  .rnd-hero{
     position: relative;
     left: 50%; right: 50%;
     width: 100vw;
     margin-left: -50vw; margin-right: -50vw;
 
-    min-height: 420px;
-    background: #0b3b2f;
+    min-height: 520px;
+    background-image: url("{{ '/images/onderzoek-hero.jpg' | relative_url }}");
     background-size: cover;
     background-position: center;
-    border-bottom: 1px solid rgba(0,0,0,.08);
   }
-  .rdo-hero::before{
+  .rnd-hero::before{
     content:"";
     position:absolute; inset:0;
     background: linear-gradient(90deg,
       rgba(8,42,34,.86) 0%,
-      rgba(8,42,34,.62) 45%,
+      rgba(8,42,34,.64) 46%,
       rgba(8,42,34,.22) 100%);
   }
 
-  .rdo-hero .inner{
+  .rnd-hero__inner{
     position: relative;
     max-width: var(--max);
     margin: 0 auto;
-    padding: 3.2rem var(--pad);
-    color: rgba(255,255,255,.92);
-
+    padding: 4.2rem var(--pad) 3.1rem;
     display:grid;
     grid-template-columns: 1.15fr .85fr;
     gap: 2rem;
-    align-items: end;
+    align-items: center;
+    color: rgba(255,255,255,.92);
   }
 
-  .rdo-eyebrow{
+  .rnd-eyebrow{
     font-size: .86rem;
     letter-spacing: .10em;
     text-transform: uppercase;
-    opacity: .86;
-    margin-bottom: .6rem;
+    opacity: .85;
+    margin-bottom: .65rem;
   }
-  .rdo h1{
-    margin: 0 0 .6rem;
-    font-size: 3rem;
+  .rnd-hero h1{
+    margin:0 0 .75rem;
+    font-size: 3.05rem;
     line-height: 1.04;
     letter-spacing: .02em;
+    max-width: 22ch;
   }
-  .rdo-hero p{
-    margin: 0;
-    max-width: 75ch;
-    line-height: 1.7;
+  .rnd-hero p{
+    margin:0;
     opacity: .92;
+    line-height: 1.75;
+    max-width: 80ch;
     font-size: 1.05rem;
   }
 
-  .rdo-hero .panel{
+  .rnd-panel{
     border: 1px solid rgba(255,255,255,.16);
     border-radius: 18px;
     padding: 1.05rem 1.1rem;
     background: rgba(255,255,255,.06);
     box-shadow: 0 18px 44px rgba(0,0,0,.18);
   }
-  .rdo-hero .panel strong{ display:block; margin-bottom:.35rem; }
-  .rdo-hero .panel ul{ margin:.45rem 0 0; padding-left: 1.1rem; opacity:.92; }
-  .rdo-hero .panel li{ margin:.35rem 0; }
+  .rnd-panel h3{
+    margin:0 0 .55rem;
+    font-size: 1.05rem;
+    letter-spacing: .06em;
+    text-transform: uppercase;
+    opacity: .95;
+  }
+  .rnd-panel ul{
+    margin:.35rem 0 0;
+    padding-left: 1.1rem;
+    opacity: .92;
+    line-height: 1.65;
+  }
+  .rnd-panel li{ margin:.35rem 0; }
 
-  /* SECTION base */
-  .rdo-body{
+  /* logo row */
+  .logo-row{
+    margin-top: 1rem;
+    display:flex;
+    flex-wrap: wrap;
+    gap: .65rem .95rem;
+    align-items: center;
+  }
+  .logo-row a{
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+    padding:.35rem .55rem;
+    border-radius: 12px;
+    border: 1px solid rgba(255,255,255,.14);
+    background: rgba(255,255,255,.06);
+    text-decoration:none;
+  }
+  .logo-row img{
+    height: 28px;
+    width: auto;
+    display:block;
+    filter: brightness(1.02);
+    opacity: .95;
+  }
+
+  /* BODY */
+  .rnd-body{
+    background: var(--cream);
     position: relative;
     left: 50%; right: 50%;
     width: 100vw;
     margin-left: -50vw; margin-right: -50vw;
-
-    background: var(--cream);
     padding: 2.6rem 0 3.2rem;
     border-top: 1px solid rgba(0,0,0,.06);
   }
-  .rdo-body .inner{
+  .rnd-body__inner{
     max-width: var(--max);
     margin: 0 auto;
     padding: 0 var(--pad);
   }
 
-  .rdo h2{
-    margin: 0 0 .65rem;
-    font-size: 1.8rem;
-    line-height: 1.2;
+  .section{
+    margin-top: 2.25rem;
+  }
+  .section h2{
+    margin:0 0 .6rem;
+    font-size: 2.05rem;
+    line-height: 1.12;
     color: var(--ink);
   }
-  .rdo .intro{
-    margin: 0 0 1.2rem;
-    max-width: 82ch;
+  .section .lead{
+    margin:0 0 1.2rem;
     color: var(--muted);
+    max-width: 85ch;
     line-height: 1.75;
   }
 
-  /* ACCORDIONS */
-  .acc-group{ margin: 1.2rem 0 2.2rem; }
-
+  /* ACCORDION card */
   .acc{
-    background: rgba(255,255,255,.62);
-    border: 1px solid rgba(0,0,0,.08);
-    border-radius: 18px;
+    border-radius: 22px;
     overflow: hidden;
+    border: 1px solid rgba(0,0,0,.10);
+    background: rgba(255,255,255,.55);
     box-shadow: 0 14px 36px rgba(0,0,0,.06);
-    margin-bottom: .85rem;
+    margin-bottom: 1.05rem;
   }
 
-  .acc summary{
+  details.acc > summary{
     list-style: none;
     cursor: pointer;
-    padding: 1.05rem 1.15rem;
+    padding: 1.05rem 1.1rem;
     display:flex;
-    align-items:flex-start;
+    align-items: flex-start;
     justify-content: space-between;
     gap: 1rem;
+    background: rgba(0,0,0,.06);
   }
-  .acc summary::-webkit-details-marker{ display:none; }
+  details.acc > summary::-webkit-details-marker{ display:none; }
 
-  .acc .sum-left{
-    display:flex;
-    flex-direction: column;
-    gap: .25rem;
+  .acc-title{
+    font-weight: 650;
+    color: rgba(0,0,0,.86);
+    line-height: 1.35;
+    font-size: 1.1rem;
+    margin: 0;
   }
-  .acc .sum-title{
-    font-weight: 750;
-    color: var(--ink);
-    font-size: 1.05rem;
-    line-height: 1.25;
-  }
-  .acc .sum-sub{
-    color: var(--muted);
-    line-height: 1.55;
+  .acc-sub{
+    margin:.25rem 0 0;
+    color: rgba(0,0,0,.62);
+    line-height: 1.6;
+    max-width: 85ch;
   }
 
-  /* plus icon */
-  .acc .plus{
+  /* plus button */
+  .acc-toggle{
     flex: 0 0 auto;
-    width: 28px;
-    height: 28px;
+    width: 34px;
+    height: 34px;
     border-radius: 999px;
     border: 1px solid rgba(0,0,0,.18);
-    display:grid;
-    place-items:center;
-    color: rgba(0,0,0,.66);
-    margin-top: .15rem;
-    background: rgba(255,255,255,.55);
-    transition: transform .15s ease;
+    background: rgba(255,255,255,.65);
+    position: relative;
+    margin-top: .05rem;
   }
-  details[open] .plus{ transform: rotate(45deg); }
+  .acc-toggle::before,
+  .acc-toggle::after{
+    content:"";
+    position:absolute;
+    left:50%; top:50%;
+    width: 14px; height: 2px;
+    background: rgba(0,0,0,.65);
+    transform: translate(-50%,-50%);
+  }
+  .acc-toggle::after{
+    transform: translate(-50%,-50%) rotate(90deg);
+    transition: transform .14s ease;
+  }
+  details[open] .acc-toggle::after{
+    transform: translate(-50%,-50%) rotate(0deg);
+  }
 
-  .acc .body{
-    padding: 0 1.15rem 1.15rem;
+  .acc-body{
+    padding: 1.05rem 1.1rem 1.15rem;
     color: rgba(0,0,0,.74);
     line-height: 1.75;
   }
 
-  .meta{
+  .tagrow{
     display:flex;
-    flex-wrap:wrap;
-    gap:.5rem;
+    flex-wrap: wrap;
+    gap: .45rem;
     margin-top: .75rem;
   }
-  .badge{
+  .tag{
     font-size: .82rem;
-    padding: .28rem .55rem;
+    padding: .28rem .6rem;
     border-radius: 999px;
-    border: 1px solid rgba(0,0,0,.12);
-    background: rgba(0,0,0,.04);
-    color: rgba(0,0,0,.72);
-  }
-  .badge.green{
-    border-color: rgba(75,191,122,.45);
-    background: rgba(75,191,122,.14);
+    border: 1px solid rgba(11,59,47,.22);
+    background: rgba(11,59,47,.06);
     color: rgba(11,59,47,.92);
   }
 
-  /* ARCHIEF: jaarblokken (HPC-ish) */
-  .year{
-    border-top: 1px solid rgba(0,0,0,.12);
-    padding-top: 1.2rem;
-    margin-top: 1.2rem;
-  }
-  .year h3{
-    margin: 0 0 .65rem;
-    font-size: 1.15rem;
-    letter-spacing: .06em;
-    text-transform: uppercase;
-    opacity: .82;
+  .divider{
+    margin: 2.25rem 0 0;
+    border: 0;
+    border-top: 1px solid rgba(0,0,0,.10);
   }
 
-  /* responsive */
   @media (max-width: 980px){
-    .rdo-hero .inner{ grid-template-columns: 1fr; padding: 2.4rem var(--pad); }
-    .rdo h1{ font-size: 2.2rem; }
+    .rnd-hero__inner{ grid-template-columns: 1fr; padding: 3.2rem var(--pad) 2.6rem; }
+    .rnd-hero h1{ font-size: 2.25rem; }
+    .logo-row img{ height: 26px; }
   }
 </style>
 
-<div class="rdo">
+<div class="rnd">
 
-  <!-- HERO: 1 figuur over volle breedte -->
-  <section class="rdo-hero"
-    style="background-image:url('{{ '/images/research/research-hero.jpg' | relative_url }}')">
-    <div class="inner">
+  <!-- HERO -->
+  <section class="rnd-hero" aria-label="Onderzoek hero">
+    <div class="rnd-hero__inner">
       <div>
-        <div class="rdo-eyebrow">Eco-GenX · Onderzoek & ontwikkeling</div>
+        <div class="rnd-eyebrow">Eco-GenX · onderzoek & ontwikkeling</div>
         <h1>Van wetenschap naar terrein</h1>
         <p>
           Ik ontwikkel en test meetbare innovaties rond bodem-, water- en PFAS-herstel:
-          nature-based ontwerpen, evidence-plannen en monitoring die decision-ready antwoorden opleveren.
+          nature-based ontwerpen, evidence-plannen en monitoring die <em>decision-ready</em> antwoorden opleveren.
         </p>
+
+        {% if page.logos %}
+          <div class="logo-row" aria-label="Partners & context">
+            {% for l in page.logos %}
+              {% if l.href %}
+                <a href="{{ l.href }}" target="_blank" rel="noopener">
+                  <img src="{{ l.src | relative_url }}" alt="{{ l.alt }}">
+                </a>
+              {% else %}
+                <a href="#" onclick="return false;">
+                  <img src="{{ l.src | relative_url }}" alt="{{ l.alt }}">
+                </a>
+              {% endif %}
+            {% endfor %}
+          </div>
+        {% endif %}
       </div>
 
-      <div class="panel">
-        <strong>Hoe ik dit toon</strong>
+      <div class="rnd-panel">
+        <h3>Hoe ik dit toon</h3>
         <ul>
           <li>lopende projecten (Eco-GenX)</li>
           <li>academische projecten (UHasselt, 20%)</li>
-          <li>archief per jaar</li>
+          <li>archief 2019–2024</li>
         </ul>
       </div>
     </div>
   </section>
 
-  <section class="rdo-body">
-    <div class="inner">
+  <!-- BODY -->
+  <section class="rnd-body">
+    <div class="rnd-body__inner">
 
-      <!-- 1) ECO-GENX -->
-      <h2>Lopende projecten — Eco-GenX</h2>
-      <p class="intro">
-        Projecten waarbij ik betrokken ben via Eco-GenX / vennootschap (advies, ontwerp, monitoring, proof-of-impact).
-      </p>
+      <!-- Eco-GenX -->
+      <div class="section">
+        <h2>Lopende projecten — Eco-GenX</h2>
+        <p class="lead">
+          Projecten waarbij ik betrokken ben via Eco-GenX / vennootschap (advies, ontwerp, monitoring, proof-of-impact).
+        </p>
 
-      <div class="acc-group">
-
-        <!-- Barebeek (toegevoegd) -->
-        <details class="acc">
-          <summary>
-            <div class="sum-left">
-              <div class="sum-title">Barebeek (Zemst) — PFAS piloot & demonstratie</div>
-              <div class="sum-sub">
-                Nature-based ingrepen om PFAS-vang efficiëntie in de sedimentvang te verhogen, met multi-line-of-evidence monitoring.
+        {% for p in page.ongoing_company %}
+          <details class="acc">
+            <summary>
+              <div>
+                <div class="acc-title">{{ p.title }}</div>
+                {% if p.subtitle %}<div class="acc-sub">{{ p.subtitle }}</div>{% endif %}
               </div>
+              <div class="acc-toggle" aria-hidden="true"></div>
+            </summary>
+            <div class="acc-body">
+              {{ p.body }}
+              {% if p.tags %}
+                <div class="tagrow">
+                  {% for t in p.tags %}
+                    <span class="tag">{{ t }}</span>
+                  {% endfor %}
+                </div>
+              {% endif %}
             </div>
-            <div class="plus">+</div>
-          </summary>
-          <div class="body">
-            <p>
-              In-situ aanpak met o.a. floating treatment wetlands en oeverbeplanting (en waar passend reactief substraat),
-              gekoppeld aan monitoring van concentraties én fluxen (richting grondwater/oppervlaktewater) om effectiviteit aantoonbaar te maken.
-            </p>
-            <div class="meta">
-              <span class="badge green">Eco-GenX</span>
-              <span class="badge">PFAS</span>
-              <span class="badge">wetlands</span>
-              <span class="badge">monitoring</span>
-            </div>
-          </div>
-        </details>
-
-        <!-- voorbeeld placeholder -->
-        <details class="acc">
-          <summary>
-            <div class="sum-left">
-              <div class="sum-title">PFAS RESOLVE — evidence & monitoring (voorbeeld)</div>
-              <div class="sum-sub">Korte uitleg wat jij wil tonen (later aanvullen).</div>
-            </div>
-            <div class="plus">+</div>
-          </summary>
-          <div class="body">
-            <p>Vul hier later details aan: doel, aanpak, deliverables, partners, status.</p>
-            <div class="meta">
-              <span class="badge green">Eco-GenX</span>
-              <span class="badge">PFAS</span>
-              <span class="badge">evidence</span>
-            </div>
-          </div>
-        </details>
-
+          </details>
+        {% endfor %}
       </div>
 
-      <!-- 2) UHASSELT -->
-      <h2>Lopende academische projecten — UHasselt (20%)</h2>
-      <p class="intro">
-        Projecten waarbij ik betrokken ben via mijn academische aanstelling (onderzoek, methodiek, publicatie/validatie).
-      </p>
+      <hr class="divider">
 
-      <div class="acc-group">
+      <!-- Academisch -->
+      <div class="section">
+        <h2>Lopende academische projecten — UHasselt (20%)</h2>
+        <p class="lead">
+          Projecten vanuit mijn academische aanstelling. Zo blijft het onderscheid helder voor de lezer.
+        </p>
 
-        <details class="acc">
-          <summary>
-            <div class="sum-left">
-              <div class="sum-title">PFAS fytoremediatie — veldexperimenten & mechanistische inzichten</div>
-              <div class="sum-sub">Voorbeeldstructuur: voeg je eigen titels en 2–3 lijnen toe.</div>
+        {% for p in page.ongoing_academic %}
+          <details class="acc">
+            <summary>
+              <div>
+                <div class="acc-title">{{ p.title }}</div>
+                {% if p.subtitle %}<div class="acc-sub">{{ p.subtitle }}</div>{% endif %}
+              </div>
+              <div class="acc-toggle" aria-hidden="true"></div>
+            </summary>
+            <div class="acc-body">
+              {{ p.body }}
+              {% if p.tags %}
+                <div class="tagrow">
+                  {% for t in p.tags %}
+                    <span class="tag">{{ t }}</span>
+                  {% endfor %}
+                </div>
+              {% endif %}
             </div>
-            <div class="plus">+</div>
-          </summary>
-          <div class="body">
-            <p>Vul hier je academische projecten aan (doel, aanpak, rol, output).</p>
-            <div class="meta">
-              <span class="badge">UHasselt</span>
-              <span class="badge">fytoremediatie</span>
-              <span class="badge">PFAS</span>
-            </div>
-          </div>
-        </details>
-
+          </details>
+        {% endfor %}
       </div>
 
-      <!-- 3) ARCHIEF -->
-      <h2>Archief</h2>
-      <p class="intro">
-        Afgeronde of oudere projecten, per jaar. Gebruik badges om Eco-GenX vs UHasselt duidelijk te houden.
-      </p>
+      <hr class="divider">
 
-      <div class="year">
-        <h3>2024</h3>
+      <!-- Archief -->
+      <div class="section">
+        <h2>Archief — 2019–2024</h2>
+        <p class="lead">
+          Afgeronde of oudere trajecten samengevoegd in één rubriek. Gebruik tags om “Eco-GenX” versus “UHasselt” duidelijk te houden.
+        </p>
 
-        <details class="acc">
-          <summary>
-            <div class="sum-left">
-              <div class="sum-title">Titel archiefproject — korte omschrijving</div>
-              <div class="sum-sub">1 zin: waarom relevant, wat werd gedaan.</div>
+        {% for p in page.archive_2019_2024 %}
+          <details class="acc">
+            <summary>
+              <div>
+                <div class="acc-title">{{ p.title }}</div>
+                {% if p.subtitle %}<div class="acc-sub">{{ p.subtitle }}</div>{% endif %}
+              </div>
+              <div class="acc-toggle" aria-hidden="true"></div>
+            </summary>
+            <div class="acc-body">
+              {{ p.body }}
+              {% if p.tags %}
+                <div class="tagrow">
+                  {% for t in p.tags %}
+                    <span class="tag">{{ t }}</span>
+                  {% endfor %}
+                </div>
+              {% endif %}
             </div>
-            <div class="plus">+</div>
-          </summary>
-          <div class="body">
-            <p>Detail (2–5 zinnen), eventueel link naar project/case/paper.</p>
-            <div class="meta">
-              <span class="badge green">Eco-GenX</span>
-              <span class="badge">tag</span>
-            </div>
-          </div>
-        </details>
-
-      </div>
-
-      <div class="year">
-        <h3>2023</h3>
-
-        <details class="acc">
-          <summary>
-            <div class="sum-left">
-              <div class="sum-title">Titel archiefproject — korte omschrijving</div>
-              <div class="sum-sub">1 zin: resultaat/impact.</div>
-            </div>
-            <div class="plus">+</div>
-          </summary>
-          <div class="body">
-            <p>Detailtekst.</p>
-            <div class="meta">
-              <span class="badge">UHasselt</span>
-              <span class="badge">tag</span>
-            </div>
-          </div>
-        </details>
-
+          </details>
+        {% endfor %}
       </div>
 
     </div>
