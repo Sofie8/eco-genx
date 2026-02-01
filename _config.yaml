@@ -22,24 +22,38 @@ defaults:
       path: ""
     values:
       layout: default
+
   # markdown files in /_members
   - scope:
       type: "members"
     values:
       layout: member
+
   # markdown files in /_posts
   - scope:
       type: "posts"
     values:
       layout: post
 
+  # markdown files in /_projects
+  - scope:
+      type: "projects"
+    values:
+      layout: default
+
 collections:
   # generate page for each member
   members:
     output: true
+
   # generate page for each post
   posts:
     output: true
+
+  # generate page for each project
+  projects:
+    output: true
+    permalink: /project/:name/
 
 # jekyll plugins
 plugins:
