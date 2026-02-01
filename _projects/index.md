@@ -5,7 +5,7 @@ permalink: /projects/
 ---
 
 <style>
-  /* Hide the default page title that the theme/layout injects */
+  /* Hide theme-injected title (soms zit die in header blocks) */
   .page-title,
   .page-header,
   .page-header h1,
@@ -13,14 +13,6 @@ permalink: /projects/
   main > h1:first-child{
     display:none !important;
   }
-
-  /* =========================================================
-     PROJECTS — Filter bar + uniform tile grid (Offshoots-like)
-     Fixes:
-     - geen "Projecten" hero/titelblok
-     - tiles altijd gelijke hoogte (cover crop)
-     - filters altijd klikbaar (z-index + pointer-events)
-     ========================================================= */
 
   /* full width page */
   main{ max-width:none !important; padding:0 !important; overflow:visible !important; }
@@ -32,8 +24,6 @@ permalink: /projects/
     --max: 1200px;
     --pad: 1.25rem;
     --cream: var(--eco-cream, #f6f4ee);
-    --ink: rgba(0,0,0,.86);
-    --muted: rgba(0,0,0,.62);
     --line: rgba(0,0,0,.10);
     --chip: #d8d8d8;
     --chip-active: #3a3a3a;
@@ -46,8 +36,8 @@ permalink: /projects/
     padding: 1.2rem 0 .9rem;
 
     position: relative;
-    z-index: 10;            /* ✅ boven alles */
-    pointer-events: auto;   /* ✅ altijd klikbaar */
+    z-index: 999;            /* boven alles */
+    pointer-events: auto;
   }
   .projects-top__inner{
     max-width: var(--max);
@@ -97,7 +87,7 @@ permalink: /projects/
     padding: 0 var(--pad);
   }
 
-  /* ✅ Uniform tiles grid */
+  /* Uniform tiles */
   .tilegrid{
     display:grid;
     grid-template-columns: repeat(4, minmax(0, 1fr));
@@ -114,7 +104,6 @@ permalink: /projects/
     position: relative;
   }
 
-  /* vaste media hoogte */
   .tile-media{
     width: 100%;
     height: 220px;
@@ -129,7 +118,7 @@ permalink: /projects/
     transform: scale(1.001);
   }
 
-  /* hover gradient + caption (maar mag clicks niet blokkeren) */
+  /* hover overlay mag clicks niet blokkeren */
   .tile::after{
     content:"";
     position:absolute;
@@ -137,7 +126,7 @@ permalink: /projects/
     background: linear-gradient(0deg, rgba(0,0,0,.50), rgba(0,0,0,0) 60%);
     opacity: 0;
     transition: opacity .15s ease;
-    pointer-events:none; /* ✅ cruciaal */
+    pointer-events:none;
   }
   .tile:hover::after{ opacity: 1; }
 
@@ -151,9 +140,10 @@ permalink: /projects/
     transform: translateY(6px);
     transition: opacity .15s ease, transform .15s ease;
     color: #fff;
-    pointer-events:none; /* ✅ tile blijft overal klikbaar */
+    pointer-events:none; /* tile blijft overal klikbaar */
   }
   .tile:hover .tile-cap{ opacity: 1; transform: translateY(0); }
+
   .tile-cap strong{
     display:block;
     font-size: 1.05rem;
@@ -170,7 +160,7 @@ permalink: /projects/
     padding: 1.2rem;
     border: 1px dashed rgba(0,0,0,.25);
     background: rgba(255,255,255,.55);
-    color: var(--muted);
+    color: rgba(0,0,0,.62);
   }
 
   @media (max-width: 1200px){
@@ -193,7 +183,14 @@ permalink: /projects/
     <div class="projects-top__inner">
       <p class="filters-title">Filters</p>
 
-      {% assign items = site.projects | sort: "order" %}
+      {% comment %}
+      ✅ BELANGRIJK:
+      - page.url is /projects/
+      - als je index.md per ongeluk in je collection zit, filteren we die eruit
+      {% endcomment %}
+
+      {% assign items = site.projects | sort: "order" | where_exp: "p", "p.url != page.url" %}
+
       {% assign alltags = "" | split: "|" %}
       {% for p in items %}
         {% if p.tags %}
@@ -250,7 +247,7 @@ permalink: /projects/
         </div>
       {% else %}
         <div class="empty">
-          Nog geen projecten gevonden. Voeg projectbestanden toe aan je <code>projects</code>-collectie met <code>cover</code> en <code>tags</code>.
+          Nog geen projecten gevonden. Voeg projectbestanden toe met <code>cover</code> en <code>tags</code>.
         </div>
       {% endif %}
     </div>
@@ -259,13 +256,13 @@ permalink: /projects/
 </div>
 
 <script>
-(function () {
+document.addEventListener('DOMContentLoaded', function () {
   const filters = document.getElementById('projFilters');
   const grid = document.getElementById('projGrid');
   if (!filters || !grid) return;
 
-  const chips = Array.from(filters.querySelectorAll('.chip'));
-  const tiles = Array.from(grid.querySelectorAll('.tile'));
+  const chips = Array.from(filters.querySelectorAll('button.chip'));
+  const tiles = Array.from(grid.querySelectorAll('a.tile'));
 
   function setActive(btn){
     chips.forEach(c => c.classList.remove('is-active'));
@@ -281,18 +278,17 @@ permalink: /projects/
     });
   }
 
-  /* ✅ robust click handling (capture=true zodat niks het “steelt”) */
+  // initial
+  apply('all');
+
   filters.addEventListener('click', function(e){
     const btn = e.target.closest('button.chip');
     if(!btn) return;
 
     e.preventDefault();
-    e.stopPropagation();
-
     const filter = btn.getAttribute('data-filter') || 'all';
     setActive(btn);
     apply(filter);
-  }, true);
-
-})();
+  });
+});
 </script>
