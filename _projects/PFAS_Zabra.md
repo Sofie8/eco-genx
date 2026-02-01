@@ -8,12 +8,12 @@ location: "Vlaanderen"
 client: "—"
 scope: "Assess → design → monitoring"
 tags: [restore, microproof]
-cover: /images/projects/pfas-zabra-cover.jpg
+cover: /project/images/pfas-zabra-cover.jpg
 subtitle: "Van staalname en risicobeoordeling tot multi-line-of-evidence monitoring."
 gallery:
-  - /images/projects/pfas-Z1.jpg
-  - /images/projects/pfas-Z2.jpg
-  - /images/projects/pfas-Z3.jpg
+  - /project/images/pfas-Z1.jpg
+  - /project/images/pfas-Z2.jpg
+  - /project/images/pfas-Z3.jpg
 ---
 
 ## Context
