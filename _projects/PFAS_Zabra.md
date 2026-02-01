@@ -1,5 +1,5 @@
 ---
-title: "PFAS Zabra"
+title: "PFAS Z."
 layout: project
 order: 1
 category: Restore
@@ -11,9 +11,6 @@ tags: [restore, microproof]
 cover: /images/project/pfas-zabra-cover.jpg
 subtitle: "Van staalname en risicobeoordeling tot multi-line-of-evidence monitoring."
 gallery:
-  - /images/project/pfas-Z1.jpg
-  - /images/project/pfas-Z2.jpg
-  - /images/project/pfas-Z3.jpg
 ---
 
 ## Context
