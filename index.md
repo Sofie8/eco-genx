@@ -318,28 +318,6 @@ nav:
 
 </div>
 
-<!-- Full-bleed proof block (uses your global .full-bleed helper in site.css) -->
-<div class="full-bleed">
-  <div class="grid-2x2">
-    <div class="cell photo">
-      <img src="{{ '/images/cert-1.jpg' | relative_url }}" alt="Analytische kwaliteit & meetbaar bewijs">
-    </div>
-    <div class="cell text">
-      <h2>Meetbaar bewijs, decision-ready advies.</h2>
-      <p>
-        Ik combineer fieldwork, labo en data om onzekerheid weg te nemen.
-        Geen ‘mooie belofte’, maar een aanpak die je kan verantwoorden — technisch én praktisch.
-      </p>
-      <p>
-        Van staalname en interpretatie tot monitoring en bijsturing: je krijgt duidelijke stappen en heldere conclusies.
-      </p>
-      <p>
-        <a href="{{ '/contact/' | relative_url }}">Even afstemmen →</a>
-      </p>
-    </div>
-  </div>
-</div>
-<style>
   /* =======================================================
      Certified block (Home) — 2x2 grid zoals je voorbeeld
      ======================================================= */
@@ -459,7 +437,7 @@ nav:
         Ideaal voor bodemherstel, fytoremediatie, monitoring van natuurlijke attenuatie
         en verificatie van bio-claims.
       </p>
-      <a class="cert-link" href="{{ '/contact/' | relative_url }}">Even sparren →</a>
+      <a class="cert-link" href="{{ '/contact/' | relative_url }}">Bekijk certificaten →</a>
     </div>
 
     <!-- 4) FOTO rechtsonder -->
