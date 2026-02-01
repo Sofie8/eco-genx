@@ -2,85 +2,57 @@
 title: Artikels & lezingen
 layout: default
 permalink: /over/artikels-lezingen/
-nav:
-  order: 3
-  tooltip: Artikels & lezingen
-
-# ======= CONTENT DATA (pas dit aan) =======
-hero_image: /images/over/artikels-hero.jpg
-
-# Optioneel: je "Code van goede praktijk"
-code:
-  title: "Code van goede praktijk (OVAM)"
-  subtitle: "Praktische richtlijnen voor burgers en terreinbeheer — helder, toepasbaar en onderbouwd."
-  image: /images/over/code-goede-praktijk.jpg
-  pdf: /files/code-goede-praktijk.pdf   # optioneel (zet leeg als je geen PDF wil)
-  bullets:
-    - "Voor wie: burgers, lokale besturen, terreinbeheerders"
-    - "Focus: heldere stappen, risico-inschatting, praktische maatregelen"
-    - "Gebruik: als leidraad in communicatie & praktijktoepassing"
-
-# Artikels (kaartjes)
-articles:
-  - title: "Artikel titel 1"
-    where: "Platform / krant / blog"
-    year: "2026"
-    link: ""  # bv. https://...
-    note: "1 zin context over onderwerp, doelgroep of impact."
-  - title: "Artikel titel 2"
-    where: "Platform / organisatie"
-    year: "2025"
-    link: ""
-    note: "Korte beschrijving."
-
-# Lezingen (kaartjes)
-talks:
-  - title: "Lezing voor burgers (voorbeeld)"
-    where: "Gemeente / zaal / event"
-    year: "2026"
-    note: "Interactieve sessie: uitleg, Q&A, praktische tips."
-  - title: "Infosessie voor buurtcomité (voorbeeld)"
-    where: "Buurt / wijk"
-    year: "2025"
-    note: "Toegepast: meetplan, interpretatie, wat wel/niet werkt."
-
-# Foto’s van lezingen (gallery)
-# Je kan zoveel items toevoegen als je wil
-lecture_photos:
-  - src: /images/over/lezingen/lezing-01.jpg
-    caption: "Lezing / infosessie (caption optioneel)"
-  - src: /images/over/lezingen/lezing-02.jpg
-    caption: "Q&A met burgers (caption optioneel)"
 ---
 
 <style>
   /* =========================================================
-     Artikels & lezingen — full-bleed hero + blocks
-     Scoped to .al-page
+     ARTIKELS & LEZINGEN — Eco-GenX (full-bleed + cards)
+     + FIX: header/nav niet sticky op deze pagina
      ========================================================= */
 
-  /* full width page */
+  /* ---------- FIX: header/navbar mag NIET sticky op deze pagina ---------- */
+  header,
+  header.background,
+  header nav,
+  nav.main-nav,
+  .site-header,
+  .navbar,
+  .nav-wrapper{
+    position: static !important;
+    top: auto !important;
+  }
+  header.is-sticky,
+  header.sticky,
+  .sticky,
+  .is-sticky{
+    position: static !important;
+    top: auto !important;
+  }
+  body{ padding-top: 0 !important; }
+
+  /* ---------- Full width page ---------- */
   main{ max-width:none !important; padding:0 !important; overflow:visible !important; }
   main > *, main .content, main article, main .page, main .post{
     max-width:none !important; padding:0 !important; margin:0 !important; overflow:visible !important;
   }
 
-  .al-page{
+  .al{
     --max: 1200px;
     --pad: 1.25rem;
 
-    --cream: var(--eco-cream, #f6f4ee);
-    --green: var(--eco-dark, #0b3b2f);
-    --green2: var(--eco-dark-2, #082a22);
+    --eco-dark: var(--eco-dark, #0b3b2f);
+    --eco-dark-2: var(--eco-dark-2, #082a22);
+    --eco-cream: var(--eco-cream, #f6f4ee);
 
     --ink: rgba(0,0,0,.86);
     --muted: rgba(0,0,0,.66);
     --line: rgba(0,0,0,.10);
 
-    --card: rgba(255,255,255,.65);
+    --shadow: 0 14px 36px rgba(0,0,0,.08);
+    --shadow2: 0 18px 44px rgba(0,0,0,.10);
   }
 
-  /* HERO */
+  /* ---------- HERO ---------- */
   .al-hero{
     position: relative;
     left: 50%; right: 50%;
@@ -88,354 +60,294 @@ lecture_photos:
     margin-left: -50vw; margin-right: -50vw;
 
     min-height: 520px;
-    background: #082a22;
+    background: var(--eco-dark-2);
     overflow: hidden;
   }
   .al-hero img{
-    position:absolute; inset:0;
-    width:100%; height:100%;
+    width:100%;
+    height:100%;
     object-fit: cover;
     display:block;
+    min-height: 520px;
   }
-  .al-hero::before{
+  .al-hero::after{
     content:"";
     position:absolute; inset:0;
     background: linear-gradient(90deg,
       rgba(8,42,34,.86) 0%,
-      rgba(8,42,34,.62) 45%,
+      rgba(8,42,34,.66) 45%,
       rgba(8,42,34,.18) 100%);
   }
+
   .al-hero__inner{
-    position: relative;
-    min-height: 520px;
+    position:absolute;
+    inset:0;
     display:flex;
     align-items:flex-end;
-    padding: 3.1rem 0 2.6rem;
+    padding: 3.0rem 0 2.4rem;
   }
-  .al-hero__inner .wrap{
+  .al-hero__content{
     max-width: var(--max);
     margin: 0 auto;
     padding: 0 var(--pad);
     color: rgba(255,255,255,.92);
   }
   .al-eyebrow{
-    font-size:.86rem;
-    letter-spacing:.10em;
+    font-size: .86rem;
+    letter-spacing: .10em;
     text-transform: uppercase;
-    opacity:.88;
-    margin: 0 0 .7rem;
+    opacity: .88;
+    margin-bottom: .7rem;
   }
   .al-title{
-    margin:0 0 .6rem;
+    margin: 0 0 .6rem;
     font-size: 3rem;
-    line-height:1.04;
-    letter-spacing:.02em;
+    line-height: 1.04;
+    letter-spacing: .02em;
     max-width: 22ch;
   }
   .al-lead{
-    margin:0;
-    max-width: 80ch;
-    line-height:1.7;
-    font-size: 1.08rem;
-    opacity:.92;
+    margin: 0;
+    max-width: 78ch;
+    line-height: 1.7;
+    opacity: .92;
+    font-size: 1.06rem;
   }
 
-  /* SECTION WRAPPER */
-  .al-section{
-    background: var(--cream);
+  /* ---------- BODY ---------- */
+  .al-body{
+    background: var(--eco-cream);
     position: relative;
     left: 50%; right: 50%;
     width: 100vw;
     margin-left: -50vw; margin-right: -50vw;
-    padding: 2.6rem 0;
+    padding: 2.6rem 0 3.4rem;
     border-top: 1px solid rgba(0,0,0,.06);
   }
-  .al-section .wrap{
+  .al-body__inner{
     max-width: var(--max);
     margin: 0 auto;
     padding: 0 var(--pad);
+    display: grid;
+    grid-template-columns: 1.1fr .9fr;
+    gap: 1.8rem;
+    align-items: start;
   }
 
-  .al-h2{
-    margin:0 0 .55rem;
-    font-size: 1.8rem;
-    color: var(--ink);
-    line-height:1.15;
-  }
-  .al-intro{
-    margin:0 0 1.2rem;
-    color: var(--muted);
-    max-width: 85ch;
-    line-height:1.7;
-  }
-
-  /* Cards */
-  .grid{
-    display:grid;
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-    gap: 1.1rem;
-  }
-  .card{
-    background: var(--card);
+  .panel{
+    background: rgba(255,255,255,.62);
     border: 1px solid rgba(0,0,0,.08);
     border-radius: 18px;
-    overflow:hidden;
-    box-shadow: 0 14px 36px rgba(0,0,0,.06);
-    padding: 1.1rem 1.15rem;
+    box-shadow: var(--shadow);
+    overflow: hidden;
   }
-  .card h3{
-    margin:0 0 .4rem;
-    font-size: 1.1rem;
-    line-height:1.25;
+  .panel__head{
+    padding: 1.25rem 1.35rem 1.05rem;
+    border-bottom: 1px solid rgba(0,0,0,.06);
+  }
+  .panel__head h2{
+    margin: 0 0 .35rem;
+    font-size: 1.45rem;
     color: var(--ink);
   }
-  .meta{
+  .panel__head p{
+    margin: 0;
     color: var(--muted);
-    font-size: .95rem;
-    display:flex;
-    flex-wrap:wrap;
-    gap:.5rem;
-    margin-bottom:.55rem;
-  }
-  .card p{
-    margin:0;
-    color: rgba(0,0,0,.74);
-    line-height:1.65;
-  }
-  .card a{
-    display:inline-block;
-    margin-top:.75rem;
-    text-decoration:none;
-    color: rgba(11,59,47,.92);
-    font-weight: 650;
-    border-bottom: 1px solid rgba(11,59,47,.35);
-    padding-bottom:.06rem;
+    line-height: 1.7;
+    max-width: 75ch;
   }
 
-  /* CODE BLOCK (image + text) */
-  .code-block{
-    display:grid;
-    grid-template-columns: 1.05fr .95fr;
-    gap: 1.3rem;
-    align-items: stretch;
+  .panel__body{
+    padding: 1.25rem 1.35rem 1.35rem;
   }
-  .code-media{
-    border-radius: 18px;
-    overflow:hidden;
-    border: 1px solid rgba(0,0,0,.10);
+
+  /* media block inside panel */
+  .media{
+    border-radius: 16px;
+    overflow: hidden;
+    border: 1px solid rgba(0,0,0,.08);
+    background: rgba(0,0,0,.04);
     box-shadow: 0 14px 36px rgba(0,0,0,.06);
-    background: rgba(255,255,255,.55);
   }
-  .code-media img{
+  .media img{
     width:100%;
-    height:100%;
-    min-height: 360px;
+    height: 320px;
     object-fit: cover;
     display:block;
   }
-  .code-text{
-    background: rgba(255,255,255,.55);
-    border: 1px solid rgba(0,0,0,.08);
-    border-radius: 18px;
-    padding: 1.4rem 1.5rem;
-    box-shadow: 0 14px 36px rgba(0,0,0,.06);
-    display:flex;
-    flex-direction:column;
-    justify-content:center;
+  .media .cap{
+    padding: .85rem .95rem;
+    color: var(--muted);
+    line-height: 1.65;
+    background: rgba(255,255,255,.70);
   }
-  .code-text h3{
-    margin:0 0 .35rem;
-    font-size: 1.25rem;
+
+  /* cards list */
+  .cards{
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+  .card{
+    border: 1px solid rgba(0,0,0,.08);
+    border-radius: 16px;
+    padding: 1rem 1.05rem;
+    background: rgba(255,255,255,.55);
+    box-shadow: 0 14px 36px rgba(0,0,0,.05);
+  }
+  .card h3{
+    margin: 0 0 .35rem;
+    font-size: 1.1rem;
     color: var(--ink);
   }
-  .code-text .sub{
-    margin:0 0 .9rem;
-    color: var(--muted);
-    line-height:1.65;
-  }
-  .code-text ul{
+  .card p{
     margin: 0;
-    padding-left: 1.1rem;
-    color: rgba(0,0,0,.74);
-    line-height:1.7;
+    color: var(--muted);
+    line-height: 1.65;
   }
-  .code-actions{
-    margin-top: 1rem;
+
+  .list{
+    margin: .75rem 0 0;
+    padding-left: 1.2rem;
+    color: rgba(0,0,0,.74);
+  }
+  .list li{ margin: .35rem 0; }
+
+  /* CTA */
+  .al-cta{
+    margin-top: 1.4rem;
+    padding: 1.25rem 1.35rem;
+    border-radius: 18px;
+    border: 1px solid rgba(11,59,47,.18);
+    background: rgba(11,59,47,.08);
+  }
+  .al-cta h3{ margin: 0 0 .35rem; color: var(--ink); }
+  .al-cta p{ margin: 0; color: var(--muted); line-height: 1.7; }
+  .btnrow{
     display:flex;
     gap:.7rem;
     flex-wrap:wrap;
+    margin-top: .95rem;
   }
   .btn{
     display:inline-flex;
     align-items:center;
     justify-content:center;
-    padding: .65rem .9rem;
+    padding: .65rem .95rem;
     border-radius: 12px;
-    border: 1px solid rgba(11,59,47,.22);
-    background: rgba(11,59,47,.06);
     text-decoration:none;
+    border: 1px solid rgba(11,59,47,.22);
+    background: rgba(11,59,47,.10);
     color: rgba(11,59,47,.92);
-    font-weight: 650;
-    white-space:nowrap;
+    font-weight: 600;
   }
-  .btn:hover{ background: rgba(11,59,47,.10); }
-
-  /* GALLERY */
-  .gal{
-    display:grid;
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-    gap: 1rem;
-    margin-top: 1.1rem;
-  }
-  .gal figure{
-    margin:0;
-    border-radius: 18px;
-    overflow:hidden;
-    border: 1px solid rgba(0,0,0,.08);
-    box-shadow: 0 14px 36px rgba(0,0,0,.06);
-    background: rgba(255,255,255,.55);
-  }
-  .gal img{
-    width:100%;
-    height: 260px;
-    object-fit: cover;
-    display:block;
-  }
-  .cap{
-    padding: .75rem .85rem;
-    color: rgba(0,0,0,.72);
-    font-size: .95rem;
-    line-height: 1.5;
-  }
+  .btn:hover{ background: rgba(11,59,47,.14); }
 
   @media (max-width: 980px){
-    .al-title{ font-size: 2.2rem; }
-    .al-hero, .al-hero__inner{ min-height: 520px; }
-    .grid{ grid-template-columns: 1fr; }
-    .code-block{ grid-template-columns: 1fr; }
-    .code-media img{ min-height: 320px; }
-    .gal{ grid-template-columns: 1fr; }
-    .gal img{ height: 320px; }
+    .al-title{ font-size: 2.25rem; }
+    .al-body__inner{ grid-template-columns: 1fr; }
+    .media img{ height: 280px; }
   }
 </style>
 
-<div class="al-page">
+<div class="al">
 
   <!-- HERO -->
-  <header class="al-hero">
-    {% if page.hero_image %}
-      <img src="{{ page.hero_image | relative_url }}" alt="Artikels & lezingen">
-    {% endif %}
+  <section class="al-hero">
+    <img src="{{ '/images/about-talks-hero.jpg' | relative_url }}" alt="Lezingen en kennisdeling Eco-GenX">
     <div class="al-hero__inner">
-      <div class="wrap">
-        <div class="al-eyebrow">Eco-GenX · Over</div>
-        <h1 class="al-title">Artikels & lezingen</h1>
+      <div class="al-hero__content">
+        <div class="al-eyebrow">Over Eco-GenX · Artikels & lezingen</div>
+        <h1 class="al-title">Kennis, praktijk & communicatie</h1>
         <p class="al-lead">
-          Praktijkgerichte communicatie — van heldere richtlijnen en artikels tot lezingen voor burgers,
-          lokale besturen en stakeholders. Altijd met focus op meetbaarheid en toepasbaarheid.
+          Ik deel inzichten uit fytotechnologie, bodem- en milieumicrobiologie en data-gedreven monitoring —
+          via richtlijnen, artikels en lezingen voor professionals én burgers.
         </p>
       </div>
     </div>
-  </header>
+  </section>
 
-  <!-- CODE VAN GOEDE PRAKTIJK -->
-  <section class="al-section" aria-label="Code van goede praktijk">
-    <div class="wrap">
-      <h2 class="al-h2">{{ page.code.title }}</h2>
-      <p class="al-intro">{{ page.code.subtitle }}</p>
+  <!-- BODY -->
+  <section class="al-body">
+    <div class="al-body__inner">
 
-      <div class="code-block">
-        <div class="code-media">
-          {% if page.code.image %}
-            <img src="{{ page.code.image | relative_url }}" alt="Code van goede praktijk">
-          {% endif %}
+      <!-- LEFT: Code van Goede Praktijk -->
+      <div class="panel">
+        <div class="panel__head">
+          <h2>Code van Goede Praktijk Fytoremediatie (OVAM)</h2>
+          <p>
+            Ik was mede-auteur van een praktijkgerichte handleiding om fytoremediatie correct en efficiënt toe te passen in Vlaanderen.
+            Van ontwerpkeuzes tot monitoring en kwaliteitsbewaking.
+          </p>
         </div>
 
-        <div class="code-text">
-          <h3>Wat je mag verwachten</h3>
-          {% if page.code.bullets %}
-            <ul>
-              {% for b in page.code.bullets %}
-                <li>{{ b }}</li>
-              {% endfor %}
-            </ul>
-          {% endif %}
+        <div class="panel__body">
+          <div class="media">
+            <img src="{{ '/images/code-ovam-cover.jpg' | relative_url }}" alt="Cover Code van Goede Praktijk Fytoremediatie">
+            <div class="cap">
+              Upload hier je cover/scan. Bestandsnaam-tip: <strong>images/code-ovam-cover.jpg</strong>
+              (of pas het pad hierboven aan).
+            </div>
+          </div>
 
-          <div class="code-actions">
-            {% if page.code.pdf and page.code.pdf != "" %}
-              <a class="btn" href="{{ page.code.pdf | relative_url }}">Download PDF →</a>
-            {% endif %}
-            <a class="btn" href="{{ '/contact/' | relative_url }}">Vraag samenwerking →</a>
+          <ul class="list">
+            <li>praktische richtlijnen voor ontwerp en implementatie</li>
+            <li>risico’s beheersen met meetbaar bewijs</li>
+            <li>monitoring: wat, wanneer en waarom meten</li>
+          </ul>
+
+          <div class="al-cta">
+            <h3>Wil je dit toepassen op jouw site?</h3>
+            <p>Stuur je context en doel. Dan vertaal ik richtlijnen naar een evidence-plan met haalbare stappen.</p>
+            <div class="btnrow">
+              <a class="btn" href="{{ '/contact/' | relative_url }}">Contacteer mij →</a>
+              <a class="btn" href="{{ '/restore/' | relative_url }}">Bekijk Restore →</a>
+            </div>
           </div>
         </div>
       </div>
-    </div>
-  </section>
 
-  <!-- ARTIKELS -->
-  <section class="al-section" aria-label="Artikels">
-    <div class="wrap">
-      <h2 class="al-h2">Artikels</h2>
-      <p class="al-intro">Selectie van publicaties en bijdragen. (Vul aan of link door naar externe pagina’s.)</p>
+      <!-- RIGHT: Artikels + lezingen (cards) -->
+      <div class="panel">
+        <div class="panel__head">
+          <h2>Lezingen & communicatie</h2>
+          <p>
+            Voor burgers, bedrijven en organisaties: helder, onderbouwd en toepasbaar.
+            Voeg hieronder makkelijk foto’s/links toe per lezing of artikel.
+          </p>
+        </div>
 
-      {% if page.articles and page.articles.size > 0 %}
-        <div class="grid">
-          {% for a in page.articles %}
+        <div class="panel__body">
+          <div class="cards">
+
             <div class="card">
-              <h3>{{ a.title }}</h3>
-              <div class="meta">
-                {% if a.where %}<span>{{ a.where }}</span>{% endif %}
-                {% if a.year %}<span>· {{ a.year }}</span>{% endif %}
-              </div>
-              {% if a.note %}<p>{{ a.note }}</p>{% endif %}
-              {% if a.link and a.link != "" %}
-                <a href="{{ a.link }}" target="_blank" rel="noopener">Lees artikel →</a>
-              {% endif %}
+              <h3>Lezing · Bodem als levend systeem</h3>
+              <p>Korte intro (plaats, doelgroep, thema). Voeg een foto toe of link later.</p>
             </div>
-          {% endfor %}
-        </div>
-      {% else %}
-        <div class="card">
-          <h3>Nog geen artikels ingevuld</h3>
-          <p>Vul de lijst aan in de front matter onder <code>articles:</code>.</p>
-        </div>
-      {% endif %}
-    </div>
-  </section>
 
-  <!-- LEZINGEN -->
-  <section class="al-section" aria-label="Lezingen">
-    <div class="wrap">
-      <h2 class="al-h2">Lezingen</h2>
-      <p class="al-intro">Voor burgers, lokale besturen en organisaties — met ruimte voor vragen en praktische vertaling.</p>
-
-      {% if page.talks and page.talks.size > 0 %}
-        <div class="grid">
-          {% for t in page.talks %}
             <div class="card">
-              <h3>{{ t.title }}</h3>
-              <div class="meta">
-                {% if t.where %}<span>{{ t.where }}</span>{% endif %}
-                {% if t.year %}<span>· {{ t.year }}</span>{% endif %}
-              </div>
-              {% if t.note %}<p>{{ t.note }}</p>{% endif %}
-              <a href="{{ '/contact/' | relative_url }}">Boek een lezing →</a>
+              <h3>Lezing · PFAS & nature-based herstel</h3>
+              <p>Hoe combineer je risico, meetplan en realistische interventies — met transparante monitoring.</p>
             </div>
-          {% endfor %}
-        </div>
-      {% endif %}
 
-      {% if page.lecture_photos and page.lecture_photos.size > 0 %}
-        <h2 class="al-h2" style="margin-top:2.2rem;">Beelden</h2>
-        <div class="gal">
-          {% for g in page.lecture_photos %}
-            <figure>
-              <img src="{{ g.src | relative_url }}" alt="{{ g.caption | default: 'Lezing' }}">
-              {% if g.caption %}<figcaption class="cap">{{ g.caption }}</figcaption>{% endif %}
-            </figure>
-          {% endfor %}
+            <div class="card">
+              <h3>Artikel / bijdrage · Praktijk & beleid</h3>
+              <p>Snippets van publicaties of bijdragen (met eventueel download/link later).</p>
+            </div>
+
+          </div>
+
+          <div style="margin-top:1rem;" class="media">
+            <img src="{{ '/images/talks-1.jpg' | relative_url }}" alt="Foto van een lezing of workshop">
+            <div class="cap">
+              Upload een lezingfoto als <strong>images/talks-1.jpg</strong> (of pas het pad aan).
+              Wil je meerdere? Ik kan er een mooie gallery van maken.
+            </div>
+          </div>
+
         </div>
-      {% endif %}
+      </div>
+
     </div>
   </section>
 
