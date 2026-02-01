@@ -25,22 +25,40 @@ layout: default
     --line: rgba(0,0,0,.10);
   }
 
-  /* HERO image */
+  /* =========================================================
+     CRITICAL FIX: hero mag nooit sticky/fixed zijn
+     (anders bedekt hij je content bij scroll)
+     ========================================================= */
+  .proj-hero,
+  .proj-hero__media,
+  .proj-hero__inner,
+  .proj-hero__titlebox{
+    position: relative !important;
+    top: auto !important;
+    inset: auto !important;
+    transform: none !important;
+  }
+
+  /* HERO container */
   .proj-hero{
-    position: relative;
     left: 50%; right: 50%;
     width: 100vw;
     margin-left: -50vw; margin-right: -50vw;
 
     background: var(--green2);
     border-bottom: 1px solid rgba(0,0,0,.08);
+
+    z-index: 0; /* <-- onder body */
   }
+
+  /* HERO image area */
   .proj-hero__media{
     width: 100%;
     height: min(56vh, 640px);
     min-height: 360px;
-    position: relative;
     overflow: hidden;
+
+    position: relative !important; /* keep */
   }
   .proj-hero__media img{
     width:100%;
@@ -48,6 +66,7 @@ layout: default
     object-fit: cover;
     display:block;
   }
+
   .proj-hero__shade{
     position:absolute; inset:0;
     background: linear-gradient(90deg,
@@ -57,10 +76,10 @@ layout: default
     pointer-events:none;
   }
 
-  /* Title strip over hero */
+  /* Title overlay over hero (this can stay absolute, but only inside hero) */
   .proj-hero__inner{
-    position:absolute;
-    inset: 0;
+    position:absolute !important;
+    inset: 0 !important;
     display:flex;
     align-items:flex-end;
   }
@@ -96,16 +115,31 @@ layout: default
     font-size: 1.05rem;
   }
 
+  /* back link */
+  .proj-back{
+    display:inline-flex;
+    gap:.4rem;
+    align-items:center;
+    color: rgba(255,255,255,.92);
+    text-decoration:none;
+    border-bottom: 1px solid rgba(255,255,255,.35);
+    padding-bottom: .12rem;
+    margin-top: .9rem;
+  }
+
   /* BODY */
   .proj-body{
     background: var(--cream);
-    position: relative;
     left: 50%; right: 50%;
     width: 100vw;
     margin-left: -50vw; margin-right: -50vw;
     padding: 2.4rem 0 3.2rem;
     border-top: 1px solid rgba(0,0,0,.06);
+
+    position: relative;
+    z-index: 2; /* <-- BODY altijd boven hero */
   }
+
   .proj-body .inner{
     max-width: var(--max);
     margin: 0 auto;
@@ -225,18 +259,6 @@ layout: default
     color: rgba(0,0,0,.72);
     font-size: .95rem;
     line-height: 1.5;
-  }
-
-  /* back link */
-  .proj-back{
-    display:inline-flex;
-    gap:.4rem;
-    align-items:center;
-    color: rgba(255,255,255,.92);
-    text-decoration:none;
-    border-bottom: 1px solid rgba(255,255,255,.35);
-    padding-bottom: .12rem;
-    margin-top: .9rem;
   }
 
   @media (max-width: 980px){
