@@ -8,25 +8,52 @@ nav:
 ---
 
 <style>
-  /* ---------------------------------------------------------
-     Restore page — full-width hero + blocks (NO pills)
+  /* =========================================================
+     RESTORE — full width service page (no white band on top)
      Scoped to .svc-restore
-     --------------------------------------------------------- */
+     ========================================================= */
+
+  /* 1) neutraliseer theme container/padding die de "witte band" veroorzaakt */
+  main{
+    max-width: none !important;
+    padding: 0 !important;
+    overflow: visible !important;
+  }
+  main > *,
+  main .content,
+  main article,
+  main .page,
+  main .post{
+    max-width: none !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    overflow: visible !important;
+  }
 
   .svc-restore{
     --cream: #f6f4ee;
-    --ink: rgba(0,0,0,.86);
+    --ink: rgba(0,0,0,.88);
     --muted: rgba(0,0,0,.68);
     --line: rgba(0,0,0,.08);
     --eco-dark: #0b3b2f;
     --eco-dark-2: #082a22;
   }
 
-  /* HERO (full width via .full-bleed wrapper) */
+  /* HERO full-bleed */
   .svc-restore .hero{
+    position: relative;
+    left: 50%;
+    right: 50%;
+    width: 100vw;
+    margin-left: -50vw;
+    margin-right: -50vw;
+
+    /* 2) dit haalt de resterende “band” weg (main had vroeger 2.5rem) */
+    margin-top: -2.5rem;
+
     background: linear-gradient(180deg, rgba(11,59,47,.92), rgba(8,42,34,.92));
     color: rgba(255,255,255,.92);
-    padding: 4.8rem 0 3.2rem;
+    padding: 4.2rem 0 3.2rem;
   }
 
   .svc-restore .hero-inner{
@@ -43,14 +70,14 @@ nav:
     font-size: .86rem;
     letter-spacing: .10em;
     text-transform: uppercase;
-    opacity: .8;
+    opacity: .82;
     margin-bottom: .6rem;
   }
 
-  .svc-restore .hero h1{
-    margin: 0 0 .6rem;
+  .svc-restore h1{
+    margin: 0 0 .7rem;
     font-size: 3rem;
-    line-height: 1.04;
+    line-height: 1.05;
     letter-spacing: .02em;
   }
 
@@ -58,7 +85,7 @@ nav:
     margin: 0;
     max-width: 72ch;
     line-height: 1.7;
-    opacity: .92;
+    opacity: .93;
     font-size: 1.05rem;
   }
 
@@ -77,8 +104,15 @@ nav:
   }
   .svc-restore .hero-card li{ margin:.35rem 0; }
 
-  /* BLOCKS (full width via .full-bleed wrapper) */
+  /* Full width content blocks */
   .svc-restore .block{
+    position: relative;
+    left: 50%;
+    right: 50%;
+    width: 100vw;
+    margin-left: -50vw;
+    margin-right: -50vw;
+
     display:grid;
     grid-template-columns: 1.15fr 1fr;
     min-height: 560px;
@@ -111,12 +145,12 @@ nav:
   .svc-restore .text h2{
     margin: 0 0 .75rem;
     font-size: 2.25rem;
-    line-height: 1.08;
+    line-height: 1.10;
     color: var(--ink);
   }
 
   .svc-restore .lead{
-    margin: 0 0 1.2rem;
+    margin: 0 0 1.15rem;
     color: var(--muted);
     line-height: 1.75;
     max-width: 75ch;
@@ -141,8 +175,15 @@ nav:
   }
   .svc-restore .key li{ margin: .35rem 0; }
 
-  /* CTA (full width via .full-bleed wrapper) */
+  /* CTA */
   .svc-restore .cta{
+    position: relative;
+    left: 50%;
+    right: 50%;
+    width: 100vw;
+    margin-left: -50vw;
+    margin-right: -50vw;
+
     background: var(--eco-dark);
     color: rgba(255,255,255,.92);
     padding: 2.6rem 0;
@@ -164,7 +205,7 @@ nav:
   .svc-restore .cta p{
     margin:0;
     opacity:.9;
-    max-width: 70ch;
+    max-width: 72ch;
   }
   .svc-restore .cta a{
     display:inline-flex;
@@ -185,7 +226,7 @@ nav:
       grid-template-columns: 1fr;
       align-items: start;
     }
-    .svc-restore .hero h1{ font-size: 2.2rem; }
+    .svc-restore h1{ font-size: 2.2rem; }
     .svc-restore .block,
     .svc-restore .block.reverse{
       grid-template-columns: 1fr;
@@ -199,8 +240,8 @@ nav:
 
 <div class="svc-restore">
 
-  <!-- HERO (full width) -->
-  <section class="hero full-bleed">
+  <!-- HERO -->
+  <section class="hero">
     <div class="hero-inner">
       <div>
         <div class="eyebrow">Diensten · Restore</div>
@@ -222,8 +263,8 @@ nav:
     </div>
   </section>
 
-  <!-- BLOCK 1 (full width) -->
-  <section class="block full-bleed">
+  <!-- BLOCK 1 -->
+  <section class="block">
     <div class="photo">
       <img src="{{ '/images/restore-1.jpg' | relative_url }}" alt="Tools om microbiële afbraak te beoordelen">
     </div>
@@ -252,8 +293,8 @@ nav:
     </div>
   </section>
 
-  <!-- BLOCK 2 (full width) -->
-  <section class="block reverse full-bleed">
+  <!-- BLOCK 2 -->
+  <section class="block reverse">
     <div class="text">
       <h2>Fytoremediatie-specifieke bodem en plant-staalname</h2>
       <p class="lead">
@@ -280,8 +321,8 @@ nav:
     </div>
   </section>
 
-  <!-- BLOCK 3 (full width) -->
-  <section class="block full-bleed">
+  <!-- BLOCK 3 -->
+  <section class="block">
     <div class="photo">
       <img src="{{ '/images/restore-3.jpg' | relative_url }}" alt="Monitoring van fytoremediatie en natuurlijke attenuatie">
     </div>
@@ -308,8 +349,8 @@ nav:
     </div>
   </section>
 
-  <!-- CTA (full width) -->
-  <section class="cta full-bleed">
+  <!-- CTA -->
+  <section class="cta">
     <div class="cta-inner">
       <div>
         <h3>Restore-traject opstarten?</h3>
