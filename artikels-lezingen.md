@@ -53,66 +53,75 @@ permalink: /over/artikels-lezingen/
   }
 
   /* ---------- HERO ---------- */
-  .al-hero{
-    position: relative;
-    left: 50%; right: 50%;
-    width: 100vw;
-    margin-left: -50vw; margin-right: -50vw;
+.al-hero{
+  position: relative;
+  left: 50%; right: 50%;
+  width: 100vw;
+  margin-left: -50vw; margin-right: -50vw;
 
-    min-height: 520px;
-    background: var(--eco-dark-2);
-    overflow: hidden;
-  }
-  .al-hero img{
-    width:100%;
-    height:100%;
-    object-fit: cover;
-    display:block;
-    min-height: 520px;
-  }
-  .al-hero::after{
-    content:"";
-    position:absolute; inset:0;
-    background: linear-gradient(90deg,
-      rgba(8,42,34,.86) 0%,
-      rgba(8,42,34,.66) 45%,
-      rgba(8,42,34,.18) 100%);
-  }
+  min-height: 520px;
+  background: var(--eco-dark-2);
+  overflow: hidden;
+}
 
-  .al-hero__inner{
-    position:absolute;
-    inset:0;
-    display:flex;
-    align-items:flex-end;
-    padding: 3.0rem 0 2.4rem;
-  }
-  .al-hero__content{
-    max-width: var(--max);
-    margin: 0 auto;
-    padding: 0 var(--pad);
-    color: rgba(255,255,255,.92);
-  }
-  .al-eyebrow{
-    font-size: .86rem;
-    letter-spacing: .10em;
-    text-transform: uppercase;
-    opacity: .88;
-    margin-bottom: .7rem;
-  }
-  .al-title{
-    margin: 0 0 .6rem;
-    font-size: 3rem;
-    line-height: 1.04;
-    letter-spacing: .02em;
-    max-width: 22ch;
-  }
-  .al-lead{
-    margin: 0;
-    max-width: 78ch;
-    line-height: 1.7;
-    opacity: .92;
-    font-size: 1.06rem;
-  }
+/* full-bleed image stays full width */
+.al-hero img{
+  width:100%;
+  height:100%;
+  object-fit: cover;
+  display:block;
+  min-height: 520px;
+}
+
+.al-hero::after{
+  content:"";
+  position:absolute; inset:0;
+  background: linear-gradient(90deg,
+    rgba(8,42,34,.86) 0%,
+    rgba(8,42,34,.66) 45%,
+    rgba(8,42,34,.18) 100%);
+}
+
+/* ✅ inner content is LIMITED in width (zoals Projects) */
+.al-hero__inner{
+  position:absolute;
+  inset:0;
+  display:flex;
+  align-items:flex-end;
+  padding: 3.0rem 0 2.4rem;
+}
+
+/* ✅ THIS is the key: max width like projects */
+.al-hero__content{
+  max-width: 1200px;      /* <-- zelfde max als projects */
+  width: 100%;
+  margin: 0 auto;
+  padding: 0 1.25rem;     /* <-- zelfde padding als projects */
+  color: rgba(255,255,255,.92);
+}
+
+/* make title block not too wide */
+.al-title{
+  margin: 0 0 .6rem;
+  font-size: 3rem;
+  line-height: 1.04;
+  letter-spacing: .02em;
+  max-width: 20ch;        /* ✅ iets compacter */
+}
+
+.al-lead{
+  margin: 0;
+  max-width: 70ch;        /* ✅ compacter zoals projects */
+  line-height: 1.7;
+  opacity: .92;
+  font-size: 1.06rem;
+}
+
+/* responsive */
+@media (max-width: 980px){
+  .al-title{ font-size: 2.25rem; max-width: 22ch; }
+  .al-lead{ max-width: 68ch; }
+}
 
   /* ---------- BODY ---------- */
   .al-body{
