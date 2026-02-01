@@ -35,11 +35,11 @@ defaults:
     values:
       layout: post
 
-  # markdown files in /_projects
+  # project items in /_projects
   - scope:
       type: "projects"
     values:
-      layout: default
+      layout: project
 
 collections:
   # generate page for each member
