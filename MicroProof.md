@@ -274,15 +274,6 @@ nav:
 
 <div class="svc-microproof">
 
-  <!-- service pills (rechtsboven) -->
-  <div class="service-topbar">
-    <div class="service-pills">
-      <a href="{{ '/restore/' | relative_url }}">Restore</a>
-      <a class="is-active" href="{{ '/microproof/' | relative_url }}">MicroProof</a>
-      <a href="{{ '/plantiq/' | relative_url }}">PlantIQ</a>
-    </div>
-  </div>
-
   <!-- HERO -->
   <section class="hero">
     <div class="hero-inner">
