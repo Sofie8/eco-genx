@@ -333,3 +333,5 @@ nav.main-nav a:hover{
   background: rgba(11,59,47,.96) !important; /* eco dark */
   border: 1px solid rgba(255,255,255,.12);
 }
+/* optional: submenu nooit buiten scherm */
+.nav-dd__menu { max-width: calc(100vw - 2rem); }
