@@ -96,3 +96,23 @@ collections:
   projects:
     output: true
     permalink: /project/:name/
+defaults:
+  - scope:
+      path: ""
+    values:
+      layout: default
+
+  - scope:
+      type: "members"
+    values:
+      layout: member
+
+  - scope:
+      type: "posts"
+    values:
+      layout: post
+
+  - scope:
+      type: "projects"
+    values:
+      layout: project
