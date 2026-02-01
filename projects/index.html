@@ -715,36 +715,42 @@
 </div>
 
 <script>
-  (function(){
-    const filters = document.getElementById('projFilters');
-    const grid = document.getElementById('projGrid');
-    if\(!filters \|| !grid) return;
+(function () {
+  const filters = document.getElementById('projFilters');
+  const grid = document.getElementById('projGrid');
+  if \(!filters \|| !grid) return;
 
-    const chips = Array.from(filters.querySelectorAll('.chip'));
-    const tiles = Array.from(grid.querySelectorAll('.tile'));
+  const chips = Array.from(filters.querySelectorAll('.chip'));
+  const tiles = Array.from(grid.querySelectorAll('.tile'));
 
-    function setActive(btn){
-      chips.forEach(c => c.classList.remove('is-active'));
-      btn.classList.add('is-active');
-    }
+  function setActive(btn){
+    chips.forEach(c => c.classList.remove('is-active'));
+    btn.classList.add('is-active');
+  }
 
-    function apply(filter){
-      tiles.forEach(tile => {
-        const tags = \(tile.getAttribute\('data-tags') \|| '').toLowerCase\().trim\();
-        const tagList = tags ? tags.split(/\s+/) : [];
-        const show = (filter === 'all') ? true : tagList.includes(filter);
-        tile.style.display = show ? '' : 'none';
-      });
-    }
-
-    filters.addEventListener('click', (e) => {
-      const btn = e.target.closest('.chip');
-      if(!btn) return;
-      const filter = btn.getAttribute('data-filter');
-      setActive(btn);
-      apply(filter);
+  function apply(filter){
+    tiles.forEach(tile => {
+      const tags = \(tile.getAttribute\('data-tags') \|| '').toLowerCase\().trim\();
+      const tagList = tags ? tags.split(/\s+/) : [];
+      const show = (filter === 'all') ? true : tagList.includes(filter);
+      tile.style.display = show ? '' : 'none';
     });
-  })();
+  }
+
+  // ✅ robust click handling
+  filters.addEventListener('click', function(e){
+    const btn = e.target.closest('button.chip');
+    if(!btn) return;
+
+    e.preventDefault();
+    e.stopPropagation();
+
+    const filter = btn.getAttribute\('data-filter') \|| 'all';
+    setActive(btn);
+    apply(filter);
+  }, true); // capture=true -> beats other handlers
+
+})();
 </script>
   </section>
 
