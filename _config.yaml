@@ -87,3 +87,12 @@ exclude:
 # markdown options
 kramdown:
   entity_output: :as_input
+collections:
+  members:
+    output: true
+  posts:
+    output: true
+
+  projects:
+    output: true
+    permalink: /project/:name/
