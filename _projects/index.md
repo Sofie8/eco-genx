@@ -6,19 +6,20 @@ permalink: /projects/
 
 <style>
   /* Hide the default page title that the theme/layout injects */
-.page-title,
-.page-header,
-.page-header h1,
-h1.page-title,
-main > h1:first-child{
-  display:none !important;
-}
+  .page-title,
+  .page-header,
+  .page-header h1,
+  h1.page-title,
+  main > h1:first-child{
+    display:none !important;
+  }
 
   /* =========================================================
      PROJECTS — Filter bar + uniform tile grid (Offshoots-like)
      Fixes:
      - geen "Projecten" hero/titelblok
      - tiles altijd gelijke hoogte (cover crop)
+     - filters altijd klikbaar (z-index + pointer-events)
      ========================================================= */
 
   /* full width page */
@@ -38,11 +39,15 @@ main > h1:first-child{
     --chip-active: #3a3a3a;
   }
 
-  /* TOP FILTERS (zoals je screenshot) */
+  /* TOP FILTERS */
   .projects-top{
     background: #fff;
     border-bottom: 1px solid var(--line);
     padding: 1.2rem 0 .9rem;
+
+    position: relative;
+    z-index: 10;            /* ✅ boven alles */
+    pointer-events: auto;   /* ✅ altijd klikbaar */
   }
   .projects-top__inner{
     max-width: var(--max);
@@ -77,15 +82,14 @@ main > h1:first-child{
     transition: filter .12s ease, transform .12s ease, background .12s ease, color .12s ease;
   }
   .chip:hover{ filter: brightness(.96); transform: translateY(-1px); }
-  .chip.is-active{
-    background: var(--chip-active);
-    color: #fff;
-  }
+  .chip.is-active{ background: var(--chip-active); color: #fff; }
 
   /* GRID area */
   .projects-tiles{
     background: var(--cream);
     padding: 1.25rem 0 2.8rem;
+    position: relative;
+    z-index: 1;
   }
   .projects-tiles__inner{
     max-width: var(--max);
@@ -93,7 +97,7 @@ main > h1:first-child{
     padding: 0 var(--pad);
   }
 
-  /* ✅ Uniform tiles: vaste hoogte + object-fit cover */
+  /* ✅ Uniform tiles grid */
   .tilegrid{
     display:grid;
     grid-template-columns: repeat(4, minmax(0, 1fr));
@@ -113,19 +117,19 @@ main > h1:first-child{
   /* vaste media hoogte */
   .tile-media{
     width: 100%;
-    height: 220px;          /* ✅ pas aan indien je wil */
+    height: 220px;
     overflow: hidden;
     position: relative;
   }
   .tile-media img{
     width:100%;
     height:100%;
-    object-fit: cover;       /* ✅ alles even groot */
+    object-fit: cover;
     display:block;
-    transform: scale(1.001); /* anti hairline gaps */
+    transform: scale(1.001);
   }
 
-  /* hover gradient + caption */
+  /* hover gradient + caption (maar mag clicks niet blokkeren) */
   .tile::after{
     content:"";
     position:absolute;
@@ -133,7 +137,7 @@ main > h1:first-child{
     background: linear-gradient(0deg, rgba(0,0,0,.50), rgba(0,0,0,0) 60%);
     opacity: 0;
     transition: opacity .15s ease;
-    pointer-events:none;
+    pointer-events:none; /* ✅ cruciaal */
   }
   .tile:hover::after{ opacity: 1; }
 
@@ -147,11 +151,9 @@ main > h1:first-child{
     transform: translateY(6px);
     transition: opacity .15s ease, transform .15s ease;
     color: #fff;
+    pointer-events:none; /* ✅ tile blijft overal klikbaar */
   }
-  .tile:hover .tile-cap{
-    opacity: 1;
-    transform: translateY(0);
-  }
+  .tile:hover .tile-cap{ opacity: 1; transform: translateY(0); }
   .tile-cap strong{
     display:block;
     font-size: 1.05rem;
@@ -187,7 +189,6 @@ main > h1:first-child{
 
 <div class="projects-page">
 
-  <!-- TOP FILTERS (geen hero/titel) -->
   <section class="projects-top" aria-label="Filters">
     <div class="projects-top__inner">
       <p class="filters-title">Filters</p>
@@ -212,7 +213,6 @@ main > h1:first-child{
     </div>
   </section>
 
-  <!-- TILES -->
   <section class="projects-tiles" aria-label="Projecten">
     <div class="projects-tiles__inner">
       {% if items and items.size > 0 %}
@@ -281,7 +281,7 @@ main > h1:first-child{
     });
   }
 
-  // ✅ robust click handling
+  /* ✅ robust click handling (capture=true zodat niks het “steelt”) */
   filters.addEventListener('click', function(e){
     const btn = e.target.closest('button.chip');
     if(!btn) return;
@@ -292,8 +292,7 @@ main > h1:first-child{
     const filter = btn.getAttribute('data-filter') || 'all';
     setActive(btn);
     apply(filter);
-  }, true); // capture=true -> beats other handlers
+  }, true);
 
 })();
 </script>
-
