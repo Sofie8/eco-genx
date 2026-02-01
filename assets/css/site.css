@@ -11,6 +11,10 @@
   --eco-accent: #4bbf7a;
   --eco-cream: #f6f4ee;
 
+  --ink: rgba(0,0,0,.86);
+  --muted: rgba(0,0,0,.66);
+  --line: rgba(0,0,0,.10);
+
   --shadow: 0 14px 36px rgba(0,0,0,.08);
   --shadow2: 0 18px 44px rgba(0,0,0,.10);
   --border: rgba(0,0,0,.08);
@@ -18,17 +22,35 @@
 
 *{ box-sizing: border-box; }
 
+html, body{ height: 100%; }
+
 body{
   font-family: system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
   line-height: 1.6;
   margin: 0;
   overflow-x: hidden;
+  color: var(--ink);
+  background: #fff;
 }
 
-h1,h2,h3{ line-height: 1.2; margin-top: 0; }
-a{ text-underline-offset: 0.2em; }
+img{ max-width: 100%; height: auto; display: block; }
 
-/* main content area */
+h1,h2,h3{
+  line-height: 1.2;
+  margin-top: 0;
+  color: var(--ink);
+}
+
+p{ margin: 0 0 1rem; }
+
+a{
+  color: inherit;
+  text-underline-offset: .2em;
+}
+
+a:hover{ opacity: .95; }
+
+/* main content area (default pages) */
 main{
   max-width: var(--maxw);
   margin: 0 auto;
@@ -36,14 +58,26 @@ main{
   overflow: visible !important;
 }
 
-/* ---------- HEADER ---------- */
-header{ position: relative; z-index: 50; }
+/* =========================================================
+   HEADER — NEVER fixed/sticky (scrolls with page)
+   ========================================================= */
+header,
+header.background{
+  position: relative !important;
+  top: auto !important;
+  inset: auto !important;
+  z-index: 50;
+}
+
 header, header nav{ overflow: visible !important; }
 
 header.background{
   display: block;
   padding: .65rem 0 !important;
+  background: var(--eco-dark);
+  color: rgba(255,255,255,.92);
 }
+
 header.background[data-big]{
   padding: .85rem 0 !important;
 }
@@ -63,6 +97,7 @@ header.background a.home{
   align-items: center;
   gap: .65rem;
   text-decoration: none;
+  color: rgba(255,255,255,.92);
 }
 
 /* title/subtitle */
@@ -90,7 +125,9 @@ header.background .logo svg{
   height: 34px;
 }
 
-/* nav */
+/* =========================================================
+   NAV
+   ========================================================= */
 nav.main-nav{
   display: flex;
   gap: 1.05rem;
@@ -102,11 +139,12 @@ nav.main-nav{
   z-index: 2000;
 }
 
-/* ✅ CAPS fix voor ALLE items (links) */
+/* CAPS for all top-level links */
 nav.main-nav a{
   text-decoration: none;
   padding: .35rem .45rem;
   border-radius: .45rem;
+  color: rgba(255,255,255,.92);
 
   text-transform: uppercase;
   letter-spacing: .06em;
@@ -116,14 +154,16 @@ nav.main-nav a:hover{
   background: rgba(255,255,255,.08);
 }
 
-/* ---------- CLICK dropdown wrapper ---------- */
+/* =========================================================
+   CLICK dropdown wrapper
+   ========================================================= */
 .nav-dd{
   position: relative;
   display: inline-flex;
   align-items: center;
 }
 
-/* ✅ CAPS fix + “link-look” voor dropdown trigger button */
+/* Dropdown trigger styled like nav item + CAPS */
 .nav-dd__trigger{
   appearance: none;
   -webkit-appearance: none;
@@ -143,7 +183,6 @@ nav.main-nav a:hover{
   box-shadow: none !important;
   outline: none;
 
-  /* ✅ CAPS zoals HOME */
   text-transform: uppercase;
   letter-spacing: .06em;
 }
@@ -152,13 +191,11 @@ nav.main-nav a:hover{
   background: rgba(255,255,255,.08) !important;
 }
 
-/* nicer keyboard focus */
 .nav-dd__trigger:focus-visible{
   outline: 2px solid rgba(255,255,255,.35);
   outline-offset: 2px;
 }
 
-/* arrow */
 .nav-dd__trigger span{
   opacity: .85;
   transform: translateY(1px);
@@ -178,19 +215,17 @@ nav.main-nav a:hover{
   min-width: 16rem;
   padding: .45rem 0;
 
-  background: rgba(11,59,47,.96) !important; /* eco dark */
+  background: rgba(11,59,47,.96) !important;
   border: 1px solid rgba(255,255,255,.12);
   border-radius: .75rem;
-
   box-shadow: 0 16px 32px rgba(0,0,0,.30);
   z-index: 9999;
-
-  /* ✅ nooit buiten scherm */
   max-width: calc(100vw - 2rem);
 }
 
 .nav-dd.open .nav-dd__menu{ display: block; }
 
+/* Dropdown items: readable, not caps */
 .nav-dd__menu a{
   display: block;
   padding: .55rem .95rem;
@@ -198,7 +233,6 @@ nav.main-nav a:hover{
   text-decoration: none;
   color: rgba(255,255,255,.92);
 
-  /* dropdown-items mogen NIET per se caps, maar wel consistent met nav */
   text-transform: none;
   letter-spacing: 0;
 }
@@ -215,9 +249,7 @@ nav.main-nav a:hover{
     text-align: center;
     gap: .6rem;
   }
-  nav.main-nav{
-    justify-content: center;
-  }
+  nav.main-nav{ justify-content: center; }
 
   /* mobile: submenu inline when open */
   .nav-dd{ flex-direction: column; align-items: flex-start; }
@@ -235,18 +267,18 @@ nav.main-nav a:hover{
   .nav-dd.open .nav-dd__menu{ display: block; }
 
   .nav-dd__menu a{
-    color: inherit;
+    color: rgba(255,255,255,.92);
     padding: .35rem .45rem;
     border-radius: .45rem;
-    text-transform: none; /* menu-items op mobile: leesbaar */
-    letter-spacing: 0;
   }
   .nav-dd__menu a:hover{
     background: rgba(255,255,255,.08);
   }
 }
 
-/* ---------- FULL-BLEED helper (robust breakout) ---------- */
+/* =========================================================
+   FULL-BLEED helper (robust breakout)
+   ========================================================= */
 .hero-full,
 .full-bleed{
   position: relative;
@@ -257,13 +289,18 @@ nav.main-nav a:hover{
   margin-right: -50vw;
 }
 
-/* ---------- HOME polish ---------- */
+/* =========================================================
+   HOME polish — generic reusable cards/steps/cta
+   ========================================================= */
 .section p,
 .card,
 .step{ text-align: left !important; }
 
-.cards{ gap: 1.4rem !important; }
-.steps{ gap: 1.4rem !important; }
+.cards, .steps{
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 1.4rem !important;
+}
 
 @media (min-width: 980px){
   .cards{ grid-template-columns: repeat(3, minmax(0, 1fr)) !important; }
@@ -275,6 +312,7 @@ nav.main-nav a:hover{
   padding: 1.35rem 1.35rem 1.2rem !important;
   box-shadow: var(--shadow) !important;
   border: 1px solid var(--border) !important;
+  background: #fff;
   transition: transform .12s ease, box-shadow .12s ease;
 }
 .card:hover{
@@ -285,12 +323,18 @@ nav.main-nav a:hover{
 .step{
   border-radius: 20px !important;
   border: 1px solid var(--border) !important;
+  background: #fff;
   box-shadow: 0 14px 36px rgba(0,0,0,.06);
+  padding: 1.1rem 1.2rem;
 }
 
-.cta{ border-radius: 22px !important; }
+.cta{
+  border-radius: 22px !important;
+}
 
-/* ---------- Service pills (als je ze nog gebruikt op pages) ---------- */
+/* =========================================================
+   Service pills (optional)
+   ========================================================= */
 .service-topbar{
   display: flex;
   justify-content: flex-end;
@@ -320,7 +364,7 @@ nav.main-nav a:hover{
   background: rgba(255,255,255,.06);
   transition: transform .12s ease, background .12s ease, border-color .12s ease;
 
-  text-transform: none; /* pills: niet caps */
+  text-transform: none;
   letter-spacing: 0;
 }
 
@@ -340,10 +384,11 @@ nav.main-nav a:hover{
   .service-topbar{ justify-content: center; }
   .service-pills{ border-radius: 18px; }
 }
-/* =========================================================
-   FIX: project-hero mag NIET sticky/fixed zijn
-   ========================================================= */
 
+/* =========================================================
+   HARD FIXES — Project hero must NEVER be sticky/fixed
+   (covers most class names you used earlier)
+   ========================================================= */
 .project-hero,
 .project-header,
 .proj-hero,
@@ -357,19 +402,11 @@ nav.main-nav a:hover{
   transform: none !important;
 }
 
-/* als je per ongeluk sticky gebruikt */
 .project-hero{
-  position: relative !important;
-  sticky: none !important; /* harmless fallback */
-}
-
-/* als je hero 100vh was en “te lang” blijft staan */
-.project-hero{
-  min-height: 62vh !important;   /* pas gerust aan */
   height: auto !important;
 }
 
-/* zorg dat achtergrond netjes achter de tekst zit */
+/* keep background behind text if theme uses bg wrappers */
 .project-hero .project-hero__bg,
 .project-hero .hero-bg,
 .project-hero .bg{
@@ -384,7 +421,8 @@ nav.main-nav a:hover{
   position: relative !important;
   z-index: 1 !important;
 }
-/* ✅ hard hide (werkt altijd) */
-.tile.is-hidden{ 
-  display: none !important;
-}
+
+/* =========================================================
+   Utility: hard hide for filtered tiles
+   ========================================================= */
+.tile.is-hidden{ display: none !important; }
