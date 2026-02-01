@@ -81,7 +81,7 @@ permalink: /projects/
     padding: 0 var(--pad);
   }
 
-  /* masonry using columns (simple + looks like your example) */
+  /* masonry using columns */
   .tilegrid{
     column-count: 5;
     column-gap: .9rem;
@@ -159,14 +159,10 @@ permalink: /projects/
 
 <div class="projects-page">
 
-  <!-- TOP FILTERS (start meteen zoals je screenshot) -->
   <section class="projects-top">
     <div class="projects-top__inner">
       <p class="filters-title">Filters</p>
 
-      {% comment %}
-      Verzamel alle tags uit de project-collectie, maak unieke lijst.
-      {% endcomment %}
       {% assign items = site.projects | sort: "order" %}
       {% assign alltags = "" | split: "|" %}
       {% for p in items %}
@@ -187,7 +183,6 @@ permalink: /projects/
     </div>
   </section>
 
-  <!-- TILES -->
   <section class="projects-tiles">
     <div class="projects-tiles__inner">
       {% if items and items.size > 0 %}
