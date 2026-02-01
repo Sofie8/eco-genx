@@ -6,7 +6,10 @@ permalink: /projects/
 
 <style>
   /* =========================================================
-     PROJECTS — Filter bar + tile grid (Offshoots-like start)
+     PROJECTS — Filter bar + uniform tile grid (Offshoots-like)
+     Fixes:
+     - geen "Projecten" hero/titelblok
+     - tiles altijd gelijke hoogte (cover crop)
      ========================================================= */
 
   /* full width page */
@@ -26,6 +29,7 @@ permalink: /projects/
     --chip-active: #3a3a3a;
   }
 
+  /* TOP FILTERS (zoals je screenshot) */
   .projects-top{
     background: #fff;
     border-bottom: 1px solid var(--line);
@@ -45,7 +49,6 @@ permalink: /projects/
     margin: 0 0 .65rem;
   }
 
-  /* chip bar */
   .chipbar{
     display:flex;
     flex-wrap:wrap;
@@ -70,7 +73,7 @@ permalink: /projects/
     color: #fff;
   }
 
-  /* tiles area */
+  /* GRID area */
   .projects-tiles{
     background: var(--cream);
     padding: 1.25rem 0 2.8rem;
@@ -81,34 +84,47 @@ permalink: /projects/
     padding: 0 var(--pad);
   }
 
-  /* masonry using columns */
+  /* ✅ Uniform tiles: vaste hoogte + object-fit cover */
   .tilegrid{
-    column-count: 5;
-    column-gap: .9rem;
+    display:grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: .9rem;
   }
+
   .tile{
-    break-inside: avoid;
-    margin: 0 0 .9rem;
     display:block;
-    position: relative;
     text-decoration:none;
     color: inherit;
+    border: 1px solid rgba(0,0,0,.06);
     background: rgba(0,0,0,.06);
     overflow:hidden;
-    border-radius: 0;
-    border: 1px solid rgba(0,0,0,.06);
+    position: relative;
   }
-  .tile img{
+
+  /* vaste media hoogte */
+  .tile-media{
     width: 100%;
-    height: auto;
-    display:block;
+    height: 220px;          /* ✅ pas aan indien je wil */
+    overflow: hidden;
+    position: relative;
   }
+  .tile-media img{
+    width:100%;
+    height:100%;
+    object-fit: cover;       /* ✅ alles even groot */
+    display:block;
+    transform: scale(1.001); /* anti hairline gaps */
+  }
+
+  /* hover gradient + caption */
   .tile::after{
     content:"";
-    position:absolute; inset:0;
-    background: linear-gradient(0deg, rgba(0,0,0,.45), rgba(0,0,0,0) 55%);
+    position:absolute;
+    inset:0;
+    background: linear-gradient(0deg, rgba(0,0,0,.50), rgba(0,0,0,0) 60%);
     opacity: 0;
     transition: opacity .15s ease;
+    pointer-events:none;
   }
   .tile:hover::after{ opacity: 1; }
 
@@ -147,19 +163,23 @@ permalink: /projects/
   }
 
   @media (max-width: 1200px){
-    .tilegrid{ column-count: 4; }
+    .tilegrid{ grid-template-columns: repeat(3, minmax(0, 1fr)); }
+    .tile-media{ height: 210px; }
   }
   @media (max-width: 980px){
-    .tilegrid{ column-count: 2; }
+    .tilegrid{ grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .tile-media{ height: 200px; }
   }
   @media (max-width: 520px){
-    .tilegrid{ column-count: 1; }
+    .tilegrid{ grid-template-columns: 1fr; }
+    .tile-media{ height: 220px; }
   }
 </style>
 
 <div class="projects-page">
 
-  <section class="projects-top">
+  <!-- TOP FILTERS (geen hero/titel) -->
+  <section class="projects-top" aria-label="Filters">
     <div class="projects-top__inner">
       <p class="filters-title">Filters</p>
 
@@ -183,7 +203,8 @@ permalink: /projects/
     </div>
   </section>
 
-  <section class="projects-tiles">
+  <!-- TILES -->
+  <section class="projects-tiles" aria-label="Projecten">
     <div class="projects-tiles__inner">
       {% if items and items.size > 0 %}
         <div class="tilegrid" id="projGrid">
@@ -197,11 +218,13 @@ permalink: /projects/
             {% endif %}
 
             <a class="tile" href="{{ p.url | relative_url }}" data-tags="{{ tagstr | strip }}">
-              {% if p.cover %}
-                <img src="{{ p.cover | relative_url }}" alt="{{ p.title }}">
-              {% else %}
-                <img src="{{ '/images/projects/placeholder.jpg' | relative_url }}" alt="{{ p.title }}">
-              {% endif %}
+              <div class="tile-media">
+                {% if p.cover %}
+                  <img src="{{ p.cover | relative_url }}" alt="{{ p.title }}">
+                {% else %}
+                  <img src="{{ '/images/projects/placeholder.jpg' | relative_url }}" alt="{{ p.title }}">
+                {% endif %}
+              </div>
 
               <div class="tile-cap">
                 <strong>{{ p.title }}</strong>
@@ -218,7 +241,7 @@ permalink: /projects/
         </div>
       {% else %}
         <div class="empty">
-          Nog geen projecten gevonden. Maak map <code>_projects</code> en voeg projectbestanden toe met <code>cover</code> en <code>tags</code>.
+          Nog geen projecten gevonden. Voeg projectbestanden toe aan je <code>projects</code>-collectie met <code>cover</code> en <code>tags</code>.
         </div>
       {% endif %}
     </div>
@@ -242,8 +265,9 @@ permalink: /projects/
 
     function apply(filter){
       tiles.forEach(tile => {
-        const tags = (tile.getAttribute('data-tags') || '').toLowerCase();
-        const show = (filter === 'all') ? true : tags.split(/\s+/).includes(filter);
+        const tags = (tile.getAttribute('data-tags') || '').toLowerCase().trim();
+        const tagList = tags ? tags.split(/\s+/) : [];
+        const show = (filter === 'all') ? true : tagList.includes(filter);
         tile.style.display = show ? '' : 'none';
       });
     }
