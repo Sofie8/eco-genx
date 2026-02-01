@@ -272,9 +272,10 @@ document.addEventListener('DOMContentLoaded', function () {
   function apply(filter){
     tiles.forEach(tile => {
       const tags = (tile.getAttribute('data-tags') || '').toLowerCase().trim();
-      const tagList = tags ? tags.split(/\s+/) : [];
+      const tagList = tags ? tags.split(/\s+/).filter(Boolean) : [];
       const show = (filter === 'all') ? true : tagList.includes(filter);
-      tile.style.display = show ? '' : 'none';
+
+      tile.classList.toggle('is-hidden', !show);
     });
   }
 
@@ -286,7 +287,8 @@ document.addEventListener('DOMContentLoaded', function () {
     if(!btn) return;
 
     e.preventDefault();
-    const filter = btn.getAttribute('data-filter') || 'all';
+    const filter = (btn.getAttribute('data-filter') || 'all').toLowerCase().trim();
+
     setActive(btn);
     apply(filter);
   });
