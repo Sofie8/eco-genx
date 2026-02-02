@@ -3,7 +3,7 @@ title: Fytoremediatie in de stad
 layout: default
 permalink: /fytoremediatie-in-de-stad/
 nav:
-  order: 7
+  order: 6
   tooltip: Fytoremediatie in de stad
 ---
 
