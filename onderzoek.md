@@ -9,8 +9,8 @@ nav:
 
 <style>
   /* =========================================================
-     Onderzoek & Ontwikkeling — Eco-GenX style
-     Scoped: .rd (dus geen globale chaos)
+     ONDERZOEK — Eco-GenX style (hero + accordions)
+     Scoped: .rd
      ========================================================= */
 
   /* full width page */
@@ -39,10 +39,7 @@ nav:
     --line: rgba(0,0,0,.10);
   }
 
-  /* hard: keep text left in this page */
-  .rd, .rd *{ text-align:left !important; }
-
-  /* ---------- HERO (like artikels, not too tall) ---------- */
+  /* ---------- HERO (zoals artikels: niet te hoog) ---------- */
   .rd-hero{
     position: relative;
     left: 50%; right: 50%;
@@ -51,7 +48,7 @@ nav:
 
     height: 320px;
     background: var(--green2);
-    overflow:hidden;
+    overflow: hidden;
     border-bottom: 1px solid rgba(0,0,0,.08);
   }
 
@@ -85,6 +82,7 @@ nav:
     margin: 0 auto;
     padding: 0 var(--pad);
     color: rgba(255,255,255,.92);
+    text-align:left !important;
   }
 
   .rd-eyebrow{
@@ -103,7 +101,7 @@ nav:
   }
   .rd-subtitle{
     margin: 0;
-    max-width: 80ch;
+    max-width: 82ch;
     opacity: .92;
     line-height: 1.7;
     font-size: 1.02rem;
@@ -116,62 +114,67 @@ nav:
     left: 50%; right: 50%;
     width: 100vw;
     margin-left: -50vw; margin-right: -50vw;
-    padding: 2.2rem 0 3.2rem;
+    padding: 2.2rem 0 3.0rem;
     border-top: 1px solid rgba(0,0,0,.06);
   }
   .rd-body .inner{
     max-width: var(--max);
     margin: 0 auto;
     padding: 0 var(--pad);
+    text-align:left !important;
   }
 
-  /* ---------- Intro block (like Isodetect) ---------- */
+  /* ---------- INTRO BLOCK (2 columns like iso page) ---------- */
   .rd-intro{
     display:grid;
     grid-template-columns: 1fr 1fr;
     gap: 2rem;
-    padding: 1.25rem 0 1.25rem;
+    align-items:start;
+    margin-bottom: 2rem;
   }
   .rd-intro h2{
-    margin: 0 0 .75rem;
-    font-size: 2rem;
-    line-height: 1.1;
-    letter-spacing: .01em;
+    margin: 0 0 .6rem;
+    font-size: 1.65rem;
+    line-height: 1.2;
     color: var(--ink);
   }
   .rd-intro p{
     margin: 0;
     color: rgba(0,0,0,.74);
-    line-height: 1.8;
-    font-size: 1.05rem;
-    max-width: 70ch;
+    line-height: 1.75;
+    max-width: 85ch;
+    text-align:left !important;
   }
 
-  /* Divider */
-  .rd-divider{
-    height: 1px;
-    background: rgba(0,0,0,.10);
-    margin: 1.25rem 0 1.35rem;
+  .rd-note{
+    background: rgba(255,255,255,.62);
+    border: 1px solid rgba(0,0,0,.08);
+    border-radius: 18px;
+    overflow:hidden;
+    box-shadow: 0 14px 36px rgba(0,0,0,.06);
   }
+  .rd-note .pad{ padding: 1.25rem 1.35rem; }
+  .rd-note strong{ display:block; margin-bottom:.35rem; }
 
-  /* ---------- Section head ---------- */
+  /* ---------- SECTION HEAD ---------- */
   .rd-section{
-    margin-top: 1.6rem;
+    margin: 0 0 2.0rem;
   }
   .rd-section h2{
-    margin: 0 0 .55rem;
-    font-size: 1.75rem;
+    margin: 0 0 .6rem;
+    font-size: 1.85rem;
     line-height: 1.2;
     color: var(--ink);
   }
-  .rd-section p.lead{
-    margin: 0 0 1.2rem;
+  .rd-section p{
+    margin: 0 0 1.1rem;
     color: rgba(0,0,0,.74);
     line-height: 1.75;
     max-width: 92ch;
+    text-align:left !important;
   }
 
-  /* ---------- Accordion list ---------- */
+  /* ---------- Accordion list (FIX alignment + centered content) ---------- */
   .rd-acc{
     display:flex;
     flex-direction:column;
@@ -184,21 +187,38 @@ nav:
     border-radius: 18px;
     box-shadow: 0 14px 36px rgba(0,0,0,.06);
     overflow: hidden;
+    width: 100%;
   }
 
+  /* summary = centered content (no weird right packing) */
   summary.rd-sum{
     list-style: none;
     cursor: pointer;
-    display:grid;
-    grid-template-columns: 40px 1fr 42px;
+
+    display:grid !important;
+    grid-template-columns: 40px minmax(0, 1fr) 42px;
     gap: 1rem;
     align-items: start;
+
+    width: 100%;
     padding: 1.05rem 1.15rem;
     background: rgba(0,0,0,.04);
+
+    place-content: stretch !important;
+    justify-content: stretch !important;
+    justify-items: stretch !important;
+
+    max-width: 980px;
+    margin: 0 auto;
+
+    text-align:left !important;
   }
 
-  /* remove default marker */
   summary.rd-sum::-webkit-details-marker{ display:none; }
+  summary.rd-sum::marker{ content:""; }
+  summary.rd-sum::before{ content:none !important; }
+
+  .rd-sum > div{ min-width: 0; }
 
   .rd-chev{
     width: 28px; height: 28px;
@@ -217,11 +237,13 @@ nav:
     font-size: 1.1rem;
     line-height: 1.3;
     color: var(--ink);
+    text-align:left !important;
   }
   .rd-sum p{
     margin: 0;
     color: rgba(0,0,0,.70);
     line-height: 1.6;
+    text-align:left !important;
   }
 
   .rd-plus{
@@ -233,14 +255,17 @@ nav:
     border: 1px solid rgba(0,0,0,.18);
     background: rgba(255,255,255,.72);
     color: rgba(0,0,0,.72);
-    font-size: 1.15rem;
+    font-size: 1.35rem;
+    line-height: 1;
+    user-select: none;
   }
 
-  details[open] .rd-plus{ font-size: 1.35rem; }
-  details[open] .rd-plus::before{ content:"–"; }
-  details:not([open]) .rd-plus::before{ content:"+"; }
+  /* default closed => show +  */
+  details.rd-item:not([open]) .rd-plus::before{ content:"+"; }
+  /* open => show – */
+  details.rd-item[open] .rd-plus::before{ content:"–"; }
 
-  details[open] .rd-chev{
+  details.rd-item[open] .rd-chev{
     transform: rotate(90deg);
     transition: transform .15s ease;
   }
@@ -250,70 +275,42 @@ nav:
     background: rgba(255,255,255,.55);
   }
 
-  .rd-grid{
-    display:grid;
-    grid-template-columns: 1fr;
-    gap: .9rem;
+  /* center expanded content too */
+  .rd-bodybox > *{
+    max-width: 980px;
+    margin-left: auto;
+    margin-right: auto;
+    text-align:left !important;
   }
 
-  .rd-meta{
-    display:grid;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: .65rem 1rem;
-    padding-top: .2rem;
-  }
-  .rd-kv{
-    border-top: 1px solid rgba(0,0,0,.08);
-    padding-top: .55rem;
-  }
-  .rd-k{
-    font-size: .82rem;
-    letter-spacing: .08em;
-    text-transform: uppercase;
-    opacity: .7;
-    margin-bottom: .15rem;
-  }
-  .rd-v{
-    color: rgba(0,0,0,.76);
-    line-height: 1.6;
-  }
-
-  /* Logos per project (one grouped image) */
+  /* per project: logo group image */
   .rd-logos{
-    margin-top: .95rem;
-    border-top: 1px solid rgba(0,0,0,.08);
+    margin-top: .85rem;
     padding-top: .85rem;
-  }
-  .rd-logos .label{
-    font-size: .82rem;
-    letter-spacing: .08em;
-    text-transform: uppercase;
-    opacity: .7;
-    margin: 0 0 .55rem;
+    border-top: 1px solid rgba(0,0,0,.10);
   }
   .rd-logos img{
     width: 100%;
-    max-width: 820px;
+    max-width: 980px;
     height: auto;
+    display:block;
     border-radius: 14px;
     border: 1px solid rgba(0,0,0,.08);
-    background: rgba(255,255,255,.7);
+    background: rgba(255,255,255,.6);
+  }
+  .rd-logos .hint{
+    margin-top: .45rem;
+    color: rgba(0,0,0,.62);
+    font-size: .95rem;
+    line-height: 1.6;
   }
 
-  /* Archive badge row (optional) */
-  .rd-note{
-    margin-top: .65rem;
-    color: rgba(0,0,0,.70);
-    line-height: 1.7;
-    max-width: 95ch;
-  }
-
+  /* ---------- Responsive ---------- */
   @media (max-width: 980px){
     .rd-hero{ height: 240px; }
+    .rd-hero__inner{ padding: 1.2rem 0 1rem; }
     .rd-title{ font-size: 1.95rem; }
-    .rd-intro{ grid-template-columns: 1fr; gap: 1.2rem; }
-    .rd-meta{ grid-template-columns: 1fr; }
-    summary.rd-sum{ grid-template-columns: 34px 1fr 42px; }
+    .rd-intro{ grid-template-columns: 1fr; }
   }
 </style>
 
@@ -321,14 +318,14 @@ nav:
 
   <!-- HERO -->
   <section class="rd-hero" aria-label="Onderzoek en ontwikkeling">
-    <img src="{{ '/images/onderzoek-hero.jpg' | relative_url }}" alt="Onderzoek & ontwikkeling">
+    <img src="{{ '/images/onderzoek-hero.jpg' | relative_url }}" alt="Onderzoek en ontwikkeling">
     <div class="rd-hero__inner">
       <div class="inner">
         <div class="rd-eyebrow">Eco-GenX · Onderzoek & ontwikkeling</div>
         <h1 class="rd-title">Van wetenschap naar terrein</h1>
         <p class="rd-subtitle">
-          Ik vertaal fundamentele inzichten naar decision-ready toepassingen voor bodem, water en PFAS-herstel —
-          met focus op meetbaarheid, monitoring en reproduceerbare aanpak.
+          Ik ontwikkel en test meetbare innovaties rond bodem-, water- en PFAS-herstel:
+          nature-based ontwerpen, evidence-plannen en monitoring die decision-ready antwoorden opleveren.
         </p>
       </div>
     </div>
@@ -338,33 +335,34 @@ nav:
   <section class="rd-body">
     <div class="inner">
 
-      <!-- Intro block (zoals Isodetect, maar op maat) -->
+      <!-- INTRO BLOCK (UHasselt postdoc context) -->
       <div class="rd-intro">
         <div>
-          <h2>Onderzoek als motor voor praktijk</h2>
+          <h2>Onderzoek als motor</h2>
           <p>
-            Via Eco-GenX ontwikkel en test ik nature-based oplossingen in real-life context:
-            fytoremediatie, plant-microbe interacties, (e)DNA-gebaseerde proof-of-impact en
-            multi-line-of-evidence monitoring voor bodem- en watersystemen.
+            Eco-GenX is praktijkgericht: ontwerpen, testen en onderbouwen op terrein.
+            Tegelijk blijf ik als postdoc (20% aanstelling) bij UHasselt nauw betrokken bij
+            fundamentele en methodologische ontwikkeling (plant–microbe interacties, bewijsvoering, data-interpretatie).
+            Dat houdt de aanpak scherp en vertaalt nieuwe inzichten sneller naar toepasbare oplossingen.
           </p>
         </div>
-        <div>
-          <h2>Ook academisch sterk verankerd</h2>
-          <p>
-            Als postdoc met een 20% aanstelling bij UHasselt blijf ik nauw betrokken bij fundamentele
-            onderzoeksprojecten en methodologische vernieuwing. Die kennis stroomt rechtstreeks door
-            naar Eco-GenX: sneller leren, beter ontwerp, scherpere interpretatie en robuustere besluitvorming.
-          </p>
+        <div class="rd-note">
+          <div class="pad">
+            <strong>Hoe ik dit toon</strong>
+            <p style="margin:0; color: rgba(0,0,0,.72); line-height:1.7;">
+              Lopende projecten (Eco-GenX) en een compact archief (2019–2024).
+              Per project kan je een korte omschrijving uitbreiden en logo’s/partners tonen via één afbeelding.
+            </p>
+          </div>
         </div>
       </div>
 
-      <div class="rd-divider"></div>
-
-      <!-- SECTION 1 -->
+      <!-- SECTION: Eco-GenX current -->
       <div class="rd-section">
-        <h2>Huidige onderzoek & ontwikkelingsprojecten (via Eco-GenX)</h2>
-        <p class="lead">
-          Projecten waarbij ik betrokken ben via Eco-GenX / vennootschap: advies, ontwerp, monitoring en proof-of-impact.
+        <h2>Huidige onderzoek- & ontwikkelingsprojecten (Eco-GenX)</h2>
+        <p>
+          Projecten waarbij ik betrokken ben via Eco-GenX/vennootschap (advies, ontwerp, monitoring, proof-of-impact).
+          Klik open voor details en voeg per project een logo-beeld toe.
         </p>
 
         <div class="rd-acc">
@@ -375,43 +373,25 @@ nav:
               <div class="rd-chev">›</div>
               <div>
                 <h3>Barebeek (Zemst) — PFAS piloot & demonstratie (2025–2028)</h3>
-                <p>Nature-based ingrepen om PFAS-vang in sedimentvang te verhogen, met multi-line-of-evidence monitoring.</p>
+                <p>Nature-based ingrepen om PFAS-vang efficiënter te maken in sedimentvang, met multi-line-of-evidence monitoring.</p>
               </div>
               <div class="rd-plus" aria-hidden="true"></div>
             </summary>
 
             <div class="rd-bodybox">
-              <div class="rd-meta">
-                <div class="rd-kv">
-                  <div class="rd-k">Locatie & scope</div>
-                  <div class="rd-v">Barebeek (Zemst) — in-situ piloot/demonstratie (VMM).</div>
-                </div>
-                <div class="rd-kv">
-                  <div class="rd-k">Verontreiniging</div>
-                  <div class="rd-v">PFAS</div>
-                </div>
-                <div class="rd-kv">
-                  <div class="rd-k">Rol & expertise</div>
-                  <div class="rd-v">
-                    Expert plant–microbe interacties voor PFAS sorptie/extractie.
-                    Haalbaarheidsstudie, experimenteel design en data-interpretatie (constructed floating wetlands).
-                  </div>
-                </div>
-                <div class="rd-kv">
-                  <div class="rd-k">Highlights</div>
-                  <div class="rd-v">
-                    In-situ aanpak om PFAS-vang efficiëntie significant te verhogen met o.a. floating treatment wetlands,
-                    oeverbeplanting en (waar passend) reactief substraat, gekoppeld aan monitoring van concentraties én fluxen
-                    richting grondwater/oppervlaktewater (o.a. iFLUX).
-                  </div>
-                </div>
-              </div>
+              <p>
+                Pilootproject (VMM) rond innovatieve in-situ sanering om verspreiding van PFAS via sediment en oppervlaktewater te reduceren.
+                Traject met nulmeting → ontwerp → real-scale implementatie → effectmonitoring (incl. concentraties én fluxen richting grondwater/oppervlaktewater, iFLUX).
+              </p>
+              <p>
+                Rol: expert plant–microbe interacties voor PFAS sorptie/extractie; haalbaarheidsstudie, experimenteel design en data-interpretatie
+                voor constructed floating wetlands en oeverbeplanting (eventueel met reactief substraat).
+              </p>
 
-              <!-- per project 1 grouped logo image -->
-              <!-- Upload bv: /images/onderzoek/logos-barebeek.jpg -->
               <div class="rd-logos">
-                <p class="label">Partners (logo’s)</p>
-                <img src="{{ '/images/onderzoek/logos-barebeek.jpg' | relative_url }}" alt="Partners Barebeek">
+                <!-- upload 1 samengestelde logo-afbeelding voor dit project -->
+                <img src="{{ '/images/logos/barebeek-logos.png' | relative_url }}" alt="Partners & logo's — Barebeek PFAS">
+                <div class="hint">Upload hier één logo-afbeelding (bv. VMM, UHasselt, iFLUX, partners) als <code>/images/logos/barebeek-logos.png</code>.</div>
               </div>
             </div>
           </details>
@@ -422,37 +402,24 @@ nav:
               <div class="rd-chev">›</div>
               <div>
                 <h3>Interreg PFAS RESOLVE (2024–2027)</h3>
-                <p>Veldpilots: plant-gebaseerde staalname + draagbare biosensor voor snelle, kostenefficiënte kartering.</p>
+                <p>Veldpilots met plant-gebaseerde staalname + draagbare biosensor als snel alternatief voor labanalyses.</p>
               </div>
               <div class="rd-plus" aria-hidden="true"></div>
             </summary>
 
             <div class="rd-bodybox">
-              <div class="rd-meta">
-                <div class="rd-kv">
-                  <div class="rd-k">Locatie & scope</div>
-                  <div class="rd-v">Grensoverschrijdende regio Maas-Rijn</div>
-                </div>
-                <div class="rd-kv">
-                  <div class="rd-k">Verontreiniging</div>
-                  <div class="rd-v">PFAS (incl. PFOS, PFOA, GenX)</div>
-                </div>
-                <div class="rd-kv">
-                  <div class="rd-k">Rol & expertise</div>
-                  <div class="rd-v">Verantwoordelijk voor phyto-screening en veldpilots (in opdracht van bio2clean).</div>
-                </div>
-                <div class="rd-kv">
-                  <div class="rd-k">Highlights</div>
-                  <div class="rd-v">
-                    Opzet van veldpilots waarin plant-gebaseerde staalname wordt gecombineerd met een nieuwe, draagbare biosensor.
-                    Snel alternatief voor klassieke labanalyses bij grootschalige kartering.
-                  </div>
-                </div>
-              </div>
+              <p>
+                Grensoverschrijdende regio Maas-Rijn (PFAS incl. PFOS, PFOA, GenX).
+                Rol: verantwoordelijk voor phyto-screening en veldpilots (in opdracht van bio2clean).
+              </p>
+              <p>
+                Opzet van veldpilots waarin plant-gebaseerde staalname wordt gecombineerd met een nieuwe draagbare biosensor.
+                Doel: snel en kostenefficiënt alternatief voor grootschalige kartering en monitoring.
+              </p>
 
               <div class="rd-logos">
-                <p class="label">Partners (logo’s)</p>
-                <img src="{{ '/images/onderzoek/logos-pfas-resolve.jpg' | relative_url }}" alt="Partners PFAS RESOLVE">
+                <img src="{{ '/images/logos/pfas-resolve-logos.png' | relative_url }}" alt="Partners & logo's — PFAS RESOLVE">
+                <div class="hint">Zet hier je projectlogo’s als één bestand: <code>/images/logos/pfas-resolve-logos.png</code>.</div>
               </div>
             </div>
           </details>
@@ -463,37 +430,23 @@ nav:
               <div class="rd-chev">›</div>
               <div>
                 <h3>LIFE NARMENA (2020–2026)</h3>
-                <p>Bacterie-geassisteerde fytoremediatie voor Cr in waterbodem en oevers.</p>
+                <p>Bacterie-geassisteerde fytoremediatie voor Cr in waterbodem en oevers (Grote Calie – Winkelsbroek).</p>
               </div>
               <div class="rd-plus" aria-hidden="true"></div>
             </summary>
 
             <div class="rd-bodybox">
-              <div class="rd-meta">
-                <div class="rd-kv">
-                  <div class="rd-k">Locatie & scope</div>
-                  <div class="rd-v">Grote Calie Winkelsbroek</div>
-                </div>
-                <div class="rd-kv">
-                  <div class="rd-k">Verontreiniging</div>
-                  <div class="rd-v">Metalen (Cr) in waterbodem en oevers</div>
-                </div>
-                <div class="rd-kv">
-                  <div class="rd-k">Rol & expertise</div>
-                  <div class="rd-v">Ontwerp, implementatie & monitoring van bacterie-geassisteerde fytoremediatie.</div>
-                </div>
-                <div class="rd-kv">
-                  <div class="rd-k">Highlights</div>
-                  <div class="rd-v">
-                    Inoculatie met Cr-reducerende bacteriën verhoogde Cr(III)-bioconcentratie in wortels van wilg, gras en boterbloem.
-                    Chromaat-reductasegenen namen toe in de rhizosfeer, wat duurzame immobilisatie ondersteunt.
-                  </div>
-                </div>
-              </div>
+              <p>
+                Ontwerp, implementatie & monitoring van bacterie-geassisteerde fytoremediatie.
+                Inoculatie met Cr-reducerende bacteriën verhoogde Cr(III)-bioconcentratie in wortels (wilg, gras, boterbloem).
+              </p>
+              <p>
+                Toename van chromaat-reductasegenen in de rhizosfeer ondersteunt duurzame immobilisatie van chroom.
+              </p>
 
               <div class="rd-logos">
-                <p class="label">Partners (logo’s)</p>
-                <img src="{{ '/images/onderzoek/logos-narmena.jpg' | relative_url }}" alt="Partners LIFE NARMENA">
+                <img src="{{ '/images/logos/narmena-logos.png' | relative_url }}" alt="Partners & logo's — LIFE NARMENA">
+                <div class="hint">Zet hier je projectlogo’s als één bestand: <code>/images/logos/narmena-logos.png</code>.</div>
               </div>
             </div>
           </details>
@@ -501,182 +454,11 @@ nav:
         </div>
       </div>
 
-      <!-- SECTION 2 -->
-      <div class="rd-section">
-        <h2>Academische projecten (UHasselt – 20%)</h2>
-        <p class="lead">
-          Lopende (en enkele afgeronde) projecten waarbij ik wetenschappelijke leiding of expertrol opneem via UHasselt/CMK.
-        </p>
-
-        <div class="rd-acc">
-
-          <details class="rd-item">
-            <summary class="rd-sum">
-              <div class="rd-chev">›</div>
-              <div>
-                <h3>PFAS fytoremediatie veldexperimenten — PLANTS project (KISS VZW, 2024–heden)</h3>
-                <p>Identificatie van hennepcultivars met hoge PFOS-BCF; veldvalidatie in Vlaanderen.</p>
-              </div>
-              <div class="rd-plus" aria-hidden="true"></div>
-            </summary>
-
-            <div class="rd-bodybox">
-              <div class="rd-meta">
-                <div class="rd-kv">
-                  <div class="rd-k">Locatie & scope</div>
-                  <div class="rd-v">Zwijndrecht & Kallo, Vlaanderen</div>
-                </div>
-                <div class="rd-kv">
-                  <div class="rd-k">Verontreiniging</div>
-                  <div class="rd-v">PFAS</div>
-                </div>
-                <div class="rd-kv">
-                  <div class="rd-k">Rol & expertise</div>
-                  <div class="rd-v">Wetenschappelijke leiding (expert via UHasselt/CMK).</div>
-                </div>
-                <div class="rd-kv">
-                  <div class="rd-k">Highlights</div>
-                  <div class="rd-v">
-                    Hennepcultivars (o.a. Muka76) met PFOS-BCF 3–10× hoger dan alternatieve gewassen.
-                    Jaarlijkse PFOS-reductie in bodem gerapporteerd rond 1–5% door fyto-extractie.
-                  </div>
-                </div>
-              </div>
-
-              <div class="rd-logos">
-                <p class="label">Partners (logo’s)</p>
-                <img src="{{ '/images/onderzoek/logos-plants.jpg' | relative_url }}" alt="Partners PLANTS">
-              </div>
-            </div>
-          </details>
-
-          <details class="rd-item">
-            <summary class="rd-sum">
-              <div class="rd-chev">›</div>
-              <div>
-                <h3>MIBIREM — HORIZON-CL6-2021-CIRCBIO-01-07 (2022–2026)</h3>
-                <p>Microbioom karakterisatie, isolatie, afbraaktesten en toolbox voor modellering van afbraakprocessen.</p>
-              </div>
-              <div class="rd-plus" aria-hidden="true"></div>
-            </summary>
-
-            <div class="rd-bodybox">
-              <div class="rd-meta">
-                <div class="rd-kv">
-                  <div class="rd-k">Locatie & scope</div>
-                  <div class="rd-v">EU</div>
-                </div>
-                <div class="rd-kv">
-                  <div class="rd-k">Verontreiniging</div>
-                  <div class="rd-v">Petroleum koolwaterstoffen, cyanides, lindaan</div>
-                </div>
-                <div class="rd-kv">
-                  <div class="rd-k">Rol & expertise</div>
-                  <div class="rd-v">Wetenschappelijke leiding (WP2 via UHasselt/CMK).</div>
-                </div>
-                <div class="rd-kv">
-                  <div class="rd-k">Highlights</div>
-                  <div class="rd-v">
-                    Microbioom karakterisatie, isolatie van bacteriën, afbraaktesten, consortia-samenstelling voor veldtoepassing,
-                    en ontwikkeling bioinformatica toolbox voor modellering.
-                  </div>
-                </div>
-              </div>
-
-              <div class="rd-logos">
-                <p class="label">Partners (logo’s)</p>
-                <img src="{{ '/images/onderzoek/logos-mibirem.jpg' | relative_url }}" alt="Partners MIBIREM">
-              </div>
-            </div>
-          </details>
-
-          <details class="rd-item">
-            <summary class="rd-sum">
-              <div class="rd-chev">›</div>
-              <div>
-                <h3>Fytostabilisatie met actieve kool (potproeven 3M)</h3>
-                <p>Actieve kool (Rembind®) reduceert PFAS-opname in gewassen sterk.</p>
-              </div>
-              <div class="rd-plus" aria-hidden="true"></div>
-            </summary>
-
-            <div class="rd-bodybox">
-              <div class="rd-meta">
-                <div class="rd-kv">
-                  <div class="rd-k">Locatie & scope</div>
-                  <div class="rd-v">UHasselt lab</div>
-                </div>
-                <div class="rd-kv">
-                  <div class="rd-k">Verontreiniging</div>
-                  <div class="rd-v">PFAS</div>
-                </div>
-                <div class="rd-kv">
-                  <div class="rd-k">Rol & expertise</div>
-                  <div class="rd-v">Wetenschappelijke leiding (expert via UHasselt/CMK).</div>
-                </div>
-                <div class="rd-kv">
-                  <div class="rd-k">Highlights</div>
-                  <div class="rd-v">
-                    0,75% (w/w) actieve kool reduceerde totale PFAS-opname in spinazie met 94% (tot 0,61 μg/kg) en PFOS met 74%.
-                    Concentraties onder EU-voedselveiligheidsdrempels.
-                  </div>
-                </div>
-              </div>
-
-              <div class="rd-logos">
-                <p class="label">Partners (logo’s)</p>
-                <img src="{{ '/images/onderzoek/logos-3m.jpg' | relative_url }}" alt="Partners 3M potproeven">
-              </div>
-            </div>
-          </details>
-
-          <details class="rd-item">
-            <summary class="rd-sum">
-              <div class="rd-chev">›</div>
-              <div>
-                <h3>Constructed wetlands (haalbaarheidsstudie) — Blokkersdijk</h3>
-                <p>Verwijderingsefficiënties van PFOS met geselecteerde grassoorten; onderzoek lopend met partners.</p>
-              </div>
-              <div class="rd-plus" aria-hidden="true"></div>
-            </summary>
-
-            <div class="rd-bodybox">
-              <div class="rd-meta">
-                <div class="rd-kv">
-                  <div class="rd-k">Locatie & scope</div>
-                  <div class="rd-v">Blokkersdijk</div>
-                </div>
-                <div class="rd-kv">
-                  <div class="rd-k">Verontreiniging</div>
-                  <div class="rd-v">PFAS</div>
-                </div>
-                <div class="rd-kv">
-                  <div class="rd-k">Rol & expertise</div>
-                  <div class="rd-v">Wetenschappelijk partner (expert via UHasselt/CMK).</div>
-                </div>
-                <div class="rd-kv">
-                  <div class="rd-k">Highlights</div>
-                  <div class="rd-v">
-                    Onderzoek naar PFOS-verwijdering met soorten zoals Phragmites en Juncus; verdere validatie in uitvoering.
-                  </div>
-                </div>
-              </div>
-
-              <div class="rd-logos">
-                <p class="label">Partners (logo’s)</p>
-                <img src="{{ '/images/onderzoek/logos-blokkersdijk.jpg' | relative_url }}" alt="Partners Blokkersdijk">
-              </div>
-            </div>
-          </details>
-
-        </div>
-      </div>
-
-      <!-- ARCHIVE -->
+      <!-- SECTION: Archive -->
       <div class="rd-section">
         <h2>Archief (2019–2024)</h2>
-        <p class="lead">
-          Afgeronde of oudere projecten (samengevat). Voor detail: vraag gerust extra context of referenties.
+        <p>
+          Afgeronde of oudere projecten, gebundeld. Klik open voor context en kernresultaten.
         </p>
 
         <div class="rd-acc">
@@ -685,36 +467,58 @@ nav:
             <summary class="rd-sum">
               <div class="rd-chev">›</div>
               <div>
-                <h3>INTERREG RESANAT (2019–2022) — microbe-ondersteunde fytopiles</h3>
-                <p>Daling TPH & PAK16 tot ca. 40–70% na één groeiseizoen; multi-line-of-evidence onderbouwing.</p>
+                <h3>PFAS fytoremediatie veldexperimenten — PLANTS project KISS VZW (2024–heden)</h3>
+                <p>Identificatie van hennepcultivars met hoge BCF voor PFOS; jaarlijkse PFOS-reducties 1–5% (fyto-extractie).</p>
               </div>
               <div class="rd-plus" aria-hidden="true"></div>
             </summary>
             <div class="rd-bodybox">
-              <div class="rd-meta">
-                <div class="rd-kv">
-                  <div class="rd-k">Locatie & scope</div>
-                  <div class="rd-v">De Lieve (baggerslib)</div>
-                </div>
-                <div class="rd-kv">
-                  <div class="rd-k">Verontreiniging</div>
-                  <div class="rd-v">Minerale olie (TPH), PAK’s</div>
-                </div>
-                <div class="rd-kv">
-                  <div class="rd-k">Rol & expertise</div>
-                  <div class="rd-v">Ontwerp & monitoring van microbe-ondersteunde fytopiles.</div>
-                </div>
-                <div class="rd-kv">
-                  <div class="rd-k">Highlights</div>
-                  <div class="rd-v">
-                    Duidelijke toename van olie-afbrekende genen; o.a. 13C-gelabelde BACTRAPS binnen multi-line-of-evidence aanpak.
-                  </div>
-                </div>
-              </div>
-
+              <p>
+                Locatie: Zwijndrecht & Kallo (Vlaanderen). Wetenschappelijke leiding (expertise via UHasselt/CMK).
+                Cultivarselectie (o.a. Muka76) met BCF voor PFOS ~3–10× hoger dan alternatieve gewassen.
+              </p>
               <div class="rd-logos">
-                <p class="label">Partners (logo’s)</p>
-                <img src="{{ '/images/onderzoek/logos-resanat.jpg' | relative_url }}" alt="Partners RESANAT">
+                <img src="{{ '/images/logos/plants-kiss-logos.png' | relative_url }}" alt="Partners & logo's — PLANTS / KISS">
+              </div>
+            </div>
+          </details>
+
+          <details class="rd-item">
+            <summary class="rd-sum">
+              <div class="rd-chev">›</div>
+              <div>
+                <h3>MIBIREM — HORIZON-CL6 (2022–2026)</h3>
+                <p>Microbioom-karakterisatie, isolaties, afbraaktesten en toolbox voor modellering van afbraakprocessen.</p>
+              </div>
+              <div class="rd-plus" aria-hidden="true"></div>
+            </summary>
+            <div class="rd-bodybox">
+              <p>
+                Contaminanten: petroleum koolwaterstoffen, cyanides, lindaan. Wetenschappelijke leiding (WP2 via UHasselt/CMK).
+                Van isolatie en consortia tot veld-toepassing (bacterie-gestimuleerde fytoremediatie) en bioinformatica.
+              </p>
+              <div class="rd-logos">
+                <img src="{{ '/images/logos/mibirem-logos.png' | relative_url }}" alt="Partners & logo's — MIBIREM">
+              </div>
+            </div>
+          </details>
+
+          <details class="rd-item">
+            <summary class="rd-sum">
+              <div class="rd-chev">›</div>
+              <div>
+                <h3>INTERREG RESANAT (2019–2022)</h3>
+                <p>Microbe-ondersteunde fytopiles; daling TPH/PAK16 ca. 40–70% na één groeiseizoen (multi-evidence).</p>
+              </div>
+              <div class="rd-plus" aria-hidden="true"></div>
+            </summary>
+            <div class="rd-bodybox">
+              <p>
+                Locatie: De Lieve (baggerslib). Ontwerp & monitoring van microbe-ondersteunde fytopiles.
+                Onderbouwing o.a. via toename olie-afbrekende genen en 13C-gelabelde BACTRAPS.
+              </p>
+              <div class="rd-logos">
+                <img src="{{ '/images/logos/resanat-logos.png' | relative_url }}" alt="Partners & logo's — RESANAT">
               </div>
             </div>
           </details>
@@ -724,35 +528,16 @@ nav:
               <div class="rd-chev">›</div>
               <div>
                 <h3>Pilootproef fytoremediatie VOCLs Roeselare (2018–2023)</h3>
-                <p>Fy-tohydraulische aanpak: TCE & BTEX onder saneringsnormen bij afronding (maart 2023).</p>
+                <p>Fytohydraulische aanpak; TCE/BTEX daalden tot onder saneringsnormen (afronding maart 2023).</p>
               </div>
               <div class="rd-plus" aria-hidden="true"></div>
             </summary>
             <div class="rd-bodybox">
-              <div class="rd-meta">
-                <div class="rd-kv">
-                  <div class="rd-k">Locatie & scope</div>
-                  <div class="rd-v">Roeselare pilootsite</div>
-                </div>
-                <div class="rd-kv">
-                  <div class="rd-k">Verontreiniging</div>
-                  <div class="rd-v">VOCl (TCE), BTEX</div>
-                </div>
-                <div class="rd-kv">
-                  <div class="rd-k">Rol & expertise</div>
-                  <div class="rd-v">Begeleiding bio2clean bij ontwerp & wetenschappelijke studie.</div>
-                </div>
-                <div class="rd-kv">
-                  <div class="rd-k">Highlights</div>
-                  <div class="rd-v">
-                    Succesvolle toepassing van fytohydraulische aanpak; concentraties in grondwater onder saneringsnormen.
-                  </div>
-                </div>
-              </div>
-
+              <p>
+                Begeleiding bio2clean bij ontwerp & wetenschappelijke studie. Succesvolle toepassing fytohydraulische aanpak.
+              </p>
               <div class="rd-logos">
-                <p class="label">Partners (logo’s)</p>
-                <img src="{{ '/images/onderzoek/logos-roeselare.jpg' | relative_url }}" alt="Partners Roeselare">
+                <img src="{{ '/images/logos/roeselare-logos.png' | relative_url }}" alt="Partners & logo's — Roeselare">
               </div>
             </div>
           </details>
@@ -762,35 +547,16 @@ nav:
               <div class="rd-chev">›</div>
               <div>
                 <h3>OVAM Code van Goede Praktijk Fytoremediatie (2017–2019)</h3>
-                <p>Vertaling van wetenschappelijke kennis naar Vlaamse richtlijn, in samenwerking met partners.</p>
+                <p>Vertaling van wetenschap naar praktijkrichtlijn (co-auteur; samen met o.a. Arcadis, Witteveen+Bos).</p>
               </div>
               <div class="rd-plus" aria-hidden="true"></div>
             </summary>
             <div class="rd-bodybox">
-              <div class="rd-meta">
-                <div class="rd-kv">
-                  <div class="rd-k">Locatie & scope</div>
-                  <div class="rd-v">Vlaanderen (beleidskader)</div>
-                </div>
-                <div class="rd-kv">
-                  <div class="rd-k">Verontreiniging</div>
-                  <div class="rd-v">Diverse contaminanten</div>
-                </div>
-                <div class="rd-kv">
-                  <div class="rd-k">Rol & expertise</div>
-                  <div class="rd-v">Co-auteur (expert via UHasselt/CMK & bio2clean).</div>
-                </div>
-                <div class="rd-kv">
-                  <div class="rd-k">Highlights</div>
-                  <div class="rd-v">
-                    Richtlijn om fytoremediatie wetenschappelijk correct én praktisch toepasbaar te maken (o.a. met Arcadis, Witteveen+Bos).
-                  </div>
-                </div>
-              </div>
-
+              <p>
+                Beleidskader Vlaanderen. Mede-opsteller van de Vlaamse richtlijn om fytoremediatie wetenschappelijk correct én toepasbaar te maken.
+              </p>
               <div class="rd-logos">
-                <p class="label">Partners (logo’s)</p>
-                <img src="{{ '/images/onderzoek/logos-ovam.jpg' | relative_url }}" alt="Partners OVAM">
+                <img src="{{ '/images/logos/ovam-code-logos.png' | relative_url }}" alt="Partners & logo's — OVAM code">
               </div>
             </div>
           </details>
@@ -800,4 +566,12 @@ nav:
 
     </div>
   </section>
+
 </div>
+
+<script>
+  // Force all accordions closed by default (so you see +)
+  document.addEventListener('DOMContentLoaded', function(){
+    document.querySelectorAll('details.rd-item[open]').forEach(d => d.removeAttribute('open'));
+  });
+</script>
