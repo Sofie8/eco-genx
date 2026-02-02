@@ -2,6 +2,9 @@
 title: Certificaten
 layout: default
 permalink: /certificaten/
+nav:
+  order: 7
+  tooltip: Certificaten
 ---
 
 <style>
