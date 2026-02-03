@@ -1,5 +1,5 @@
 /* =========================================================
-   Eco-GenX — Site CSS (global) — CLEAN + STABLE
+   Eco-GenX — Site CSS (global) — CLEAN + STABLE (FIXED)
    ========================================================= */
 
 :root{
@@ -32,12 +32,14 @@ body{
   color: var(--ink);
   background: #fff;
 
-  /* ✅ veilige default: links uitlijnen zonder alles te overrulen */
+  /* safe default */
   text-align: left;
 }
 
+/* images */
 img{ max-width: 100%; height: auto; display: block; }
 
+/* headings default */
 h1,h2,h3{
   line-height: 1.2;
   margin-top: 0;
@@ -61,15 +63,12 @@ main{
   padding: 2.5rem var(--pad);
   overflow: visible !important;
 
-  /* ✅ help tegen theme-centering */
   text-align: left;
 }
 
 /* =========================================================
    HEADER — NEVER fixed/sticky (scrolls with page)
    ========================================================= */
-
-/* cover many themes */
 header,
 header.background,
 .site-header,
@@ -82,7 +81,7 @@ header.background,
   z-index: 50;
 }
 
-/* sommige themes zetten body padding-top voor sticky header */
+/* some themes add padding-top to body for sticky header */
 body{ padding-top: 0 !important; }
 
 header, header nav{ overflow: visible !important; }
@@ -94,9 +93,7 @@ header.background{
   color: rgba(255,255,255,.92);
 }
 
-header.background[data-big]{
-  padding: .85rem 0 !important;
-}
+header.background[data-big]{ padding: .85rem 0 !important; }
 
 header.background .header-inner{
   max-width: var(--maxw);
@@ -152,23 +149,18 @@ nav.main-nav{
   margin-left: auto;
   font-size: .95rem;
   position: relative;
-  z-index: 2000; /* dropdown boven alles */
+  z-index: 2000;
 }
 
-/* CAPS for all top-level links */
 nav.main-nav a{
   text-decoration: none;
   padding: .35rem .45rem;
   border-radius: .45rem;
   color: rgba(255,255,255,.92);
-
   text-transform: uppercase;
   letter-spacing: .06em;
 }
-
-nav.main-nav a:hover{
-  background: rgba(255,255,255,.08);
-}
+nav.main-nav a:hover{ background: rgba(255,255,255,.08); }
 
 /* =========================================================
    CLICK dropdown wrapper
@@ -179,7 +171,6 @@ nav.main-nav a:hover{
   align-items: center;
 }
 
-/* Dropdown trigger styled like nav item + CAPS */
 .nav-dd__trigger{
   appearance: none;
   -webkit-appearance: none;
@@ -203,9 +194,7 @@ nav.main-nav a:hover{
   letter-spacing: .06em;
 }
 
-.nav-dd__trigger:hover{
-  background: rgba(255,255,255,.08) !important;
-}
+.nav-dd__trigger:hover{ background: rgba(255,255,255,.08) !important; }
 
 .nav-dd__trigger:focus-visible{
   outline: 2px solid rgba(255,255,255,.35);
@@ -217,9 +206,7 @@ nav.main-nav a:hover{
   transform: translateY(1px);
 }
 
-.nav-dd.open .nav-dd__trigger{
-  background: rgba(255,255,255,.10) !important;
-}
+.nav-dd.open .nav-dd__trigger{ background: rgba(255,255,255,.10) !important; }
 
 .nav-dd__menu{
   display: none;
@@ -241,21 +228,16 @@ nav.main-nav a:hover{
 
 .nav-dd.open .nav-dd__menu{ display: block; }
 
-/* Dropdown items: readable, not caps */
 .nav-dd__menu a{
   display: block;
   padding: .55rem .95rem;
   white-space: nowrap;
   text-decoration: none;
   color: rgba(255,255,255,.92);
-
   text-transform: none;
   letter-spacing: 0;
 }
-
-.nav-dd__menu a:hover{
-  background: rgba(255,255,255,.10);
-}
+.nav-dd__menu a:hover{ background: rgba(255,255,255,.10); }
 
 /* responsive header */
 @media (max-width: 980px){
@@ -267,7 +249,6 @@ nav.main-nav a:hover{
   }
   nav.main-nav{ justify-content: center; }
 
-  /* mobile: submenu inline when open */
   .nav-dd{ flex-direction: column; align-items: flex-start; }
   .nav-dd__menu{
     position: static;
@@ -287,13 +268,11 @@ nav.main-nav a:hover{
     padding: .35rem .45rem;
     border-radius: .45rem;
   }
-  .nav-dd__menu a:hover{
-    background: rgba(255,255,255,.08);
-  }
+  .nav-dd__menu a:hover{ background: rgba(255,255,255,.08); }
 }
 
 /* =========================================================
-   FULL-BLEED helper (robust breakout)
+   FULL-BLEED helper
    ========================================================= */
 .hero-full,
 .full-bleed{
@@ -303,6 +282,68 @@ nav.main-nav a:hover{
   width: 100vw;
   margin-left: -50vw;
   margin-right: -50vw;
+}
+
+/* =========================================================
+   GLOBAL: ensure hero sections render WHITE text
+   Add any page hero wrappers here if needed
+   ========================================================= */
+.hero,
+.hero-full,
+.full-bleed,
+.vw-hero,
+.rd-hero,
+.al-hero,
+.projects-hero,
+.projects-top,
+.proj-hero,
+.service-hero,
+.services-hero,
+.city .hero{
+  color: rgba(255,255,255,.92);
+}
+
+.hero h1, .hero h2, .hero h3, .hero p,
+.hero-full h1, .hero-full h2, .hero-full h3, .hero-full p,
+.full-bleed h1, .full-bleed h2, .full-bleed h3, .full-bleed p,
+.vw-hero h1, .vw-hero h2, .vw-hero h3, .vw-hero p,
+.rd-hero h1, .rd-hero h2, .rd-hero h3, .rd-hero p,
+.al-hero h1, .al-hero h2, .al-hero h3, .al-hero p,
+.projects-hero h1, .projects-hero h2, .projects-hero h3, .projects-hero p,
+.projects-top h1, .projects-top h2, .projects-top h3, .projects-top p,
+.proj-hero h1, .proj-hero h2, .proj-hero h3, .proj-hero p,
+.service-hero h1, .service-hero h2, .service-hero h3, .service-hero p,
+.services-hero h1, .services-hero h2, .services-hero h3, .services-hero p,
+.city .hero h1, .city .hero h2, .city .hero h3, .city .hero p{
+  color: rgba(255,255,255,.92) !important;
+}
+
+/* links in hero */
+.hero a,
+.hero-full a,
+.full-bleed a,
+.vw-hero a,
+.rd-hero a,
+.al-hero a,
+.projects-hero a,
+.projects-top a,
+.proj-hero a,
+.service-hero a,
+.services-hero a,
+.city .hero a{
+  color: rgba(255,255,255,.92) !important;
+}
+
+/* =========================================================
+   Theme-centering counter (SAFE)
+   Only neutralize common centering containers, not everything
+   ========================================================= */
+main,
+main .content,
+main article,
+main .page,
+main .post{
+  text-align: left;
 }
 
 /* =========================================================
@@ -417,7 +458,6 @@ nav.main-nav a:hover{
 
 .project-hero{ height: auto !important; }
 
-/* keep background behind text if theme uses bg wrappers */
 .project-hero .project-hero__bg,
 .project-hero .hero-bg,
 .project-hero .bg{
