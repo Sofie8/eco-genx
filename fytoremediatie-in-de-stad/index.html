@@ -496,11 +496,9 @@
   <section class="background" data-size="page">
     <style>
   /* =========================================================
-     Fytoremediatie in de stad — seed-like layout
-     Sections:
-     1) Full-width intro text
-     2) Split: diensten (left) + photo (right)
-     3) Split: photo (left) + aanpak steps (right)
+     Fytoremediatie in de stad — 2-col intro + split sections
+     (geen kaders, wél full-width, zoals missie/visie)
+     Scoped: .city
      ========================================================= */
 
   main{ max-width:none !important; padding:0 !important; overflow:visible !important; }
@@ -508,201 +506,176 @@
     max-width:none !important; padding:0 !important; margin:0 !important; overflow:visible !important;
   }
 
-  /* hide default injected page title (theme-dependent) */
-  .page-title,
-  .page-header,
-  .page-header h1,
-  h1.page-title,
-  main > h1:first-child{
-    display:none !important;
-  }
-
   .city{
     --max: 1200px;
     --pad: 1.25rem;
+
     --cream: var(--eco-cream, #f6f4ee);
     --green: var(--eco-dark, #0b3b2f);
     --green2: var(--eco-dark-2, #082a22);
+
     --ink: rgba(0,0,0,.86);
     --muted: rgba(0,0,0,.66);
     --line: rgba(0,0,0,.10);
-    --shadow: 0 14px 36px rgba(0,0,0,.06);
-    --shadow2: 0 18px 44px rgba(0,0,0,.10);
-    text-align:left;
   }
 
-  /* ---------- HERO ---------- */
-  .hero{
+  /* full-bleed helpers */
+  .city .bleed{
     position: relative;
     left: 50%; right: 50%;
     width: 100vw;
-    margin-left: -50vw; margin-right: -50vw;
-
-    background: linear-gradient(180deg, rgba(11,59,47,.92), rgba(8,42,34,.92));
-    color: rgba(255,255,255,.92);
-    padding: 2.4rem 0 1.8rem;
+    margin-left: -50vw;
+    margin-right: -50vw;
   }
-  .hero .inner{
+  .city .inner{
     max-width: var(--max);
     margin: 0 auto;
     padding: 0 var(--pad);
-    text-align:left;
   }
-  .eyebrow{
+
+  /* ---------- HERO (klein, zoals artikels) ---------- */
+  .city-hero{
+    background: linear-gradient(180deg, rgba(11,59,47,.92), rgba(8,42,34,.92));
+    color: rgba(255,255,255,.92);
+    padding: 2.2rem 0 1.6rem;
+    border-bottom: 1px solid rgba(0,0,0,.10);
+  }
+  .city-hero .eyebrow{
     font-size: .86rem;
     letter-spacing: .10em;
     text-transform: uppercase;
     opacity: .85;
     margin-bottom: .55rem;
   }
-  .hero h1{
+  .city-hero h1{
     margin:0 0 .55rem;
-    font-size: 2.4rem;
+    font-size: 2.35rem;
     line-height: 1.08;
+    text-align:left;
   }
-  .hero p{
+  .city-hero p{
     margin:0;
-    max-width: 92ch;
+    max-width: 90ch;
     opacity:.92;
     line-height:1.7;
-  }
-
-  /* ---------- BODY WRAP ---------- */
-  .wrap{
-    background: var(--cream);
-    position: relative;
-    left: 50%; right: 50%;
-    width: 100vw;
-    margin-left: -50vw; margin-right: -50vw;
-
-    padding: 2.2rem 0 3.2rem;
-    border-top: 1px solid rgba(0,0,0,.06);
-  }
-  .wrap .inner{
-    max-width: var(--max);
-    margin: 0 auto;
-    padding: 0 var(--pad);
     text-align:left;
   }
 
-  /* ---------- Card base ---------- */
-  .card{
-    background: rgba(255,255,255,.62);
-    border: 1px solid rgba(0,0,0,.08);
-    border-radius: 18px;
-    box-shadow: var(--shadow);
-    overflow:hidden;
+  /* ---------- SECTION BASE ---------- */
+  .sec{
+    background: var(--cream);
+    padding: 2.4rem 0;
+    border-top: 1px solid rgba(0,0,0,.06);
   }
-  .pad{ padding: 1.25rem 1.35rem; }
-  .card h2{
-    margin: 0 0 .6rem;
-    font-size: 1.55rem;
+
+  /* 2 kolommen intro (geen kader) */
+  .two-col{
+    display:grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2.2rem;
+    align-items: start;
+  }
+  .two-col h2{
+    margin: 0;
+    font-size: 2.1rem;
+    line-height: 1.12;
+    letter-spacing: .01em;
     color: var(--ink);
     text-align:left;
   }
-  .card p, .card li{
-    color: rgba(0,0,0,.72);
-    line-height: 1.75;
+  .two-col .txt p{
+    margin: 0;
+    color: rgba(0,0,0,.74);
+    line-height: 1.85;
+    font-size: 1.05rem;
     text-align:left;
   }
-  .card ul{ margin:.6rem 0 0; padding-left: 1.1rem; }
-  .card li{ margin:.35rem 0; }
+  .two-col .txt p + p{ margin-top: .9rem; }
 
-  /* ---------- FULL WIDTH TEXT BLOCK (first) ---------- */
-  .fulltext{
-    max-width: 980px;
-    margin: 0 auto 1.25rem;
-  }
-
-  /* ---------- Split rows (seed-like) ---------- */
-  .row{
+  /* Split blok: links content, rechts foto (full cover) */
+  .split{
     display:grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 1.25rem;
+    grid-template-columns: .95fr 1.05fr;
+    gap: 2rem;
     align-items: stretch;
-    margin-top: 1.25rem;
   }
 
-  .media{
-    width:100%;
-    min-height: 420px; /* ✅ seed vibe: big image */
-    overflow:hidden;
-    background: rgba(0,0,0,.06);
-    border-radius: 18px;
-    border: 1px solid rgba(0,0,0,.08);
-    box-shadow: var(--shadow);
+  /* Links: lijst/inhoud */
+  .split-left h2{
+    margin: 0 0 .75rem;
+    font-size: 1.75rem;
+    line-height: 1.2;
+    color: var(--ink);
+    text-align:left;
   }
-  .media img{
-    width:100%;
-    height:100%;
-    object-fit: cover;   /* ✅ always fills */
-    display:block;
-  }
-
-  /* ---------- Services list (left column) ---------- */
-  .sidecard{
-    height: 100%;
-  }
-  .sidehead{
-    padding: 1.05rem 1.1rem;
-    border-bottom: 1px solid rgba(0,0,0,.08);
-    font-weight: 900;
-    letter-spacing: .10em;
-    text-transform: uppercase;
-    color: rgba(0,0,0,.78);
-  }
-  .sidelist{
-    padding: .35rem .5rem .6rem;
-    display:flex;
-    flex-direction: column;
-    gap: .35rem;
-  }
-  .sidelist a{
-    display:block;
-    padding: .7rem .85rem;
-    border-radius: 14px;
-    text-decoration:none;
-    color: rgba(0,0,0,.82);
-    border: 1px solid rgba(0,0,0,.06);
-    background: rgba(255,255,255,.70);
-    transition: transform .12s ease, box-shadow .12s ease;
-  }
-  .sidelist a:hover{
-    transform: translateY(-1px);
-    box-shadow: var(--shadow2);
-  }
-  .sidelist small{
-    display:block;
-    color: var(--muted);
-    margin-top: .15rem;
-    line-height: 1.45;
+  .split-left p{
+    margin: 0 0 1.05rem;
+    color: rgba(0,0,0,.74);
+    line-height: 1.85;
+    text-align:left;
+    max-width: 80ch;
   }
 
-  /* ---------- Steps (right column) ---------- */
-  .steps{
+  /* “diensten” lijst als nette blokken, geen card look */
+  .svc{
     display:flex;
     flex-direction: column;
     gap: .9rem;
+    margin-top: .2rem;
   }
-  .step{
-    background: rgba(255,255,255,.70);
-    border: 1px solid rgba(0,0,0,.08);
+  .svc a{
+    display:block;
+    text-decoration:none;
+    color: inherit;
+    padding: .9rem 1rem;
+    border: 1px solid rgba(0,0,0,.10);
+    background: rgba(255,255,255,.55);
     border-radius: 16px;
-    padding: 1rem 1.1rem;
   }
-  .step h3{
-    margin: 0 0 .35rem;
-    font-size: 1.15rem;
-    line-height: 1.25;
+  .svc a strong{
+    display:block;
+    font-size: 1.05rem;
+    margin-bottom: .2rem;
   }
-  .step ul{
+  .svc a span{
+    display:block;
+    color: rgba(0,0,0,.66);
+    line-height: 1.65;
+  }
+  .svc a:hover{
+    background: rgba(255,255,255,.70);
+  }
+
+  /* Foto rechts / links: altijd gelijk, cover */
+  .split-media{
+    border-radius: 18px;
+    overflow:hidden;
+    border: 1px solid rgba(0,0,0,.10);
+    background: rgba(0,0,0,.06);
+    min-height: 420px;
+  }
+  .split-media img{
+    width:100%;
+    height:100%;
+    object-fit: cover;
+    display:block;
+  }
+
+  /* Aanpak bullets */
+  .bul{
     margin: .35rem 0 0;
     padding-left: 1.1rem;
+  }
+  .bul li{
+    margin: .45rem 0;
+    color: rgba(0,0,0,.74);
+    line-height: 1.85;
+    text-align:left;
   }
 
   /* CTA */
   .cta{
-    margin-top: 1.25rem;
+    margin-top: 1.5rem;
     background: rgba(11,59,47,.92);
     color: rgba(255,255,255,.92);
     border: 1px solid rgba(255,255,255,.12);
@@ -717,120 +690,136 @@
     font-weight: 800;
   }
 
+  /* Responsive */
   @media (max-width: 980px){
-    .row{ grid-template-columns: 1fr; }
-    .media{ min-height: 260px; }
-    .hero h1{ font-size: 2.05rem; }
-    .fulltext{ max-width: 100%; }
+    .two-col{ grid-template-columns: 1fr; gap: 1.2rem; }
+    .two-col h2{ font-size: 1.85rem; }
+    .split{ grid-template-columns: 1fr; }
+    .split-media{ min-height: 280px; }
   }
 </style>
 
 <div class="city">
 
   <!-- HERO -->
-  <section class="hero">
+  <section class="bleed city-hero" aria-label="Fytoremediatie in de stad">
     <div class="inner">
       <div class="eyebrow">Eco-GenX · Fytoremediatie in de stad</div>
       <h1>Van stedelijke bodem naar werkend groen</h1>
       <p>
-        Praktische trajecten rond plantkeuze, inventarisatie en monitoring — met aandacht voor eco-regio, stressfactoren
-        en meetbaar bewijs op terrein.
+        Praktische trajecten rond plantkeuze, inventarisatie en monitoring — met aandacht voor eco-regio,
+        stressfactoren en meetbaar bewijs op terrein.
       </p>
     </div>
   </section>
 
-  <section class="wrap">
+  <!-- INTRO: 2 kolommen, geen kader -->
+  <section class="bleed sec" aria-label="Waarom fytoremediatie in stedelijke context">
     <div class="inner">
-
-      <!-- 1) FULL WIDTH INTRO TEXT -->
-      <div class="card fulltext">
-        <div class="pad">
-          <h2>Waarom fytoremediatie in stedelijke context?</h2>
+      <div class="two-col">
+        <h2>Waarom fytoremediatie in stedelijke context?</h2>
+        <div class="txt">
           <p>
             Stadsbodems zijn complex: verdichting, droogte, hitte, fragmentatie en soms verontreiniging.
             Daarom combineer ik ecologie + plantkeuze + monitoring zodat je niet “gokt”, maar gericht bijstuurt.
           </p>
         </div>
       </div>
+    </div>
+  </section>
 
-      <!-- 2) DIENSTEN LINKS + FOTO RECHTS -->
-      <div class="row" aria-label="Diensten en beeld">
-        <div class="card sidecard" aria-label="Diensten">
-          <div class="sidehead">Diensten</div>
-          <div class="sidelist">
+  <!-- DIENSTEN links, FOTO rechts (full cover) -->
+  <section class="bleed sec" aria-label="Diensten en aanpak">
+    <div class="inner">
+      <div class="split">
+
+        <div class="split-left">
+          <h2>Diensten</h2>
+          <p>
+            Los inzetbaar of als traject: van snelle terrein-toets tot onderbouwd beheeradvies en monitoringkader.
+          </p>
+
+          <div class="svc">
             <a href="#inventarisatie">
-              Terrein-toets: planten &amp; kruiden
-              <small>Inventarisatie, habitat, indicatiewaarden, quick wins.</small>
+              <strong>Terrein-toets: planten &amp; kruiden inventarisatie</strong>
+              <span>Inventarisatie, indicatorsoorten, stress-signalen en quick wins.</span>
             </a>
+
             <a href="#ecoregio">
-              Eco-regio &amp; standplaatsanalyse
-              <small>Wat kan hier echt werken — bodem, water, stress, beheer.</small>
+              <strong>Eco-regio &amp; standplaatsanalyse</strong>
+              <span>Water/bodem match, risico’s (droogte/hitte/zout/verdichting) en soortenkeuze.</span>
             </a>
+
             <a href="#klimaatboom">
-              Klimaatboom labelling
-              <small>Robuustheid, beheeradvies en communicatie naar burgers.</small>
+              <strong>Klimaatboom labelling</strong>
+              <span>Robuustheid, beheer, KPI’s en communicatie: “waarom deze boom hier?”.</span>
             </a>
+
             <a href="#contact">
-              Traject op maat
-              <small>Van diagnose naar ontwerp &amp; monitoringplan.</small>
+              <strong>Traject op maat</strong>
+              <span>Van diagnose naar ontwerp, proefopzet en monitoringplan.</span>
             </a>
           </div>
         </div>
 
-        <div class="media" aria-label="Foto stedelijke context">
-          <img src="/eco-genx/images/fyto-stad-1.jpg" alt="Stedelijke fytoremediatie / groen in de stad">
+        <div class="split-media" aria-label="Beeld stedelijk groen">
+          <img src="/eco-genx/images/fyto-stad-1.jpg" alt="Stedelijke fytoremediatie">
         </div>
+
       </div>
+    </div>
+  </section>
 
-      <!-- 3) ECO-GENX AANPAK: FOTO LINKS + STEPS RECHTS -->
-      <div class="row" aria-label="Eco-GenX aanpak" style="margin-top:1.35rem;">
-        <div class="media" aria-label="Foto aanpak op terrein">
-          <img src="/eco-genx/images/fyto-stad-2.jpg" alt="Terreinwerk, inventarisatie en monitoring">
+  <!-- ECO-GENX AANPAK: FOTO links, BULLETS rechts -->
+  <section class="bleed sec" aria-label="Eco-GenX aanpak">
+    <div class="inner">
+      <div class="split">
+
+        <div class="split-media" aria-label="Beeld terrein en monitoring">
+          <img src="/eco-genx/images/fyto-stad-2.jpg" alt="Terrein-toets en monitoring">
         </div>
 
-        <div class="steps">
-          <div class="card">
-            <div class="pad">
-              <h2>Eco-GenX aanpak</h2>
-              <p style="margin:0;">
-                Meten → begrijpen → bijsturen. Praktisch, herhaalbaar en begrijpelijk voor beheer én communicatie.
-              </p>
-            </div>
-          </div>
+        <div class="split-left">
+          <h2>Eco-GenX aanpak</h2>
+          <p>
+            Eenvoudig, meetbaar en iteratief: <strong>meten → begrijpen → bijsturen</strong>.
+            Dit is wat het traject omvat:
+          </p>
 
-          <div class="step" id="inventarisatie">
-            <h3>Terrein-toets: planten &amp; kruiden inventarisatie</h3>
-            <ul>
+          <div id="inventarisatie">
+            <p><strong>Terrein-toets: planten &amp; kruiden inventarisatie</strong></p>
+            <ul class="bul">
               <li>inventarisatie (soorten, bedekking, indicatorsoorten)</li>
               <li>stress-signalen en beheerknelpunten</li>
               <li>kansenkaart: snelle ingrepen vs. langere trajecten</li>
             </ul>
           </div>
 
-          <div class="step" id="ecoregio">
-            <h3>Eco-regio &amp; standplaatsanalyse</h3>
-            <ul>
+          <div id="ecoregio" style="margin-top:1rem;">
+            <p><strong>Eco-regio &amp; standplaatsanalyse</strong></p>
+            <ul class="bul">
               <li>eco-regio/standplaats match: water, textuur, organische stof</li>
               <li>risico’s: droogte/hitte, zout, verdichting</li>
               <li>keuze van soorten/rassen + beheeradvies</li>
             </ul>
           </div>
 
-          <div class="step" id="klimaatboom">
-            <h3>Klimaatboom labelling</h3>
-            <ul>
+          <div id="klimaatboom" style="margin-top:1rem;">
+            <p><strong>Klimaatboom labelling</strong></p>
+            <ul class="bul">
               <li>labeling voor robuustheid &amp; beheer (duidelijk naar burgers)</li>
               <li>monitoringkader: KPI’s, signalen, bijsturing</li>
               <li>communicatie: “waarom deze boom hier?”</li>
             </ul>
           </div>
+
+          <div class="cta" id="contact">
+            Wil je dit toepassen op jouw wijk/park/straat? <a href="/eco-genx/contact/">Contacteer mij →</a>
+          </div>
+
         </div>
-      </div>
 
-      <div class="cta" id="contact">
-        Wil je dit toepassen op jouw wijk/park/straat? <a href="/eco-genx/contact/">Contacteer mij →</a>
       </div>
-
     </div>
   </section>
 
