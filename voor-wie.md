@@ -211,10 +211,6 @@ permalink: /over/voor-wie/
     <div class="inner">
       <div class="vw-eyebrow">Over Eco-GenX</div>
       <h1>Voor wie</h1>
-      <p>
-        Eco-GenX werkt voor organisaties die natuur en ondergrond ernstig nemen: van analyse tot implementatie,
-        met meetbaar bewijs en heldere keuzes.
-      </p>
     </div>
   </section>
 
