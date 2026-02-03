@@ -486,3 +486,32 @@ main .post{
   letter-spacing: 0 !important;
 }
 
+/* =========================================
+   MOBILE FIXES
+   - voorkomt dat full-bleed blokken buiten beeld schuiven
+   - voorkomt "onzichtbare" tekst in eerste blok op gsm
+   ========================================= */
+@media (max-width: 640px){
+  /* Full-bleed kan op mobile content uit het zicht duwen */
+  .hero-full,
+  .full-bleed{
+    left: auto !important;
+    right: auto !important;
+    width: 100% !important;
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+  }
+
+  /* Veiligheidsnet: als een hero/full-bleed géén donkere achtergrond heeft,
+     forceer dan leesbare tekstkleur in de content. */
+  main .hero,
+  main .hero-full,
+  main .full-bleed{
+    color: var(--ink) !important;
+  }
+  main .hero h1, main .hero h2, main .hero h3, main .hero p,
+  main .hero-full h1, main .hero-full h2, main .hero-full h3, main .hero-full p,
+  main .full-bleed h1, main .full-bleed h2, main .full-bleed h3, main .full-bleed p{
+    color: var(--ink) !important;
+  }
+}
