@@ -1,1 +1,1 @@
-Sitemap: https://sofie8.github.io/eco-genx/sitemap.xml
+Sitemap: http://www.eco-genx.be/sitemap.xml
