@@ -9,7 +9,13 @@ nav:
 
 <style>
   /* =========================================================
-     ONDERZOEK — Eco-GenX style (hero + accordions)
+     ONDERZOEK — consistent met "Op de agenda"
+     - GEEN foto in header
+     - hero niet te hoog
+     - titel in wit: "Van wetenschap naar terrein"
+     - tekst onder titel weg
+     - rechterblok weg
+     - introtekst gesplitst in 2 "blokken" zonder achtergrond (gewoon tekstkolommen)
      Scoped: .rd
      ========================================================= */
 
@@ -39,45 +45,19 @@ nav:
     --line: rgba(0,0,0,.10);
   }
 
-  /* ---------- HERO (zoals artikels: niet te hoog) ---------- */
+  /* ---------- HERO (zonder foto, niet te hoog) ---------- */
   .rd-hero{
     position: relative;
     left: 50%; right: 50%;
     width: 100vw;
     margin-left: -50vw; margin-right: -50vw;
 
-    height: 320px;
-    background: var(--green2);
-    overflow: hidden;
+    padding: 2.1rem 0 1.55rem;  /* ✅ minder hoog */
+    background: linear-gradient(180deg, rgba(11,59,47,.92), rgba(8,42,34,.92));
     border-bottom: 1px solid rgba(0,0,0,.08);
   }
 
-  .rd-hero img{
-    width:100%;
-    height:100%;
-    object-fit: cover;
-    object-position: center;
-    display:block;
-  }
-
-  .rd-hero::after{
-    content:"";
-    position:absolute; inset:0;
-    background: linear-gradient(90deg,
-      rgba(8,42,34,.86) 0%,
-      rgba(8,42,34,.66) 45%,
-      rgba(8,42,34,.18) 100%);
-    pointer-events:none;
-  }
-
-  .rd-hero__inner{
-    position:absolute;
-    inset:0;
-    display:flex;
-    align-items:flex-end;
-    padding: 1.6rem 0 1.2rem;
-  }
-  .rd-hero__inner .inner{
+  .rd-hero .inner{
     max-width: var(--max);
     margin: 0 auto;
     padding: 0 var(--pad);
@@ -89,32 +69,26 @@ nav:
     font-size: .86rem;
     letter-spacing: .10em;
     text-transform: uppercase;
-    opacity: .88;
-    margin-bottom: .55rem;
+    opacity: .82;
+    margin: 0 0 .65rem;
   }
+
   .rd-title{
-    margin: 0 0 .35rem;
-    font-size: 2.35rem;
-    line-height: 1.08;
+    margin: 0;
+    font-size: 2.45rem;
+    line-height: 1.06;
     letter-spacing: .02em;
     max-width: 28ch;
   }
-  .rd-subtitle{
-    margin: 0;
-    max-width: 82ch;
-    opacity: .92;
-    line-height: 1.7;
-    font-size: 1.02rem;
-  }
 
-  /* ---------- BODY WRAP ---------- */
+  /* ---------- BODY ---------- */
   .rd-body{
     background: var(--cream);
     position: relative;
     left: 50%; right: 50%;
     width: 100vw;
     margin-left: -50vw; margin-right: -50vw;
-    padding: 2.2rem 0 3.0rem;
+    padding: 2.0rem 0 3.0rem;
     border-top: 1px solid rgba(0,0,0,.06);
   }
   .rd-body .inner{
@@ -124,37 +98,28 @@ nav:
     text-align:left !important;
   }
 
-  /* ---------- INTRO BLOCK (2 columns like iso page) ---------- */
+  /* ---------- INTRO (2 kolommen, GEEN achtergrondkaarten) ---------- */
   .rd-intro{
     display:grid;
     grid-template-columns: 1fr 1fr;
     gap: 2rem;
     align-items:start;
-    margin-bottom: 2rem;
+    margin-bottom: 1.9rem;
   }
+
   .rd-intro h2{
     margin: 0 0 .6rem;
-    font-size: 1.65rem;
+    font-size: 1.55rem;
     line-height: 1.2;
     color: var(--ink);
   }
+
   .rd-intro p{
     margin: 0;
     color: rgba(0,0,0,.74);
     line-height: 1.75;
-    max-width: 85ch;
-    text-align:left !important;
+    max-width: 90ch;
   }
-
-  .rd-note{
-    background: rgba(255,255,255,.62);
-    border: 1px solid rgba(0,0,0,.08);
-    border-radius: 18px;
-    overflow:hidden;
-    box-shadow: 0 14px 36px rgba(0,0,0,.06);
-  }
-  .rd-note .pad{ padding: 1.25rem 1.35rem; }
-  .rd-note strong{ display:block; margin-bottom:.35rem; }
 
   /* ---------- SECTION HEAD ---------- */
   .rd-section{
@@ -162,7 +127,7 @@ nav:
   }
   .rd-section h2{
     margin: 0 0 .6rem;
-    font-size: 1.85rem;
+    font-size: 1.8rem;
     line-height: 1.2;
     color: var(--ink);
   }
@@ -171,10 +136,9 @@ nav:
     color: rgba(0,0,0,.74);
     line-height: 1.75;
     max-width: 92ch;
-    text-align:left !important;
   }
 
-  /* ---------- Accordion list (FIX alignment + centered content) ---------- */
+  /* ---------- Accordion list (zoals je had, maar keep clean) ---------- */
   .rd-acc{
     display:flex;
     flex-direction:column;
@@ -190,7 +154,6 @@ nav:
     width: 100%;
   }
 
-  /* summary = centered content (no weird right packing) */
   summary.rd-sum{
     list-style: none;
     cursor: pointer;
@@ -203,10 +166,6 @@ nav:
     width: 100%;
     padding: 1.05rem 1.15rem;
     background: rgba(0,0,0,.04);
-
-    place-content: stretch !important;
-    justify-content: stretch !important;
-    justify-items: stretch !important;
 
     max-width: 980px;
     margin: 0 auto;
@@ -237,13 +196,11 @@ nav:
     font-size: 1.1rem;
     line-height: 1.3;
     color: var(--ink);
-    text-align:left !important;
   }
   .rd-sum p{
     margin: 0;
     color: rgba(0,0,0,.70);
     line-height: 1.6;
-    text-align:left !important;
   }
 
   .rd-plus{
@@ -259,10 +216,7 @@ nav:
     line-height: 1;
     user-select: none;
   }
-
-  /* default closed => show +  */
   details.rd-item:not([open]) .rd-plus::before{ content:"+"; }
-  /* open => show – */
   details.rd-item[open] .rd-plus::before{ content:"–"; }
 
   details.rd-item[open] .rd-chev{
@@ -274,16 +228,12 @@ nav:
     padding: 1.05rem 1.15rem 1.15rem;
     background: rgba(255,255,255,.55);
   }
-
-  /* center expanded content too */
   .rd-bodybox > *{
     max-width: 980px;
     margin-left: auto;
     margin-right: auto;
-    text-align:left !important;
   }
 
-  /* per project: logo group image */
   .rd-logos{
     margin-top: .85rem;
     padding-top: .85rem;
@@ -305,29 +255,20 @@ nav:
     line-height: 1.6;
   }
 
-  /* ---------- Responsive ---------- */
   @media (max-width: 980px){
-    .rd-hero{ height: 240px; }
-    .rd-hero__inner{ padding: 1.2rem 0 1rem; }
-    .rd-title{ font-size: 1.95rem; }
+    .rd-title{ font-size: 2.05rem; }
     .rd-intro{ grid-template-columns: 1fr; }
   }
 </style>
 
 <div class="rd">
 
-  <!-- HERO -->
+  <!-- HERO (geen foto) -->
   <section class="rd-hero" aria-label="Onderzoek en ontwikkeling">
-    <img src="{{ '/images/onderzoek-hero.jpg' | relative_url }}" alt="Onderzoek en ontwikkeling">
-    <div class="rd-hero__inner">
-      <div class="inner">
-        <div class="rd-eyebrow">Eco-GenX · Onderzoek & ontwikkeling</div>
-        <h1 class="rd-title">Van wetenschap naar terrein</h1>
-        <p class="rd-subtitle">
-          Ik ontwikkel en test meetbare innovaties rond bodem-, water- en PFAS-herstel:
-          nature-based ontwerpen, evidence-plannen en monitoring die decision-ready antwoorden opleveren.
-        </p>
-      </div>
+    <div class="inner">
+      <div class="rd-eyebrow">Eco-GenX · Onderzoek & ontwikkeling</div>
+      <h1 class="rd-title">Van wetenschap naar terrein</h1>
+      <!-- ✅ subtitle weg -->
     </div>
   </section>
 
@@ -335,39 +276,35 @@ nav:
   <section class="rd-body">
     <div class="inner">
 
-      <!-- INTRO BLOCK (UHasselt postdoc context) -->
+      <!-- ✅ intro in 2 kolommen, GEEN rechterkaart -->
       <div class="rd-intro">
         <div>
           <h2>Onderzoek als motor</h2>
           <p>
             Eco-GenX is praktijkgericht: ontwerpen, testen en onderbouwen op terrein.
-            Tegelijk blijf ik als postdoc (20% aanstelling) bij UHasselt nauw betrokken bij
-            fundamentele en methodologische ontwikkeling (plant–microbe interacties, bewijsvoering, data-interpretatie).
             Dat houdt de aanpak scherp en vertaalt nieuwe inzichten sneller naar toepasbare oplossingen.
           </p>
         </div>
-        <div class="rd-note">
-          <div class="pad">
-            <strong>Hoe ik dit toon</strong>
-            <p style="margin:0; color: rgba(0,0,0,.72); line-height:1.7;">
-              Lopende projecten (Eco-GenX) en een compact archief (2019–2024).
-              Per project kan je een korte omschrijving uitbreiden en logo’s/partners tonen via één afbeelding.
-            </p>
-          </div>
+
+        <div>
+          <h2>Methodologie & scherpte</h2>
+          <p>
+            Tegelijk blijf ik als postdoc (20% aanstelling) bij UHasselt nauw betrokken bij fundamentele en
+            methodologische ontwikkeling (plant–microbe interacties, bewijsvoering, data-interpretatie).
+          </p>
         </div>
       </div>
 
       <!-- SECTION: Eco-GenX current -->
       <div class="rd-section">
-        <h2>Huidige onderzoek- & ontwikkelingsprojecten (Eco-GenX)</h2>
+        <h2>Huidige onderzoek- & ontwikkelingsprojecten</h2>
         <p>
-          Projecten waarbij ik betrokken ben via Eco-GenX/vennootschap (advies, ontwerp, monitoring, proof-of-impact).
-          Klik open voor details en voeg per project een logo-beeld toe.
+          Projecten waarbij ik betrokken ben via Eco-GenX (advies, ontwerp, monitoring, proof-of-impact).
+          Klik open voor details en voeg per project één logo-/partnerafbeelding toe.
         </p>
 
         <div class="rd-acc">
 
-          <!-- Barebeek -->
           <details class="rd-item">
             <summary class="rd-sum">
               <div class="rd-chev">›</div>
@@ -389,14 +326,12 @@ nav:
               </p>
 
               <div class="rd-logos">
-                <!-- upload 1 samengestelde logo-afbeelding voor dit project -->
                 <img src="{{ '/images/logos/barebeek-logos.png' | relative_url }}" alt="Partners & logo's — Barebeek PFAS">
-                <div class="hint">Upload hier één logo-afbeelding (bv. VMM, UHasselt, iFLUX, partners) als <code>/images/logos/barebeek-logos.png</code>.</div>
+                <div class="hint">Upload 1 logo-afbeelding als <code>/images/logos/barebeek-logos.png</code>.</div>
               </div>
             </div>
           </details>
 
-          <!-- PFAS RESOLVE -->
           <details class="rd-item">
             <summary class="rd-sum">
               <div class="rd-chev">›</div>
@@ -419,12 +354,11 @@ nav:
 
               <div class="rd-logos">
                 <img src="{{ '/images/logos/pfas-resolve-logos.png' | relative_url }}" alt="Partners & logo's — PFAS RESOLVE">
-                <div class="hint">Zet hier je projectlogo’s als één bestand: <code>/images/logos/pfas-resolve-logos.png</code>.</div>
+                <div class="hint">Zet je projectlogo’s als 1 bestand: <code>/images/logos/pfas-resolve-logos.png</code>.</div>
               </div>
             </div>
           </details>
 
-          <!-- LIFE NARMENA -->
           <details class="rd-item">
             <summary class="rd-sum">
               <div class="rd-chev">›</div>
@@ -446,7 +380,7 @@ nav:
 
               <div class="rd-logos">
                 <img src="{{ '/images/logos/narmena-logos.png' | relative_url }}" alt="Partners & logo's — LIFE NARMENA">
-                <div class="hint">Zet hier je projectlogo’s als één bestand: <code>/images/logos/narmena-logos.png</code>.</div>
+                <div class="hint">Zet je projectlogo’s als 1 bestand: <code>/images/logos/narmena-logos.png</code>.</div>
               </div>
             </div>
           </details>
