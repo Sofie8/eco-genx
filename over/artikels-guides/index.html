@@ -462,12 +462,23 @@
   <section class="background" data-size="page">
     <style>
   /* =========================================================
-     Artikels & guides — clean, upload-friendly
+     Artikels & guides — headerhoogte zoals "Voor wie"
+     - zelfde compacte hero (niet te hoog)
+     - zin onder titel verwijderd
      ========================================================= */
 
   main{ max-width:none !important; padding:0 !important; overflow:visible !important; }
   main > *, main .content, main article, main .page, main .post{
     max-width:none !important; padding:0 !important; margin:0 !important; overflow:visible !important;
+  }
+
+  /* hide default injected page title (theme-dependent) */
+  .page-title,
+  .page-header,
+  .page-header h1,
+  h1.page-title,
+  main > h1:first-child{
+    display:none !important;
   }
 
   .ag{
@@ -477,17 +488,20 @@
     --ink: rgba(0,0,0,.86);
     --muted: rgba(0,0,0,.66);
     --shadow: 0 14px 36px rgba(0,0,0,.06);
+    --line: rgba(0,0,0,.10);
   }
 
+  /* ✅ Compacte hero (zoals "Voor wie") */
   .hero{
     position: relative;
     left: 50%; right: 50%;
     width: 100vw;
     margin-left: -50vw; margin-right: -50vw;
 
+    padding: 2.05rem 0 1.45rem; /* <- compacter */
     background: linear-gradient(180deg, rgba(11,59,47,.92), rgba(8,42,34,.92));
     color: rgba(255,255,255,.92);
-    padding: 2.2rem 0 1.6rem;
+    border-bottom: 1px solid rgba(0,0,0,.08);
   }
   .hero .inner{
     max-width: var(--max);
@@ -499,18 +513,14 @@
     letter-spacing: .10em;
     text-transform: uppercase;
     opacity: .85;
-    margin-bottom: .55rem;
+    margin-bottom: .65rem;
   }
   .hero h1{
-    margin:0 0 .5rem;
-    font-size: 2.2rem;
-    line-height: 1.08;
-  }
-  .hero p{
     margin:0;
-    max-width: 78ch;
-    opacity:.92;
-    line-height:1.7;
+    font-size: 2.35rem;
+    line-height: 1.06;
+    letter-spacing: .02em;
+    max-width: 30ch;
   }
 
   .body{
@@ -589,11 +599,12 @@
     padding: .85rem 1rem;
     color: var(--muted);
     line-height: 1.6;
+    border-top: 1px solid rgba(0,0,0,.08);
   }
 
   @media (max-width: 980px){
     .grid{ grid-template-columns: 1fr; }
-    .hero h1{ font-size: 1.95rem; }
+    .hero h1{ font-size: 2.0rem; }
   }
 </style>
 
@@ -603,7 +614,7 @@
     <div class="inner">
       <div class="eyebrow">Eco-GenX · Kennisbank</div>
       <h1>Artikels &amp; guides</h1>
-      <p>Documenten, praktijkgidsen en publicaties die je kan downloaden of inkijken.</p>
+      <!-- ✅ zin verwijderd -->
     </div>
   </section>
 
