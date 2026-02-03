@@ -219,10 +219,6 @@ nav:
     <div class="inner">
       <div class="eyebrow">Eco-GenX · Fytoremediatie in de stad</div>
       <h1>Van stedelijke bodem naar werkend groen</h1>
-      <p>
-        Praktische trajecten rond plantkeuze, inventarisatie en monitoring — met aandacht voor eco-regio,
-        stressfactoren en meetbaar bewijs op terrein.
-      </p>
     </div>
   </section>
 
