@@ -7,6 +7,7 @@ permalink: /over/voor-wie/
 <style>
   /* =========================================================
      Voor wie — calm split layout (image left, text right)
+     NO white card background (text sits on cream background)
      Scope: .vw
      ========================================================= */
 
@@ -36,41 +37,60 @@ permalink: /over/voor-wie/
     --green2: var(--eco-dark-2, #082a22);
   }
 
-  /* top band */
+  /* =========================================================
+     HERO — match "Op de agenda" hoogte + tekst wit
+     ========================================================= */
   .vw-hero{
     position: relative;
     left: 50%; right: 50%;
     width: 100vw;
     margin-left: -50vw; margin-right: -50vw;
 
+    padding: 1.55rem 0 1.15rem;  /* ✅ korter zoals op-de-agenda */
+    min-height: 220px;           /* ✅ consistente headerhoogte */
+    display: flex;
+    align-items: flex-end;
+
     background: linear-gradient(180deg, rgba(11,59,47,.92), rgba(8,42,34,.92));
-    color: rgba(255,255,255,.92);
-    padding: 3.0rem 0 1.8rem;
+    color: #fff;
+    border-bottom: 1px solid rgba(0,0,0,.08);
   }
+
   .vw-hero .inner{
     max-width: var(--max);
     margin: 0 auto;
     padding: 0 var(--pad);
   }
+
+  /* forceer wit op alle hero-teksten (ook als globale CSS iets overschrijft) */
+  .vw-hero .inner,
+  .vw-hero .vw-eyebrow,
+  .vw-hero h1,
+  .vw-hero p{
+    color: rgba(255,255,255,.92) !important;
+  }
+
   .vw-eyebrow{
     font-size: .86rem;
     letter-spacing: .10em;
     text-transform: uppercase;
-    opacity: .82;
-    margin: 0 0 .6rem;
+    opacity: .88;               /* iets helderder */
+    margin: 0 0 .55rem;
   }
+
   .vw-hero h1{
-    margin: 0 0 .5rem;
-    font-size: 2.6rem;
+    margin: 0 0 .35rem;
+    font-size: 2.25rem;         /* compacter */
     line-height: 1.06;
     letter-spacing: .02em;
   }
+
   .vw-hero p{
     margin: 0;
     max-width: 80ch;
     opacity: .92;
     line-height: 1.7;
-    font-size: 1.05rem;
+    font-size: 1.02rem;
   }
 
   /* split */
@@ -116,22 +136,18 @@ permalink: /over/voor-wie/
     display:block;
   }
 
-  /* right text card (one calm block) */
-  .vw-card{
-    background: rgba(255,255,255,.65);
-    border: 1px solid rgba(0,0,0,.08);
-    border-radius: 20px;
-    padding: 1.6rem 1.7rem;
-    box-shadow: 0 14px 36px rgba(0,0,0,.06);
+  /* RIGHT: no card, just typography */
+  .vw-text{
+    padding: .25rem 0 0;
   }
 
-  .vw-card h2{
+  .vw-text h2{
     margin: 0 0 .7rem;
     font-size: 1.7rem;
     line-height: 1.15;
     color: var(--ink);
   }
-  .vw-card p{
+  .vw-text p{
     margin: 0 0 1.1rem;
     color: var(--muted);
     line-height: 1.75;
@@ -141,18 +157,19 @@ permalink: /over/voor-wie/
   .vw-list{
     margin: .2rem 0 0;
     padding-left: 1.1rem;
-    color: rgba(0,0,0,.76);
-    line-height: 1.75;
+    color: rgba(0,0,0,.78);
+    line-height: 1.8;
   }
-  .vw-list li{ margin: .35rem 0; }
+  .vw-list li{ margin: .55rem 0; }
+  .vw-list strong{ color: rgba(0,0,0,.86); }
 
   .vw-cta{
-    margin-top: 1.2rem;
+    margin-top: 1.35rem;
     padding-top: 1.1rem;
-    border-top: 1px solid rgba(0,0,0,.08);
+    border-top: 1px solid rgba(0,0,0,.10);
     display:flex;
     flex-wrap:wrap;
-    gap:.7rem;
+    gap:.8rem;
     align-items:center;
     justify-content: space-between;
   }
@@ -176,7 +193,12 @@ permalink: /over/voor-wie/
   .vw-cta a:hover{ background: rgba(11,59,47,.10); }
 
   @media (max-width: 980px){
-    .vw-hero h1{ font-size: 2.1rem; }
+    .vw-hero{
+      min-height: 180px;
+      padding: 1.2rem 0 1rem;
+    }
+    .vw-hero h1{ font-size: 1.9rem; }
+
     .vw-body .inner{ grid-template-columns: 1fr; }
     .vw-photo{ position: static; }
     .vw-photo .frame{ aspect-ratio: 16 / 10; }
@@ -207,11 +229,12 @@ permalink: /over/voor-wie/
       </aside>
 
       <!-- RIGHT -->
-      <article class="vw-card">
+      <article class="vw-text">
         <h2>Decision-ready advies voor…</h2>
         <p>
           Ingenieursbureaus, overheden, terreinbeheerders, bedrijven en burgerinitiatieven
-          die een bodem-/watervraagstuk willen oplossen met een aanpak die technisch klopt én praktisch werkt.
+          die een bodem-/watervraagstuk willen oplossen met een aanpak die technisch klopt
+          én praktisch werkt.
         </p>
 
         <ul class="vw-list">
@@ -233,3 +256,4 @@ permalink: /over/voor-wie/
   </section>
 
 </div>
+
