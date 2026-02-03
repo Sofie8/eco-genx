@@ -10,12 +10,10 @@ nav:
 <style>
   /* =========================================================
      ONDERZOEK — consistent met "Op de agenda"
-     - GEEN foto in header
      - hero niet te hoog
-     - titel in wit: "Van wetenschap naar terrein"
-     - tekst onder titel weg
-     - rechterblok weg
-     - introtekst gesplitst in 2 "blokken" zonder achtergrond (gewoon tekstkolommen)
+     - 1 gecentreerde titel (wit)
+     - intro 2 kolommen (geen kaarten)
+     - accordions standaard dicht (+)
      Scoped: .rd
      ========================================================= */
 
@@ -45,14 +43,14 @@ nav:
     --line: rgba(0,0,0,.10);
   }
 
-  /* ---------- HERO (zonder foto, niet te hoog) ---------- */
+  /* ---------- HERO (geen foto, niet te hoog) ---------- */
   .rd-hero{
     position: relative;
     left: 50%; right: 50%;
     width: 100vw;
     margin-left: -50vw; margin-right: -50vw;
 
-    padding: 2.1rem 0 1.55rem;  /* ✅ minder hoog */
+    padding: 2.1rem 0 1.55rem;
     background: linear-gradient(180deg, rgba(11,59,47,.92), rgba(8,42,34,.92));
     border-bottom: 1px solid rgba(0,0,0,.08);
   }
@@ -61,24 +59,17 @@ nav:
     max-width: var(--max);
     margin: 0 auto;
     padding: 0 var(--pad);
-    color: rgba(255,255,255,.92);
-    text-align:left !important;
+    text-align: center !important;
   }
 
-  .rd-eyebrow{
-    font-size: .86rem;
-    letter-spacing: .10em;
-    text-transform: uppercase;
-    opacity: .82;
-    margin: 0 0 .65rem;
-  }
-
+  /* 1 gecentreerde titel */
   .rd-title{
-    margin: 0;
+    margin: 0 auto;
     font-size: 2.45rem;
     line-height: 1.06;
     letter-spacing: .02em;
-    max-width: 28ch;
+    max-width: 34ch;
+    color: rgba(255,255,255,.92) !important;
   }
 
   /* ---------- BODY ---------- */
@@ -98,7 +89,7 @@ nav:
     text-align:left !important;
   }
 
-  /* ---------- INTRO (2 kolommen, GEEN achtergrondkaarten) ---------- */
+  /* ---------- INTRO (2 kolommen, geen kaarten) ---------- */
   .rd-intro{
     display:grid;
     grid-template-columns: 1fr 1fr;
@@ -138,7 +129,7 @@ nav:
     max-width: 92ch;
   }
 
-  /* ---------- Accordion list (zoals je had, maar keep clean) ---------- */
+  /* ---------- Accordion list ---------- */
   .rd-acc{
     display:flex;
     flex-direction:column;
@@ -159,12 +150,12 @@ nav:
     cursor: pointer;
 
     display:grid !important;
-    grid-template-columns: 40px minmax(0, 1fr) 42px;
-    gap: 1rem;
+    grid-template-columns: 32px minmax(0, 1fr) 38px;
+    gap: .95rem;
     align-items: start;
 
     width: 100%;
-    padding: 1.05rem 1.15rem;
+    padding: 1.0rem 1.1rem;
     background: rgba(0,0,0,.04);
 
     max-width: 980px;
@@ -180,7 +171,7 @@ nav:
   .rd-sum > div{ min-width: 0; }
 
   .rd-chev{
-    width: 28px; height: 28px;
+    width: 26px; height: 26px;
     border-radius: 999px;
     display:flex;
     align-items:center;
@@ -188,7 +179,8 @@ nav:
     color: rgba(0,0,0,.72);
     border: 1px solid rgba(0,0,0,.18);
     background: rgba(255,255,255,.7);
-    margin-top: .1rem;
+    margin-top: .15rem;
+    transition: transform .15s ease;
   }
 
   .rd-sum h3{
@@ -204,7 +196,7 @@ nav:
   }
 
   .rd-plus{
-    width: 36px; height: 36px;
+    width: 34px; height: 34px;
     border-radius: 999px;
     display:flex;
     align-items:center;
@@ -219,10 +211,7 @@ nav:
   details.rd-item:not([open]) .rd-plus::before{ content:"+"; }
   details.rd-item[open] .rd-plus::before{ content:"–"; }
 
-  details.rd-item[open] .rd-chev{
-    transform: rotate(90deg);
-    transition: transform .15s ease;
-  }
+  details.rd-item[open] .rd-chev{ transform: rotate(90deg); }
 
   .rd-bodybox{
     padding: 1.05rem 1.15rem 1.15rem;
@@ -263,12 +252,10 @@ nav:
 
 <div class="rd">
 
-  <!-- HERO (geen foto) -->
+  <!-- HERO -->
   <section class="rd-hero" aria-label="Onderzoek en ontwikkeling">
     <div class="inner">
-      <div class="rd-eyebrow">Eco-GenX · Onderzoek & ontwikkeling</div>
-      <h1 class="rd-title">Van wetenschap naar terrein</h1>
-      <!-- ✅ subtitle weg -->
+      <h1 class="rd-title">Onderzoek & ontwikkeling</h1>
     </div>
   </section>
 
@@ -276,7 +263,7 @@ nav:
   <section class="rd-body">
     <div class="inner">
 
-      <!-- ✅ intro in 2 kolommen, GEEN rechterkaart -->
+      <!-- INTRO 2 kolommen -->
       <div class="rd-intro">
         <div>
           <h2>Onderzoek als motor</h2>
@@ -287,15 +274,15 @@ nav:
         </div>
 
         <div>
-          <h2>Methodologie & scherpte</h2>
+          <h2>Academische verankering</h2>
           <p>
-            Tegelijk blijf ik als postdoc (20% aanstelling) bij UHasselt nauw betrokken bij fundamentele en
-            methodologische ontwikkeling (plant–microbe interacties, bewijsvoering, data-interpretatie).
+            Als postdoc (20% aanstelling) bij UHasselt blijf ik betrokken bij fundamentele en methodologische
+            ontwikkeling (plant–microbe interacties, bewijsvoering, data-interpretatie).
           </p>
         </div>
       </div>
 
-      <!-- SECTION: Eco-GenX current -->
+      <!-- HUIDIG -->
       <div class="rd-section">
         <h2>Huidige onderzoek- & ontwikkelingsprojecten</h2>
         <p>
@@ -317,8 +304,8 @@ nav:
 
             <div class="rd-bodybox">
               <p>
-                Pilootproject (VMM) rond innovatieve in-situ sanering om verspreiding van PFAS via sediment en oppervlaktewater te reduceren.
-                Traject met nulmeting → ontwerp → real-scale implementatie → effectmonitoring (incl. concentraties én fluxen richting grondwater/oppervlaktewater, iFLUX).
+                Pilootproject (VMM) rond innovatieve in-situ aanpak om verspreiding van PFAS via sediment en oppervlaktewater te reduceren.
+                Traject met nulmeting → ontwerp → implementatie → effectmonitoring (incl. concentraties én fluxen richting grondwater/oppervlaktewater, iFLUX).
               </p>
               <p>
                 Rol: expert plant–microbe interacties voor PFAS sorptie/extractie; haalbaarheidsstudie, experimenteel design en data-interpretatie
@@ -349,7 +336,7 @@ nav:
               </p>
               <p>
                 Opzet van veldpilots waarin plant-gebaseerde staalname wordt gecombineerd met een nieuwe draagbare biosensor.
-                Doel: snel en kostenefficiënt alternatief voor grootschalige kartering en monitoring.
+                Doel: sneller en kostenefficiënter alternatief voor grootschalige kartering en monitoring.
               </p>
 
               <div class="rd-logos">
@@ -388,12 +375,10 @@ nav:
         </div>
       </div>
 
-      <!-- SECTION: Archive -->
+      <!-- ARCHIEF -->
       <div class="rd-section">
         <h2>Archief (2019–2024)</h2>
-        <p>
-          Afgeronde of oudere projecten, gebundeld. Klik open voor context en kernresultaten.
-        </p>
+        <p>Afgeronde of oudere projecten, gebundeld. Klik open voor context en kernresultaten.</p>
 
         <div class="rd-acc">
 
@@ -402,7 +387,7 @@ nav:
               <div class="rd-chev">›</div>
               <div>
                 <h3>PFAS fytoremediatie veldexperimenten — PLANTS project KISS VZW (2024–heden)</h3>
-                <p>Identificatie van hennepcultivars met hoge BCF voor PFOS; jaarlijkse PFOS-reducties 1–5% (fyto-extractie).</p>
+                <p>Identificatie hennepcultivars met hoge BCF voor PFOS; jaarlijkse PFOS-reducties 1–5% (fyto-extractie).</p>
               </div>
               <div class="rd-plus" aria-hidden="true"></div>
             </summary>
@@ -428,8 +413,8 @@ nav:
             </summary>
             <div class="rd-bodybox">
               <p>
-                Contaminanten: petroleum koolwaterstoffen, cyanides, lindaan. Wetenschappelijke leiding (WP2 via UHasselt/CMK).
-                Van isolatie en consortia tot veld-toepassing (bacterie-gestimuleerde fytoremediatie) en bioinformatica.
+                Contaminanten: petroleum koolwaterstoffen, cyanides, lindaan.
+                Wetenschappelijke leiding (WP2 via UHasselt/CMK). Van isolatie en consortia tot veldtoepassing en bioinformatica.
               </p>
               <div class="rd-logos">
                 <img src="{{ '/images/logos/mibirem-logos.png' | relative_url }}" alt="Partners & logo's — MIBIREM">
@@ -448,7 +433,7 @@ nav:
             </summary>
             <div class="rd-bodybox">
               <p>
-                Locatie: De Lieve (baggerslib). Ontwerp & monitoring van microbe-ondersteunde fytopiles.
+                Locatie: De Lieve (baggerslib). Ontwerp & monitoring microbe-ondersteunde fytopiles.
                 Onderbouwing o.a. via toename olie-afbrekende genen en 13C-gelabelde BACTRAPS.
               </p>
               <div class="rd-logos">
@@ -467,9 +452,7 @@ nav:
               <div class="rd-plus" aria-hidden="true"></div>
             </summary>
             <div class="rd-bodybox">
-              <p>
-                Begeleiding bio2clean bij ontwerp & wetenschappelijke studie. Succesvolle toepassing fytohydraulische aanpak.
-              </p>
+              <p>Begeleiding bio2clean bij ontwerp & wetenschappelijke studie. Succesvolle toepassing fytohydraulische aanpak.</p>
               <div class="rd-logos">
                 <img src="{{ '/images/logos/roeselare-logos.png' | relative_url }}" alt="Partners & logo's — Roeselare">
               </div>
@@ -486,9 +469,7 @@ nav:
               <div class="rd-plus" aria-hidden="true"></div>
             </summary>
             <div class="rd-bodybox">
-              <p>
-                Beleidskader Vlaanderen. Mede-opsteller van de Vlaamse richtlijn om fytoremediatie wetenschappelijk correct én toepasbaar te maken.
-              </p>
+              <p>Beleidskader Vlaanderen. Mede-opsteller van de Vlaamse richtlijn om fytoremediatie wetenschappelijk correct én toepasbaar te maken.</p>
               <div class="rd-logos">
                 <img src="{{ '/images/logos/ovam-code-logos.png' | relative_url }}" alt="Partners & logo's — OVAM code">
               </div>
