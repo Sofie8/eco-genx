@@ -5,6 +5,6 @@
 
   # Sofie8's Website
 
-  Visit **[sofie8.github.io/eco-genx](https://sofie8.github.io/eco-genx)** 🚀
+  Visit **[www.eco-genx.be](http://www.eco-genx.be)** 🚀
 
   _Built with [Lab Website Template](https://greene-lab.gitbook.io/lab-website-template-docs)_
