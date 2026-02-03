@@ -66,10 +66,10 @@
 
   <meta name="author" content="jane-smith">
   <meta property="og:type" content="article">
-  <meta property="og:updated_time" content="2026-02-03T17:57:02+00:00">
+  <meta property="og:updated_time" content="2026-02-03T23:04:02+00:00">
   <meta property="article:published_time" content="2021-09-30T00:00:00+00:00">
-  <meta property="article:modified_time" content="2026-02-03T17:57:02+00:00">
-  <meta name="revised" content="2026-02-03T17:57:02+00:00">
+  <meta property="article:modified_time" content="2026-02-03T23:04:02+00:00">
+  <meta name="revised" content="2026-02-03T23:04:02+00:00">
 
 
 <script type="application/ld+json">
@@ -79,7 +79,7 @@
       "@type": "BlogPosting",
       "author": { "@type": "Person", "name": "News item coming soon" },
       "datePublished": "2021-09-30T00:00:00+00:00",
-      "dateModified": "2026-02-03T17:57:02+00:00",
+      "dateModified": "2026-02-03T23:04:02+00:00",
     
     "name": "News item coming soon",
     "description": "Engineering nature. We herstellen bodem en water met fytotechnologie - planten, microben, gerichte additieven en DNA-bewijs.",
@@ -334,8 +334,6 @@
 
 
 
-
-
 <header class="background" style="--image: url('/images/background.jpg')" data-dark="true">
   <div class="header-inner">
 
@@ -359,7 +357,8 @@
 
       <!-- Over Eco-GenX dropdown -->
       <div class="nav-dd" id="dd-about">
-        <button class="nav-dd__trigger" type="button" aria-haspopup="true" aria-expanded="false">
+        <!-- ✅ no-upper voorkomt CSS-uppercase voor deze label -->
+        <button class="nav-dd__trigger no-upper" type="button" aria-haspopup="true" aria-expanded="false">
           Over Eco-GenX <span aria-hidden="true">▾</span>
         </button>
 
@@ -369,11 +368,7 @@
           <a role="menuitem" href="/over/aanpak/">Eco-GenX aanpak</a>
           <a role="menuitem" href="/over/voor-wie/">Voor wie</a>
           <a role="menuitem" href="/over/onderzoek/">Onderzoek</a>
-
-          <!-- ✅ nieuw: op-de-agenda -->
           <a role="menuitem" href="/over/op-de-agenda/">Op de agenda</a>
-
-          <!-- ✅ nieuw: artikels-guides -->
           <a role="menuitem" href="/over/artikels-guides/">Artikels &amp; guides</a>
         </div>
       </div>
@@ -388,11 +383,14 @@
           <a role="menuitem" href="/restore/">Restore</a>
           <a role="menuitem" href="/microproof/">MicroProof</a>
           <a role="menuitem" href="/plantiq/">PlantIQ</a>
+
+          <!-- ✅ verplaatst onder DIENSTEN -->
+          <a role="menuitem" href="/fytoremediatie-in-de-stad/">Fytoremediatie in de stad</a>
         </div>
       </div>
 
       <a href="/projects/">Projecten</a>
-      <a href="/fytoremediatie-in-de-stad/">Fytoremediatie in de stad</a>
+      <!-- ❌ weggehaald als top-level item, zit nu onder DIENSTEN -->
       <a href="/certificaten/">Certificaten</a>
       <a href="/contact/">Contact</a>
     </nav>
