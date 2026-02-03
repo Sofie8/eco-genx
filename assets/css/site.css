@@ -477,3 +477,12 @@ main .post{
    Utility: hard hide for filtered tiles
    ========================================================= */
 .tile.is-hidden{ display: none !important; }
+
+/* =========================================
+   Fix branding casing: Eco-GenX mag niet uppercase worden
+   ========================================= */
+.no-upper{
+  text-transform: none !important;
+  letter-spacing: 0 !important;
+}
+
