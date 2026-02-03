@@ -6,6 +6,12 @@
 {% assign jpg = "images/logo.jpg" | file_exists %}
 {% assign logo = svg | default: png | default: jpg | default: nil %}
 
+{%- assign display_title = site.title | default: "" -%}
+{%- assign display_subtitle = site.subtitle | default: "" -%}
+
+{%- assign display_title = display_title | replace: "ECO-GENX", "Eco-GenX" -%}
+{%- assign display_subtitle = display_subtitle | replace: "ECO-GENX", "Eco-GenX" -%}
+
 <header
   class="background"
   style="--image: url('{{ image | relative_url | uri_escape }}')"
@@ -32,10 +38,10 @@
       {% if site.logo-text != false %}
         <span class="title-text">
           {% if site.title and site.show-title != false %}
-            <span class="title">{{ site.title }}</span>
+            <span class="title">{{ display_title }}</span>
           {% endif %}
           {% if site.subtitle and site.show-subtitle != false %}
-            <span class="subtitle">{{ site.subtitle }}</span>
+            <span class="subtitle">{{ display_subtitle }}</span>
           {% endif %}
         </span>
       {% endif %}
@@ -46,7 +52,8 @@
 
       <!-- Over Eco-GenX dropdown -->
       <div class="nav-dd" id="dd-about">
-        <button class="nav-dd__trigger" type="button" aria-haspopup="true" aria-expanded="false">
+        <!-- ✅ no-upper voorkomt CSS-uppercase voor deze label -->
+        <button class="nav-dd__trigger no-upper" type="button" aria-haspopup="true" aria-expanded="false">
           Over Eco-GenX <span aria-hidden="true">▾</span>
         </button>
 
@@ -56,11 +63,7 @@
           <a role="menuitem" href="{{ '/over/aanpak/' | relative_url }}">Eco-GenX aanpak</a>
           <a role="menuitem" href="{{ '/over/voor-wie/' | relative_url }}">Voor wie</a>
           <a role="menuitem" href="{{ '/over/onderzoek/' | relative_url }}">Onderzoek</a>
-
-          <!-- ✅ nieuw: op-de-agenda -->
           <a role="menuitem" href="{{ '/over/op-de-agenda/' | relative_url }}">Op de agenda</a>
-
-          <!-- ✅ nieuw: artikels-guides -->
           <a role="menuitem" href="{{ '/over/artikels-guides/' | relative_url }}">Artikels & guides</a>
         </div>
       </div>
@@ -75,11 +78,14 @@
           <a role="menuitem" href="{{ '/restore/' | relative_url }}">Restore</a>
           <a role="menuitem" href="{{ '/microproof/' | relative_url }}">MicroProof</a>
           <a role="menuitem" href="{{ '/plantiq/' | relative_url }}">PlantIQ</a>
+
+          <!-- ✅ verplaatst onder DIENSTEN -->
+          <a role="menuitem" href="{{ '/fytoremediatie-in-de-stad/' | relative_url }}">Fytoremediatie in de stad</a>
         </div>
       </div>
 
       <a href="{{ '/projects/' | relative_url }}">Projecten</a>
-      <a href="{{ '/fytoremediatie-in-de-stad/' | relative_url }}">Fytoremediatie in de stad</a>
+      <!-- ❌ weggehaald als top-level item, zit nu onder DIENSTEN -->
       <a href="{{ '/certificaten/' | relative_url }}">Certificaten</a>
       <a href="{{ '/contact/' | relative_url }}">Contact</a>
     </nav>
