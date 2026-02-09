@@ -149,7 +149,7 @@ nav:
 
     <!-- TOP-LEFT: TEXT -->
     <div class="cell text">
-      <p class="kicker">Une démarche qualité certifiée</p>
+      <p class="kicker">Gecertificeerde kwaliteitsaanpak</p>
       <h2>Een gecertificeerde kwaliteitsaanpak</h2>
 
       <p>
