@@ -12,8 +12,8 @@ Questions, collaborations, or project requests? We’d love to hear from you.
 {%
   include button.html
   type="email"
-  text="verthycv@gmail.com"
-  link="verthycv@gmail.com"
+  text="sofie.thijs@eco-genx.be"
+  link="sofie.thijs@eco-genx.be"
 %}
 {%
   include button.html
