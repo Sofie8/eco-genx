@@ -5,4 +5,4 @@ permalink: /over/aanpak/
 ---
 # Eco-GenX aanpak
 
-(We vullen dit straks mooi in.)
+(Content komt nog)
