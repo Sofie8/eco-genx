@@ -7,7 +7,7 @@ nav:
 
 # {% include icon.html icon="fa-regular fa-envelope" %}Contact
 
-Questions, collaborations, or project requests? We’d love to hear from you.
+Vragen, samenwerkingen of project ideeëen? Ik hoor graag van jou.
 
 {%
   include button.html
