@@ -209,20 +209,20 @@ nav:
 
           <!-- COPY/PASTE dit blok voor extra events -->
           <div class="item">
-            <div class="date">12 feb 2026</div>
+            <div class="date">11 feb 2026</div>
             <div class="main">
-              <div class="title">Lezing Ekeren</div>
-              <div class="meta">19:30 · Ekeren · PFAS &amp; meetdata — interpretatie en vragen</div>
-              <a class="link" href="https://example.com">Info / inschrijven →</a>
+              <div class="title">Lezing Ronse</div>
+              <div class="meta">19:30 · Ronse · PFAS proeftuin met hennep &amp; meetdata — interpretatie en vragen</div>
+              <a class="link" href="[link](https://www.facebook.com/events/1301792891756724/)">Info / inschrijven →</a>
             </div>
           </div>
 
           <div class="item">
-            <div class="date">28 mrt 2026</div>
+            <div class="date">19 mrt 2026</div>
             <div class="main">
-              <div class="title">Lezing Ronse</div>
-              <div class="meta">20:00 · Ronse · Bodem &amp; water — nature-based opties</div>
-              <a class="link" href="https://example.com">Eventpagina →</a>
+              <div class="title">Teachup!2030</div>
+              <div class="meta">9:00 · Herman Teirlinck Brussel ·  Workshop "Grondig leren: ontdek het belang van een gezonde bodem"</div>
+              <a class="link" href="link](https://www.linkedin.com/feed/update/urn:li:activity:7424050690836262912/)">Eventpagina →</a>
             </div>
           </div>
 
