@@ -173,36 +173,39 @@ nav:
         <div class="card">
           <div class="pad">
             <h2>Overzicht</h2>
-            <p>Voeg hier links toe naar PDF’s, posts, media of downloads.</p>
+            <p>Ik schreef mee aan volgende handleidingen, richtlijnen en blogposts.</p>
           </div>
 
           <div class="item">
             <strong>Code van goede praktijk (OVAM)</strong>
-            <div class="meta">Richtlijnen / aanpak · (link naar PDF of pagina)</div>
-            <a href="https://example.com">Open →</a>
+            <div class="meta">Richtlijnen / aanpak · </div>
+            <a href="[https://example.com](https://ovam.vlaanderen.be/documents/177281/310282/Code+of+Good+Practice+-+Phytoremediation.pdf/4d4a087a-b543-25b1-77a1-14f932f1742e?version=1.0&t=1653496052399&download=true)">Open →</a>
           </div>
 
           <div class="item">
-            <strong>Guide / factsheet (placeholder)</strong>
-            <div class="meta">Datum · thema · korte omschrijving</div>
-            <a href="https://example.com">Open →</a>
+            <strong>Guide / Bodemleven in 1000 Limburgse tuinen </strong>
+            <div class="meta">2024 · Bodemgezondheid · Bodemleven & activiteit in 1000 tuinen</div>
+            <a href="[Rapport](https://archief.onderzoek.omgeving.vlaanderen.be/OMG_onderzoek_VPO-PBM_250201_1.2)">Open →</a>
           </div>
 
           <div class="item">
-            <strong>Artikel / blogpost (placeholder)</strong>
-            <div class="meta">Datum · medium · korte omschrijving</div>
-            <a href="https://example.com">Open →</a>
+            <strong>Artikel / Scholen practica (placeholder)</strong>
+            <div class="meta">2024 · Bodem-Practicum · 2e en 3e graad middelbaar bio</div>
+            <a href="[Practicum bodemorganismen karakterisatie](https://www.klascement.net/downloadbaar-lesmateriaal/223909)">Open →</a>
           </div>
 
+          <div class="item">
+            <strong>Artikel / Scholen practica (placeholder)</strong>
+            <div class="meta">2024 · DNA-Practicum · 2e en 3e graad middelbaar bio</div>
+            <a href="[Practicum eDNA bodemleven](https://www.klascement.net/downloadbaar-lesmateriaal/223907))">Open →</a>
+          </div>
+          
         </div>
 
         <div class="imgbox">
           <!-- Upload je scan/screenshot hiernaartoe: /images/code-van-goede-praktijk.jpg -->
           <img src="{{ '/images/code-van-goede-praktijk.jpg' | relative_url }}" alt="Code van goede praktijk (OVAM)">
           <div class="cap">
-            <strong>Uploadzone</strong><br>
-            Zet je afbeelding in <code>/images/code-van-goede-praktijk.jpg</code>
-            (of wijzig de bestandsnaam in deze pagina).
           </div>
         </div>
 
